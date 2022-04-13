@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">VolunteerFinderApp</string>
+    <string name="title_activity_chat_log">ChatLog</string>
+    <string name="title_activity_chat_collection">ChatCollection</string>
 </resources>

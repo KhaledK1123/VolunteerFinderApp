@@ -1,6 +1,6 @@
 package com.ex.volunteerfinder.model.data
 
-data class Event (
+data class Event(
     var name: String,
     var sponsor: String,
     var leadership: MutableList<User>,

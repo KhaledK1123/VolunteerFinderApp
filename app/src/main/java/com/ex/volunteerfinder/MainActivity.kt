@@ -34,6 +34,7 @@ fun Greeting(name: String) {
     Text(text = "Hello $name!")
     Text(text ="I am here. I am $name")
     Text(text = "Hello $name!")
+    Text(text = "Hello again")
 }
 
 @Preview(showBackground = true)

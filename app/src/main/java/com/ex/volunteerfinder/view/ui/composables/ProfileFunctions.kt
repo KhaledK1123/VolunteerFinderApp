@@ -7,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.ex.volunteerfinder.R
 import com.ex.volunteerfinder.model.data.User
@@ -16,7 +17,7 @@ import com.ex.volunteerfinder.model.data.User
  * K/V pair returns null, displays default profile picture. Can display in full size or thumbnail.
  */
 @Composable
-fun ProfileImage (user: User, thumbnail: Boolean = false) {
+fun ProfileImage (thumbnail: Boolean = false) {
     /*
     TODO replace "R.drawable.blankpfp" with a check in the database, where !null returns
     their image resource index, and null returns the image resource index for blankpfp
@@ -33,4 +34,10 @@ fun ProfileImage (user: User, thumbnail: Boolean = false) {
         ).clip(CircleShape)
     )
 
+}
+
+@Preview
+@Composable
+fun PreviewProfileImage() {
+    ProfileImage(thumbnail = true)
 }

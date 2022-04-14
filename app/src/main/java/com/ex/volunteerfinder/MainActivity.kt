@@ -3,13 +3,19 @@ package com.ex.volunteerfinder
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.ex.volunteerfinder.view.LoginText
+import com.ex.volunteerfinder.view.LoginViewer
 import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -22,27 +28,19 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    //Greeting("New Project")
-                    SignUp(this)
+
+                    //SignUp(this)
+                    Column(
+                        modifier = Modifier.fillMaxSize(),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        LoginText(displayText = "Volunteer Finder")
+                        Image(painterResource(R.drawable.icon),"content")
+                        LoginViewer()
+                    }
 
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-    Text(text ="I am here. I am $name")
-    Text(text = "Hello $name!")
-    Text(text = "Hello again")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    VolunteerFinderAppTheme {
-        Greeting("Android")
     }
 }

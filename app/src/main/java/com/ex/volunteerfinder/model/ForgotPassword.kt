@@ -22,7 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ex.volunteerfinder.MainActivity
-import com.ex.volunteerfinder.model.LoginView
+import com.ex.volunteerfinder.view.LoginView
 import org.w3c.dom.Text
 
 class ForgotPassword: ComponentActivity() {

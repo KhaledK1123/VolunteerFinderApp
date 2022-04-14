@@ -1,4 +1,4 @@
-package com.ex.volunteerfinder.model
+package com.ex.volunteerfinder.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -180,7 +180,7 @@ fun LoginViewer() {
                 //This allows the login button to traverse to Home page
                 if (!isError) {
                     //viewModel.login(username, password)
-                    context.startActivity(Intent(context, EventList::class.java))
+                    //context.startActivity(Intent(context, EventList::class.java))
                     Toast.makeText(context, "Login Successful!", Toast.LENGTH_SHORT).show()
                 }
                 else{

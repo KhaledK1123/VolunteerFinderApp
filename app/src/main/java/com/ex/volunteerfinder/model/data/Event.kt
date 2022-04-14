@@ -4,8 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-
-@Entity(tableName = "Event")
+@Entity(tableName = "event")
 data class Event(
 
     @PrimaryKey(autoGenerate = true)
@@ -13,27 +12,21 @@ data class Event(
 
     @ColumnInfo(name = "name")
     var name: String,
-
     @ColumnInfo(name = "sponsor")
     var sponsor: String,
 
     @ColumnInfo(name = "leadership")
-    var leadership: MutableList<User>,
+    var leadership: List<User>,
 
     @ColumnInfo(name = "members")
-    var members: MutableList<User>,
+    var members: List<User>,
 
     @ColumnInfo(name = "address")
     var address: String,
-
-    //Question to be a part of address
     var city: String,
     var state: String,
     var zipCode: Int,
 
     @ColumnInfo(name = "time")
-    var time: Long,
-
-    @ColumnInfo(name = "date")
-    var date: Long
+    var time: Long
     )

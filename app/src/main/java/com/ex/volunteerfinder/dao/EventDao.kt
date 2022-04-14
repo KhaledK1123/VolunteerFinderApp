@@ -10,12 +10,12 @@ import com.ex.volunteerfinder.model.data.Event
 @Dao
 interface EventDao {
 
-    @Query("SELECT * FROM event")
+    @Query("SELECT * FROM customer")
     fun fetchAllEvents():LiveData<List<Event>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertEvent(event: Event)
 
-    @Query("DELETE FROM event where id=:id")
+    @Query("DELETE FROM customer where id=:id")
     suspend fun deleteEventById(id:Int)
 }

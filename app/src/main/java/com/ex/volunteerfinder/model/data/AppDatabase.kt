@@ -6,9 +6,9 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.ex.volunteerfinder.dao.EventDao
 
+
 @Database(entities = [Event::class],version = 1,exportSchema = false)
 abstract class AppDatabase:RoomDatabase() {
-
     abstract fun eventDao():EventDao
 
     companion object{
@@ -16,21 +16,22 @@ abstract class AppDatabase:RoomDatabase() {
         @Volatile
         private var INSTANCE: AppDatabase? = null
 
-        fun getDatabase(context: Context):AppDatabase{
+        fun getDatabase(conext:Context):AppDatabase{
 
-            val temInstance = INSTANCE
-            if (temInstance !=null){
-                return temInstance
+            val tempInstance = INSTANCE
+            if (tempInstance != null){
+                return tempInstance
             }
             synchronized(this){
                 val instance = Room.databaseBuilder(
-                    context.applicationContext,AppDatabase::class.java,
+                    conext.applicationContext,AppDatabase::class.java,
                     "event_database"
                 ).build()
-                INSTANCE =instance
+                INSTANCE = instance
                 return instance
             }
         }
 
     }
+
 }

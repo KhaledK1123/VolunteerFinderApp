@@ -46,9 +46,13 @@ class ForgotPassword: ComponentActivity() {
         }
     }
 }
-/* Attempted '@Preview', w/Composables: decided to forego (time constraints; fuzzy recall. . .
-. . . of the topic) */
 
+class SubmitButton {
+
+}
+
+/* Attempted '@Preview', w/Composables: decided to forego (time constraints; questioning . . .
+. . . their necessity & usability, as a result) */
 @Composable
 fun SimpleText(displayText: String) {
 
@@ -88,7 +92,28 @@ fun NewPassword(text: String) {
             .padding(horizontal = 16.dp)
             .fillMaxWidth()
     )
+
+    CancelButton()
 }
+
+@Composable
+fun CancelButton() {
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize(), Arrangement.Bottom, Alignment.CenterHorizontally
+    ) {
+
+        val context = LocalContext.current
+        TextButton(
+            onClick = {
+                context.startActivity(Intent(context, MainActivity::class.java))
+            },
+
+            ) {
+            Text("Cancel", color = Color(0xFF1333F3))
+        }
+    }
 
 @Composable
 fun ConfirmPassword(text: String) {
@@ -142,7 +167,7 @@ fun SubmitButton() {
 
         }
 
-        val backgroundColor = Color(0xFF2196F3)
+        val backgroundColor = Color(0xFF1333F3)
         Button(shape = RoundedCornerShape(10.dp),
             colors = ButtonDefaults.buttonColors(backgroundColor = backgroundColor),
             modifier = Modifier
@@ -157,6 +182,7 @@ fun SubmitButton() {
         )
     }
 
+    }
 }
 
 fun newPasswordInput(new_password: String, confirm_password: String): String {
@@ -178,3 +204,7 @@ fun newPasswordInput(new_password: String, confirm_password: String): String {
 fun Button(shape: RoundedCornerShape, colors: ButtonColors, modifier: Modifier, onClick: () -> Unit) {
 
 }
+
+
+
+

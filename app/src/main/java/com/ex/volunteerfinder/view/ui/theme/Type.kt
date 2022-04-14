@@ -1,4 +1,4 @@
-package com.ex.volunteerfinder.ui.theme
+package com.ex.volunteerfinder.view.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

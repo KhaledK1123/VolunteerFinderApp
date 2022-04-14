@@ -10,17 +10,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VolunteerFinderApp">
         <activity
-            android:name=".ui.ChatCollection"
+            android:name="com.ex.volunteerfinder.view.ui.ChatCollection"
             android:exported="false"
             android:label="@string/title_activity_chat_collection"
             android:theme="@style/Theme.VolunteerFinderApp" />
         <activity
-            android:name=".ui.ChatLog"
+            android:name="com.ex.volunteerfinder.view.ui.ChatLog"
             android:exported="false"
             android:label="@string/title_activity_chat_log"
             android:theme="@style/Theme.VolunteerFinderApp" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.ex.volunteerfinder.model.EventList"
+            android:exported="false"
+            android:label="@string/title_activity_chat_log"
+            android:theme="@style/Theme.VolunteerFinderApp" />
+        <activity
+            android:name=".model.LoginView"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.VolunteerFinderApp">

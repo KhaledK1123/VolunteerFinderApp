@@ -8,25 +8,25 @@ import androidx.room.PrimaryKey
 data class Event(
 
     @PrimaryKey(autoGenerate = true)
-    val id:Int = 0,
+    val id: Int = 0,
 
     @ColumnInfo(name = "name")
-    var name: String ?= null,
+    var name: String? = null,
     @ColumnInfo(name = "sponsor")
-    var sponsor: String ?= null,
-
-    @ColumnInfo(name = "leadership")
-    var leadership: List<User>?=null,
-
-    @ColumnInfo(name = "members")
-    var members: List<User>?=null,
+    var sponsor: String? = null,
 
     @ColumnInfo(name = "address")
-    var address: String?=null,
-    var city: String?=null,
-    var state: String?=null,
-    var zipCode: Int?=null,
+    var address: String? = null,
+
+    @ColumnInfo(name = "city")
+    var city: String? = null,
+
+    @ColumnInfo(name = "state")
+    var state: String? = null,
+
+    @ColumnInfo(name = "Zip Code")
+    var zipCode: Int? = null,
 
     @ColumnInfo(name = "time")
-    var time: Long?=null
-    )
+    var time: Long? = null
+)

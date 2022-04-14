@@ -10,7 +10,7 @@ import com.ex.volunteerfinder.model.data.Event
 @Dao
 interface EventDao {
 
-    @Query("SELECT * FROM customer")
+    @Query("SELECT * FROM event")
     fun fetchAllEvents():LiveData<List<Event>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

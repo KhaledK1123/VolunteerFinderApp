@@ -46,8 +46,12 @@ class ForgotPassword: ComponentActivity() {
     }
 }
 
+class SubmitButton {
+
+}
+
 /* Attempted '@Preview', w/Composables: decided to forego (time constraints; questioning . . .
-. . . their necessity, as a result) */
+. . . their necessity & usability, as a result) */
 @Composable
 fun SimpleText(displayText: String) {
 
@@ -198,9 +202,6 @@ fun Button(shape: RoundedCornerShape, colors: ButtonColors, modifier: Modifier, 
 
 }
 
-class SubmitButton {
-
-}
 
 
 

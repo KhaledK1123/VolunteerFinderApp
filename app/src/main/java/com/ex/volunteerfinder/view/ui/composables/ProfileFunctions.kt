@@ -17,7 +17,7 @@ import com.ex.volunteerfinder.model.data.User
  * K/V pair returns null, displays default profile picture. Can display in full size or thumbnail.
  */
 @Composable
-fun ProfileImage (thumbnail: Boolean = false) {
+fun ProfileImage (thumbnail: Boolean = true) {
     /*
     TODO replace "R.drawable.blankpfp" with a check in the database, where !null returns
     their image resource index, and null returns the image resource index for blankpfp

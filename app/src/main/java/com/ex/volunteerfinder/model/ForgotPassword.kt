@@ -175,8 +175,7 @@ fun SubmitButton() {
                 status =
                     newPasswordInput(newPasswordInput, confirmPasswordInput); context.startActivity(
                 Intent(context, MainActivity::class.java)
-            )
-            }
+            ) }
         )
     }
 

@@ -1,4 +1,4 @@
-package com.ex.volunteerfinder.viewmodels
+package com.ex.volunteerfinder.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

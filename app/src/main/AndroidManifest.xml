@@ -10,12 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VolunteerFinderApp">
         <activity
-            android:name=".ui.ChatCollection"
+            android:name=".view.ui.ChatCollection"
             android:exported="false"
             android:label="@string/title_activity_chat_collection"
             android:theme="@style/Theme.VolunteerFinderApp" />
         <activity
-            android:name=".ui.ChatLog"
+            android:name=".view.ui.ChatLog"
             android:exported="false"
             android:label="@string/title_activity_chat_log"
             android:theme="@style/Theme.VolunteerFinderApp" />

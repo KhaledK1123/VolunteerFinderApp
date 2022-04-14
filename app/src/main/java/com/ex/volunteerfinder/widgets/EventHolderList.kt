@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import com.ex.volunteerfinder.viewmodels.EventViewModel
+import com.ex.volunteerfinder.viewmodel.EventViewModel
 
 @Composable
 fun EventList(eventViewModel: EventViewModel){

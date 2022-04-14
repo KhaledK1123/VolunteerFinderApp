@@ -7,7 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
-import com.ex.volunteerfinder.ui.theme.VolunteerFinderAppTheme
+import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
 
 /*  From Richard: put Composables in THIS file, going forward; when calling 'ProfileImage()', here,
 have "Boolean=true"  */

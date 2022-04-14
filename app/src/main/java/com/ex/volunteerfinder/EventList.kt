@@ -19,7 +19,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.ex.volunteerfinder.ui.theme.VolunteerFinderAppTheme
+import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
 import java.util.*
 
 class EventList : ComponentActivity() {

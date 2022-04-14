@@ -11,5 +11,5 @@ object EventDummy {
         state = "FL",
         zipCode = 32303,
         time = 1649939480000
-            )
+    )
 }

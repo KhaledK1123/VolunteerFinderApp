@@ -23,7 +23,8 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 
-fun SignUp() {
+fun SignUp(context:Context) {
+
 
     var primaryColor= Color.Gray
 
@@ -44,7 +45,7 @@ fun SignUp() {
                     shape = CircleShape
                 ),
 
-            painter = painterResource(id = R.drawable.volunteer),
+            painter = painterResource(id = R.drawable.volunteer),//password drawable
             contentDescription = "Circular Image"
         )
 
@@ -107,7 +108,7 @@ fun SignUp() {
                     passwordVisibility.value=!passwordVisibility.value
                 }) {
                     Icon(
-                        imageVector = vectorResource(id = R.drawable.password),
+                        imageVector = vectorResource(id = R.drawable.password),//password drawable
                         tint = if (passwordVisibility.value) primaryColor else Color.Gray
                     )
                 }
@@ -138,7 +139,7 @@ fun SignUp() {
                 }) {
                     val primaryColor= Color.Gray
                     Icon(
-                        imageVector = vectorResource(id = R.drawable.password),
+                        imageVector = vectorResource(id = R.drawable.password), //password drawable
                         tint = if (confirmPasswordVisibility.value) primaryColor else Color.Gray
                     )
                 }
@@ -151,14 +152,24 @@ fun SignUp() {
 
         Spacer(modifier = Modifier.height(25.dp))
 
-        Button(onClick = {}
-//        {
-//            if (username.value.isEmpty()){
-//                Toast.makeText(context,"Please complete ",Toast.LENGTH_SHORT).show()
-//            }else{
-//                Toast.makeText(context,"Signed Up Successfully",Toast.LENGTH_SHORT).show()
-//            }
-//        }
+        Button(onClick =
+        {
+            if (username.value.isEmpty()){
+                Toast.makeText(context,"Please fill all inputs ",Toast.LENGTH_SHORT).show()
+            }
+            else if(email.value.isEmpty()){
+            Toast.makeText(context,"Please fill all inputs ",Toast.LENGTH_SHORT).show()
+            }
+            else if(password.value.isEmpty()){
+                Toast.makeText(context,"Please fill all inputs ",Toast.LENGTH_SHORT).show()
+            }
+            else if(passwordConfirm.value.isEmpty()){
+                Toast.makeText(context,"Please fill all inputs ",Toast.LENGTH_SHORT).show()
+            }
+            else{
+                Toast.makeText(context,"Signed Up Successfully",Toast.LENGTH_SHORT).show()
+            }
+        }
         ) {
             Text(text = "Submit")
 
@@ -176,3 +187,10 @@ fun vectorResource(id: Int) {
 
 }
 
+
+//if (!password.equals(passwordConfirm){
+//    Toast.makeText(this, "Password Mismatches", Toast.LENGTH_SHORT).show()
+//}
+//else{
+//    Toast.makeText(this,"Password Matches",Toast.LENGTH_SHORT).show()
+//}

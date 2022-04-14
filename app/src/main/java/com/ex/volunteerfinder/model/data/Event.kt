@@ -11,22 +11,22 @@ data class Event(
     val id:Int = 0,
 
     @ColumnInfo(name = "name")
-    var name: String,
+    var name: String ?= null,
     @ColumnInfo(name = "sponsor")
-    var sponsor: String,
+    var sponsor: String ?= null,
 
     @ColumnInfo(name = "leadership")
-    var leadership: List<User>,
+    var leadership: List<User>?=null,
 
     @ColumnInfo(name = "members")
-    var members: List<User>,
+    var members: List<User>?=null,
 
     @ColumnInfo(name = "address")
-    var address: String,
-    var city: String,
-    var state: String,
-    var zipCode: Int,
+    var address: String?=null,
+    var city: String?=null,
+    var state: String?=null,
+    var zipCode: Int?=null,
 
     @ColumnInfo(name = "time")
-    var time: Long
+    var time: Long?=null
     )

@@ -22,9 +22,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ex.volunteerfinder.MainActivity
+import com.ex.volunteerfinder.model.LoginView
 import org.w3c.dom.Text
-
-// MAY want to edit more, 4/14/22 AM, @bottom of code (time permitted); not 100% set, w/this
 
 class ForgotPassword: ComponentActivity() {
 
@@ -106,7 +105,7 @@ fun CancelButton() {
         val context = LocalContext.current
         TextButton(
             onClick = {
-                context.startActivity(Intent(context, MainActivity::class.java))
+                context.startActivity(Intent(context, LoginView::class.java))
             },
 
             ) {
@@ -176,8 +175,7 @@ fun SubmitButton() {
                 status =
                     newPasswordInput(newPasswordInput, confirmPasswordInput); context.startActivity(
                 Intent(context, MainActivity::class.java)
-            )
-            }
+            ) }
         )
     }
 

@@ -194,12 +194,13 @@ fun newPasswordInput(new_password: String, confirm_password: String): String {
     return status
 }
 
+fun Button(shape: RoundedCornerShape, colors: ButtonColors, modifier: Modifier, onClick: () -> Unit) {
+
+}
+
 class SubmitButton {
 
 }
 
-fun Button(shape: RoundedCornerShape, colors: ButtonColors, modifier: Modifier, onClick: () -> Unit) {
-
-}
 
 

@@ -22,7 +22,7 @@ class CreateNewEvent : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting2("New Project")
+
                 }
             }
         }

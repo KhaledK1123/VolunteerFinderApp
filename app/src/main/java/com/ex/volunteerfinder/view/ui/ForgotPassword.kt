@@ -1,4 +1,4 @@
-package com.ex.volunteerfinder.ui
+package com.ex.volunteerfinder.view.ui
 
 import android.content.Intent
 import android.os.Bundle

@@ -198,7 +198,7 @@ fun Navigation(navController: NavHostController) {
 
 /* Will use/find equivalency for Java's 'TableLayout' and/or 'TableRow', for #'s 'One' - 'Four'
 (corresponding to # of times to "volunteered"/"posts"/"flair?"), when used as mid-bottom row.
- Use as its own function, OR as a val? */
+ Use as its own function, OR as a val? (refer to stack.overflow.com, open page) */
 
 fun TableRow() {
 

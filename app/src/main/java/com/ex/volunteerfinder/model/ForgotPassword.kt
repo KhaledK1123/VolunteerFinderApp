@@ -165,6 +165,7 @@ fun SubmitButton() {
 
         }
 
+        // 'MainActivity' -- main project file
         val backgroundColor = Color(0xFF1333F3)
         Button(shape = RoundedCornerShape(10.dp),
             colors = ButtonDefaults.buttonColors(backgroundColor = backgroundColor),

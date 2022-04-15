@@ -34,6 +34,7 @@ import com.ex.volunteerfinder.model.data.Event
 import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
 import com.ex.volunteerfinder.viewmodel.EventViewModel
 import com.ex.volunteerfinder.widgets.dateScheduler
+import com.ex.volunteerfinder.widgets.timeScheduler
 
 class CreateNewEvent : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -221,8 +222,11 @@ fun CreateNewEventScreen(eventViewModel: EventViewModel){
             
             dateScheduler()
             
-            Spacer(modifier = Modifier.size(20.dp))
+            Spacer(modifier = Modifier.size(16.dp))
             
+            timeScheduler()
+            
+            Spacer(modifier = Modifier.size(20.dp))
 
             Button(onClick = { eventViewModel.insertEvent(
                 Event(

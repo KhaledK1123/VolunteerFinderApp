@@ -95,6 +95,18 @@ fun SearchBar() {
 
 }
 
+
+
+@Composable
+fun TextField(){
+
+}
+
+@Composable
+fun Message() {
+
+}
+
 @Preview
 @Composable
 fun MessageSummaryPreview() {

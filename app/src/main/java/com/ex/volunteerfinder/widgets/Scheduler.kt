@@ -76,7 +76,7 @@ fun timeScheduler():String{
         Text(text = "Selected Time: ${time.value}")
         Spacer(modifier = Modifier.size(16.dp))
         Button(onClick = { timePickerDialog.show() }) {
-            Text(text = "Open Time Picker")
+            Text(text = "Select The Time")
         }
     }
     return time.value

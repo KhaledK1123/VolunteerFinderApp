@@ -1,6 +1,7 @@
 package com.ex.volunteerfinder.view.ui
 
 import android.os.Bundle
+import android.widget.TableRow
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
@@ -66,7 +67,11 @@ fun PreviewProfileImage() {
     com.ex.volunteerfinder.view.ui.composables.ProfileImage(thumbnail = true)
 }
 
-// POSSIBLE Link, to main UI: code @bottom, IF NEEDED
-
 /* Will use/find equivalency for Java's 'TableLayout' and/or 'TableRow', for #'s 'One' - 'Four'
 (corresponding to # of times to "volunteered"/"posts"/"flair?"), when used as mid-bottom row */
+
+fun TableRow() {
+
+}
+
+// POSSIBLE Link, to main UI: code @bottom, IF NEEDED

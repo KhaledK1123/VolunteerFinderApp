@@ -3,7 +3,10 @@ package com.ex.volunteerfinder.view
 import com.ex.volunteerfinder.R
 
 sealed class NavigationItem(var route: String, var icon: Int, var title: String) {
-    object Home : NavigationItem("home", R.drawable.ic_home, "Home")
-    object Events : NavigationItem("events", R.drawable.ic_social, "Events")
     object Profile : NavigationItem("profile", R.drawable.ic_profile, "Profile")
+    object Commons : NavigationItem("commons", R.drawable.ic_outside, "Commons")
+    object MyEvents : NavigationItem("myevents", R.drawable.ic_social, "My Events")
+    object Map : NavigationItem("map", R.drawable.ic_location, "Map")
+    object Messages : NavigationItem("messages", R.drawable.ic_message, "Messages")
+
 }

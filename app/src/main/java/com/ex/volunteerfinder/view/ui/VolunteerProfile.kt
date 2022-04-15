@@ -181,20 +181,15 @@ fun ProfileScreen() {
                 title = {Text("Profile")})
         }
     ) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(colorResource(id = R.color.gold_400))
-                .wrapContentSize(Alignment.Center)
-        ) {
-            Text(
-                text = "Profile View",
-                fontWeight = FontWeight.Bold,
-                color = Color.White,
-                modifier = Modifier.align(Alignment.CenterHorizontally),
-                textAlign = TextAlign.Center,
-                fontSize = 25.sp
-            )
+//        Column(
+//            modifier = Modifier
+//                .fillMaxSize()
+//                .wrapContentSize(Alignment.Center)
+//        ) {
+//            TableRow(text = "APP")
+//        }
+        Row() {
+            TableRow(text = "Hello")
         }
     }
 }

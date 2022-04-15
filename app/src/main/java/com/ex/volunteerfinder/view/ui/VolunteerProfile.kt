@@ -192,6 +192,8 @@ fun ProfileScreen() {
             TableRow(text = "Hello")
         }
     }
+
+    ProfileImage()
 }
 @Composable
 fun Navigation(navController: NavHostController) {

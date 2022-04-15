@@ -15,6 +15,9 @@ data class Event(
     @ColumnInfo(name = "sponsor")
     var sponsor: String? = null,
 
+    @ColumnInfo(name ="leadership")
+    var leadership:String? = null,
+
     @ColumnInfo(name = "address")
     var address: String? = null,
 

@@ -9,10 +9,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -201,18 +198,29 @@ fun Navigation(navController: NavHostController) {
     }
 }
 
-/* Will use 'TableRow', for #'s 'One' - 'Four', as "TableRow()", mid-level (corresponding to # of
-times to "volunteered"/"posts"/"flair?"); TableRow as its own function */
+/* Will use 'TableRow', for responses 'One' - 'Four', as "TableRow()", mid-page-level (corresponding
+to # of times to "volunteered"/"posts"/"flair?"); TableRow as its own function */
 
-fun TextField(text: String, sansSerif: GenericFontFamily, black: Color, i: Int) {
+@Composable
+fun responseBar () {
 
     fun TableRow() {
 
-        TextField(text = "One", SansSerif, Color.Green, 18);
-        TextField(text = "Two", SansSerif, Color.Green, 18);
-        TextField(text = "Three", SansSerif, Color.Green, 18);
-        TextField(text = "Four", SansSerif, Color.Green, 18)
+            TextField(text = "One", SansSerif, Color.Green, 18);
+            TextField(text = "Two", SansSerif, Color.Green, 18);
+            TextField(text = "Three", SansSerif, Color.Green, 18);
+            TextField(text = "Four", SansSerif, Color.Green, 18)
+        }
+
+        {
+
+
+        }
+
     }
 
+
+fun TextField(text: String, sansSerif: GenericFontFamily, black: Color, i: Int) {
 }
+
 

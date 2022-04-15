@@ -32,6 +32,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+        useIR = true
     }
     buildFeatures {
         compose true
@@ -89,4 +90,7 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
     // Optional -- UI testing with UI Automator
 //    androidTestImplementation "androidx.test.uiautomator:uiautomator:$uiAutomator7Version"
+
+    //adding navigation dependency
+    implementation "androidx.navigation:navigation-compose:2.5.0-alpha04"
 }

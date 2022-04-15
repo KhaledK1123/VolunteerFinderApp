@@ -25,6 +25,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ex.volunteerfinder.R
+import com.ex.volunteerfinder.view.ui.VolunteerProfile
 import com.ex.volunteerfinder.view.ui.theme.Shapes
 import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
 
@@ -180,7 +181,7 @@ fun LoginViewer() {
                 //This allows the login button to traverse to Home page
                 if (!isError) {
                     //viewModel.login(username, password)
-                    //context.startActivity(Intent(context, EventList::class.java))
+                    context.startActivity(Intent(context, VolunteerProfile::class.java))
                     Toast.makeText(context, "Login Successful!", Toast.LENGTH_SHORT).show()
                 }
                 else{

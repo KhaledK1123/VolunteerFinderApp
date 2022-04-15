@@ -202,5 +202,3 @@ fun Navigation(navController: NavHostController) {
 fun TableRow() {
 
 }
-
-// POSSIBLE Link, to main UI: code @bottom, IF NEEDED

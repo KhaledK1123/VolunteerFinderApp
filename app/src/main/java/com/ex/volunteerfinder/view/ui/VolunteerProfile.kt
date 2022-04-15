@@ -9,10 +9,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -23,6 +20,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily.Companion.SansSerif
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.font.GenericFontFamily
@@ -201,18 +199,47 @@ fun Navigation(navController: NavHostController) {
     }
 }
 
-/* Will use 'TableRow', for #'s 'One' - 'Four', as "TableRow()", mid-level (corresponding to # of
-times to "volunteered"/"posts"/"flair?"); TableRow as its own function */
+/* Will use 'TableRow', for responses 'One' - 'Four', as "TableRow()", mid-page-level (corresponding
+to # of times to "volunteered"/"posts"/"flair?"); TableRow as its own function */
 
-fun TextField(text: String, sansSerif: GenericFontFamily, black: Color, i: Int) {
-
-    fun TableRow() {
-
-        TextField(text = "One", SansSerif, Color.Green, 18);
-        TextField(text = "Two", SansSerif, Color.Green, 18);
-        TextField(text = "Three", SansSerif, Color.Green, 18);
-        TextField(text = "Four", SansSerif, Color.Green, 18)
-    }
-
+@Composable
+fun TableRow(text: String) {
+    Text(
+        text = "One",
+        style = TextStyle(
+            fontSize = 16.sp,
+            color = Color.DarkGray
+        ),
+        modifier = Modifier
+            .paddingFromBaseline(bottom = 100.dp)
+    );
+    Text(
+        text = "Two",
+        style = TextStyle(
+            fontSize = 16.sp,
+            color = Color.DarkGray
+        ),
+        modifier = Modifier
+            .paddingFromBaseline(bottom = 100.dp)
+    );
+    Text(
+        text = "Three",
+        style = TextStyle(
+            fontSize = 16.sp,
+            color = Color.DarkGray
+        ),
+        modifier = Modifier
+            .paddingFromBaseline(bottom = 100.dp)
+    );
+    Text(
+        text = "Four",
+        style = TextStyle(
+            fontSize = 16.sp,
+            color = Color.DarkGray
+        ),
+        modifier = Modifier
+            .paddingFromBaseline(bottom = 100.dp)
+    )
 }
+
 

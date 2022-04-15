@@ -45,9 +45,7 @@ class ForgotPassword: ComponentActivity() {
     }
 }
 
-class SubmitButton {
 
-}
 
 /* Attempted '@Preview', w/Composables, here: decided to forego (time constraints; questioning . . .
 . . . their necessity & usability, as a result) */
@@ -105,83 +103,87 @@ fun CancelButton() {
         val context = LocalContext.current
         TextButton(
             onClick = {
-                context.startActivity(Intent(context, LoginView::class.java))
+                context.startActivity(Intent(context, MainActivity::class.java))
             },
 
             ) {
             Text("Cancel", color = Color(0xFF1333F3))
         }
     }
-
-@Composable
-fun ConfirmPassword(text: String) {
-    Text(
-        text = text,
-        style = TextStyle(
-            fontSize = 16.sp,
-            color = Color.Blue
-        ),
-        modifier = Modifier
-            .paddingFromBaseline(top = 25.dp)
-            .padding(horizontal = 16.dp)
-            .fillMaxWidth()
-    )
 }
 
-@Composable
-fun SubmitButton() {
-
-    val context = LocalContext.current
-    Column(
-
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(20.dp)
-    )
-    {
-
-        var newPasswordInput by rememberSaveable { mutableStateOf("") }
-        var confirmPasswordInput by rememberSaveable { mutableStateOf("") }
-
-        NewPassword(text = "Password!")
-
-        TextField(modifier = Modifier
-            .padding(16.dp)
-            .fillMaxWidth(),
-            value = newPasswordInput,
-            onValueChange = { newPasswordInput = it })
-
-        ConfirmPassword(text = "Confirm Password")
-
-        TextField(modifier = Modifier
-            .padding(16.dp)
-            .fillMaxWidth(),
-            value = confirmPasswordInput,
-            onValueChange = { confirmPasswordInput = it })
-
-        var status by rememberSaveable {
-            mutableStateOf("")
-
-        }
-
-        // 'MainActivity' -- main project file
-        val backgroundColor = Color(0xFF1333F3)
-        Button(shape = RoundedCornerShape(10.dp),
-            colors = ButtonDefaults.buttonColors(backgroundColor = backgroundColor),
+    @Composable
+    fun ConfirmPassword(text: String) {
+        Text(
+            text = text,
+            style = TextStyle(
+                fontSize = 16.sp,
+                color = Color.Blue
+            ),
             modifier = Modifier
-                .padding(30.dp)
-                .width(150.dp),
-            onClick = {
-                status =
-                    newPasswordInput(newPasswordInput, confirmPasswordInput); context.startActivity(
-                Intent(context, MainActivity::class.java)
-            ) }
+                .paddingFromBaseline(top = 25.dp)
+                .padding(horizontal = 16.dp)
+                .fillMaxWidth()
         )
     }
 
+    @Composable
+    fun SubmitButton() {
+
+        val context = LocalContext.current
+        Column(
+
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(20.dp)
+        )
+        {
+
+            var newPasswordInput by rememberSaveable { mutableStateOf("") }
+            var confirmPasswordInput by rememberSaveable { mutableStateOf("") }
+
+            NewPassword(text = "Password!")
+
+            TextField(modifier = Modifier
+                .padding(16.dp)
+                .fillMaxWidth(),
+                value = newPasswordInput,
+                onValueChange = { newPasswordInput = it })
+
+            ConfirmPassword(text = "Confirm Password")
+
+            TextField(modifier = Modifier
+                .padding(16.dp)
+                .fillMaxWidth(),
+                value = confirmPasswordInput,
+                onValueChange = { confirmPasswordInput = it })
+
+            var status by rememberSaveable {
+                mutableStateOf("")
+
+            }
+
+            // 'MainActivity' -- main project file
+            val backgroundColor = Color(0xFF1333F3)
+            Button(shape = RoundedCornerShape(10.dp),
+                colors = ButtonDefaults.buttonColors(backgroundColor = backgroundColor),
+                modifier = Modifier
+                    .padding(30.dp)
+                    .width(150.dp),
+                onClick = {
+                    status =
+                        newPasswordInput(
+                            newPasswordInput,
+                            confirmPasswordInput
+                        ); context.startActivity(Intent(context, MainActivity::class.java))
+
+                }
+            )
+        }
+
     }
-}
+
 
 fun newPasswordInput(new_password: String, confirm_password: String): String {
 

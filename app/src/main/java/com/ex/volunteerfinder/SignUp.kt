@@ -1,7 +1,11 @@
 package com.ex.volunteerfinder
 
 import android.content.Context
+import android.content.Intent
+import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -15,15 +19,46 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
+import com.ex.volunteerfinder.view.LoginText
+import com.ex.volunteerfinder.view.LoginView
+import com.ex.volunteerfinder.view.LoginViewer
+import com.ex.volunteerfinder.view.ui.ForgotPassword
+import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
 
+class SignUp : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            VolunteerFinderAppTheme {
+                // A surface container using the 'background' color from the theme
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colors.background
+                ) {
+
+                    Column(
+                        modifier = Modifier.fillMaxSize(),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        SignUpScreen()
+                    }
+
+
+
+
+                }
+            }
+        }
+    }
+}
 
 @Composable
-
-fun SignUp(context:Context) {
+fun SignUpScreen() {
 
 
     var primaryColor= Color.Gray
@@ -151,9 +186,10 @@ fun SignUp(context:Context) {
         )
 
         Spacer(modifier = Modifier.height(25.dp))
-
+        val context = LocalContext.current
         Button(onClick =
         {
+
             if (username.value.isEmpty()){
                 Toast.makeText(context,"Please fill all inputs ",Toast.LENGTH_SHORT).show()
             }
@@ -167,6 +203,7 @@ fun SignUp(context:Context) {
                 Toast.makeText(context,"Please fill all inputs ",Toast.LENGTH_SHORT).show()
             }
             else{
+                context.startActivity(Intent(context, MainActivity::class.java))
                 Toast.makeText(context,"Signed Up Successfully",Toast.LENGTH_SHORT).show()
             }
         }

@@ -216,7 +216,7 @@ fun Navigation(navController: NavHostController) {
     }
 }
 
-/* Will use 'TableRow', for responses 'One' - 'Four' (see Wireframe), as "TableRow()", mid-page-
+/* Will use a TableRow, for responses 'One' - 'Four' (see Wireframe), as "TableRow()", mid-page-
 level (corresponding to # of times to "volunteered"/"posts"/"flair?") */
 
 @Composable
@@ -228,7 +228,7 @@ fun TableRow(text: String) {
             color = Color.DarkGray
         ),
         modifier = Modifier
-            .paddingFromBaseline(bottom = 100.dp)
+            .paddingFromBaseline(bottom = 40.dp)
     );
     Text(
         text = "Two",
@@ -237,7 +237,7 @@ fun TableRow(text: String) {
             color = Color.DarkGray
         ),
         modifier = Modifier
-            .paddingFromBaseline(bottom = 100.dp)
+            .paddingFromBaseline(bottom = 40.dp)
     );
     Text(
         text = "Three",
@@ -246,7 +246,7 @@ fun TableRow(text: String) {
             color = Color.DarkGray
         ),
         modifier = Modifier
-            .paddingFromBaseline(bottom = 100.dp)
+            .paddingFromBaseline(bottom = 40.dp)
     );
     Text(
         text = "Four",
@@ -255,7 +255,7 @@ fun TableRow(text: String) {
             color = Color.DarkGray
         ),
         modifier = Modifier
-            .paddingFromBaseline(bottom = 100.dp)
+            .paddingFromBaseline(bottom = 40.dp)
     )
 }
 

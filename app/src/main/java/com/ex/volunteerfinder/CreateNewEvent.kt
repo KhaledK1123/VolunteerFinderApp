@@ -29,18 +29,3 @@ class CreateNewEvent : ComponentActivity() {
     }
 }
 
-@Composable
-fun Greeting2(name: String) {
-    Text(text = "Hello $name!")
-    Text(text ="I am here. I am $name")
-    Text(text = "Hello $name!")
-    Text(text = "Hello again")
-}
-
-//@Preview(showBackground = true)
-//@Composable
-//fun DefaultPreview() {
-//    VolunteerFinderAppTheme {
-//        Greeting1("Android")
-//    }
-//}

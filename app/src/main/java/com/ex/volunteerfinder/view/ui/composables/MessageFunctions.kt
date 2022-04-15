@@ -17,14 +17,18 @@ import androidx.compose.ui.unit.sp
 import com.ex.volunteerfinder.model.data.Message
 import com.ex.volunteerfinder.model.data.MessageDummy
 import com.ex.volunteerfinder.model.data.UserDummy
+import com.ex.volunteerfinder.R
 
 @Composable
 fun ChatCollectionComposable(passedList: List<Message>) {
+
+    val pencilDrawable = R.drawable.ic_pencil_plus_outline_black_18dp
+
     Scaffold (
         topBar = { SearchBar()},
         bottomBar = { //TODO insert navigator here
             },
-        floatingActionButton = { NewCircleButton() }
+        floatingActionButton = { NewCircleButton(pencilDrawable, ) }
     ) {
         Inbox(list = passedList)
     }

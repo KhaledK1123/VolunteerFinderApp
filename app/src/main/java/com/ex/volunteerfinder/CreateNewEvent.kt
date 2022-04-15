@@ -33,6 +33,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.ex.volunteerfinder.model.data.Event
 import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
 import com.ex.volunteerfinder.viewmodel.EventViewModel
+import com.ex.volunteerfinder.widgets.dateScheduler
 
 class CreateNewEvent : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -131,11 +132,11 @@ fun CreateNewEventScreen(eventViewModel: EventViewModel){
             "California", "Colorado", "Connecticut",
             "Delaware", "Florida", "Georgia",
             "Hawaii", "Idaho",
-            "Illinois", "Indiana", "Iowa",
+            "Illinois", "Indiana","Iowa",
             "Kansas", "Kentucky", "Louisiana",
-            "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota",
+            "Maine", "Maryland","Massachusetts","Michigan","Minnesota",
             "Mississippi","Missouri", "Montana",
-            "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico",
+            "Nebraska", "Nevada","New Hampshire", "New Jersey", "New Mexico",
             "New York", "North Carolina", "North Dakota",
             "Ohio", "Oklahoma", "Oregon", "Pennsylvania",
             "Rhode Island", "South Carolina", "South Dakota",
@@ -216,7 +217,12 @@ fun CreateNewEventScreen(eventViewModel: EventViewModel){
 
             var stateSelected = stateDropDownMenu(list = stateList, defaultText = "Select or Enter State")
 
-            Spacer(modifier = Modifier.size(25.dp))
+            Spacer(modifier = Modifier.size(16.dp))
+            
+            dateScheduler()
+            
+            Spacer(modifier = Modifier.size(20.dp))
+            
 
             Button(onClick = { eventViewModel.insertEvent(
                 Event(

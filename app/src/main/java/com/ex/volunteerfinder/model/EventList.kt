@@ -140,34 +140,42 @@ fun CardMessage() {
         }
     }
 }
-
+@Preview
 @Composable
 fun MessageButton() {
 
     Column(
         modifier = Modifier
-            .fillMaxSize(), Arrangement.Bottom, Alignment.End
+            .fillMaxSize(), Arrangement.Bottom, Alignment.Start
     ) {
-        Row {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth(), Arrangement.Center
+        ) {
             val context = LocalContext.current
-            TextButton(
-                onClick = {
-                    //context.startActivity(Intent(context, ::class.java))
-                    Toast.makeText(context, "Message!", Toast.LENGTH_SHORT).show()
-                },
-
-                ) {
-                Text("Message!", modifier = Modifier.padding(horizontal = 110.dp),style = MaterialTheme.typography.h6,color = MaterialTheme.colors.primary)
-            }
-            //val context = LocalContext.current
-            TextButton(
+            TextButton( modifier = Modifier.padding(horizontal = 40.dp),
                 onClick = {
                     //context.startActivity(Intent(context, ::class.java))
                     Toast.makeText(context, "Join!", Toast.LENGTH_SHORT).show()
                 },
 
                 ) {
-                Text("Join!", style = MaterialTheme.typography.h6, color = MaterialTheme.colors.primary)
+                Text("Join!",
+                    style = MaterialTheme.typography.h6,
+                    color = MaterialTheme.colors.primary)
+            }
+            //val context = LocalContext.current
+            TextButton(
+                modifier = Modifier.padding(horizontal = 40.dp),
+                onClick = {
+                    //context.startActivity(Intent(context, ::class.java))
+                    Toast.makeText(context, "Message!", Toast.LENGTH_SHORT).show()
+                },
+
+                ) {
+                Text("Message!",
+                    style = MaterialTheme.typography.h6,
+                    color = MaterialTheme.colors.primary)
             }
         }
 

@@ -7,6 +7,7 @@ import android.widget.TableRow
 import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.expandHorizontally
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -91,9 +92,11 @@ fun PreviewProfileImage() {
 @Composable
 fun BottomNavigationBar(navController: NavController) {
     val items = listOf(
-        NavigationItem.Home,
-        NavigationItem.Events,
-        NavigationItem.Profile
+        NavigationItem.Profile,
+        NavigationItem.Commons,
+        NavigationItem.MyEvents,
+        NavigationItem.Map,
+        NavigationItem.Messages
     )
     BottomNavigation(
         backgroundColor = colorResource(id = R.color.gold_400),
@@ -102,7 +105,13 @@ fun BottomNavigationBar(navController: NavController) {
         items.forEach { item ->
             BottomNavigationItem(
                 icon = { Icon(painterResource(id = item.icon), contentDescription = item.title) },
-                label = { Text(text = item.title) },
+                label = {
+                    Text(
+                        modifier = Modifier
+                            .width(100.dp),
+                        text = item.title,
+                        fontSize = 11.sp
+                ) },
                 selectedContentColor = Color.White,
                 unselectedContentColor = Color.White.copy(0.4f),
                 alwaysShowLabel = true,
@@ -136,11 +145,7 @@ fun BottomNavigationBarPreview() {
 
 @Composable
 fun TopBar() {
-    TopAppBar(
-        title = { Text(text = stringResource(R.string.app_name), fontSize = 18.sp) },
-        backgroundColor = colorResource(id = R.color.gold_200),
-        contentColor = Color.White
-    )
+
 }
 
 @Preview(showBackground = true)
@@ -153,7 +158,7 @@ fun TopBarPreview() {
 fun MainScreen() {
     val navController = rememberNavController()
     Scaffold(
-        topBar = { TopBar() },
+        //topBar = { TopBar() },
         bottomBar = { BottomNavigationBar(navController) }
     ) {
         Navigation(navController)
@@ -168,32 +173,47 @@ fun MainScreenPreview() {
 //------------------------------------------------------------------------------------------------
 @Composable
 fun ProfileScreen() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(colorResource(id = R.color.gold_400))
-            .wrapContentSize(Alignment.Center)
+    Scaffold(
+        topBar = {
+
+            TopAppBar(
+                backgroundColor = MaterialTheme.colors.primary,
+                title = {Text("Profile")})
+        }
     ) {
-        Text(
-            text = "Profile View",
-            fontWeight = FontWeight.Bold,
-            color = Color.White,
-            modifier = Modifier.align(Alignment.CenterHorizontally),
-            textAlign = TextAlign.Center,
-            fontSize = 25.sp
-        )
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(colorResource(id = R.color.gold_400))
+                .wrapContentSize(Alignment.Center)
+        ) {
+            Text(
+                text = "Profile View",
+                fontWeight = FontWeight.Bold,
+                color = Color.White,
+                modifier = Modifier.align(Alignment.CenterHorizontally),
+                textAlign = TextAlign.Center,
+                fontSize = 25.sp
+            )
+        }
     }
 }
 @Composable
 fun Navigation(navController: NavHostController) {
-    NavHost(navController, startDestination = NavigationItem.Home.route) {
-        composable(NavigationItem.Home.route) {
+    NavHost(navController, startDestination = NavigationItem.Profile.route) {
+        composable(NavigationItem.Profile.route) {
             ProfileScreen()
         }
-        composable(NavigationItem.Events.route) {
+        composable(NavigationItem.Commons.route) {
             EventDetailedViewScreen()
         }
-        composable(NavigationItem.Profile.route) {
+        composable(NavigationItem.MyEvents.route) {
+            ProfileScreen()
+        }
+        composable(NavigationItem.Map.route) {
+            ProfileScreen()
+        }
+        composable(NavigationItem.Messages.route) {
             ProfileScreen()
         }
     }

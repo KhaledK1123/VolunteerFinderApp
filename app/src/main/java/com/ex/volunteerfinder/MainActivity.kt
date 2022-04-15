@@ -77,3 +77,33 @@ fun MainActivityScreen() {
         }
     }
 }
+
+@Composable
+fun MainActivityScreen() {
+    Scaffold(
+        topBar = {
+
+            TopAppBar(
+                backgroundColor = MaterialTheme.colors.primary,
+                title = {Text("Donations")})
+        }
+    ) {
+        Column(
+            verticalArrangement = Arrangement.Top,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Column(
+            ) {
+//                val context = LocalContext.current
+//                Button(onClick = { context.startActivity(Intent(context, VolunteerProfile::class.java))},
+//                    modifier = Modifier
+//                        .padding(top = 2.dp, start = 15.dp, end = 15.dp)
+//                        .fillMaxWidth()
+//                        .clip(Shapes.medium)) {
+//                    Text(text = "Create Post")
+//                }
+            }
+
+        }
+    }
+}

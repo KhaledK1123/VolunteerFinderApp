@@ -66,7 +66,7 @@ fun PreviewProfileImage() {
     com.ex.volunteerfinder.view.ui.composables.ProfileImage(thumbnail = true)
 }
 
-// Link, to main UI: code @bottom, eventually
+// POSSIBLE Link, to main UI: code @bottom, IF NEEDED
 
 /* Will use/find equivalency for Java's 'TableLayout' and/or 'TableRow', for #'s 'One' - 'Four'
 (corresponding to # of times to "volunteered"/"posts"/"flair?"), when used as mid-bottom row */

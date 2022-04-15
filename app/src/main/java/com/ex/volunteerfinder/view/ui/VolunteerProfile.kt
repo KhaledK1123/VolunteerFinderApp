@@ -1,7 +1,10 @@
 package com.ex.volunteerfinder.view.ui
 
 import android.os.Bundle
+import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TableRow
+import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
@@ -20,7 +23,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontFamily.Companion.SansSerif
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.font.GenericFontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -162,7 +167,7 @@ fun MainScreen() {
 fun MainScreenPreview() {
     MainScreen()
 }
-//-------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------
 @Composable
 fun ProfileScreen() {
     Column(
@@ -196,10 +201,18 @@ fun Navigation(navController: NavHostController) {
     }
 }
 
-/* Will use/find equivalency for Java's 'TableLayout' and/or 'TableRow', for #'s 'One' - 'Four'
-(corresponding to # of times to "volunteered"/"posts"/"flair?"), when used as mid-bottom row.
- Use as its own function, OR as a val? */
+/* Will use 'TableRow', for #'s 'One' - 'Four', as "TableRow()", mid-level (corresponding to # of
+times to "volunteered"/"posts"/"flair?"); TableRow as its own function */
 
-fun TableRow() {
+fun TextField(text: String, sansSerif: GenericFontFamily, black: Color, i: Int) {
+
+    fun TableRow() {
+
+        TextField(text = "One", SansSerif, Color.Green, 18);
+        TextField(text = "Two", SansSerif, Color.Green, 18);
+        TextField(text = "Three", SansSerif, Color.Green, 18);
+        TextField(text = "Four", SansSerif, Color.Green, 18)
+    }
 
 }
+

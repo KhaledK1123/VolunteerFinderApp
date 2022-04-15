@@ -78,6 +78,7 @@ fun MainActivityScreen() {
     }
 }
 
+/*
 @Composable
 fun MainActivityScreen() {
     Scaffold(
@@ -107,3 +108,4 @@ fun MainActivityScreen() {
         }
     }
 }
+*/

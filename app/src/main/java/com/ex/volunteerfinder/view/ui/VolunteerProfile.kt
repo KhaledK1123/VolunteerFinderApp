@@ -18,8 +18,11 @@ import androidx.compose.ui.unit.dp
 import com.ex.volunteerfinder.R
 import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
 
-/*  From Richard: put Composables in THIS file, going forward; when calling 'ProfileImage()', here,
-have "Boolean=true"  */
+/* From Richard: put Composables in THIS file, going forward; when calling 'ProfileImage()', here,
+have "Boolean=true" */
+
+/*  For Buttons indicating 'One', 'Two', 'Three', & 'Four' - look up code examples; also ask about
+squiggly lines, representing text, on the UI - actual text, to code in?  */
 
 class VolunteerProfile : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,6 +36,7 @@ class VolunteerProfile : ComponentActivity() {
                 ) {
 
                 }
+
             }
 
         }

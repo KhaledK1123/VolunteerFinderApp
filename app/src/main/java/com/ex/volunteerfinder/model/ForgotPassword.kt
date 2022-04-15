@@ -49,7 +49,7 @@ class SubmitButton {
 
 }
 
-/* Attempted '@Preview', w/Composables: decided to forego (time constraints; questioning . . .
+/* Attempted '@Preview', w/Composables, here: decided to forego (time constraints; questioning . . .
 . . . their necessity & usability, as a result) */
 @Composable
 fun SimpleText(displayText: String) {

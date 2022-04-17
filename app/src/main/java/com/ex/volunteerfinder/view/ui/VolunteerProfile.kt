@@ -35,8 +35,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.ex.volunteerfinder.R
+import com.ex.volunteerfinder.model.data.MessageDummy
 import com.ex.volunteerfinder.view.EventDetailedViewScreen
 import com.ex.volunteerfinder.view.NavigationItem
+import com.ex.volunteerfinder.view.ui.composables.ChatCollectionComposable
 import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
 
 /* From Richard: put 'Composables' in THIS file, going forward; when calling 'ProfileImage()', here,
@@ -211,7 +213,8 @@ fun Navigation(navController: NavHostController) {
             ProfileScreen()
         }
         composable(NavigationItem.Messages.route) {
-            ProfileScreen()
+            val previewList = listOf(MessageDummy.obj, MessageDummy.obj)
+            ChatCollectionComposable(previewList)
         }
     }
 }

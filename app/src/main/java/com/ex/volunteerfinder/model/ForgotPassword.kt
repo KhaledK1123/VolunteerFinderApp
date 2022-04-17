@@ -2,26 +2,37 @@ package com.ex.volunteerfinder.view.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ex.volunteerfinder.MainActivity
+import com.ex.volunteerfinder.R
+import com.ex.volunteerfinder.vectorResource
 import com.ex.volunteerfinder.view.LoginView
 import org.w3c.dom.Text
 
@@ -30,16 +41,18 @@ class ForgotPassword: ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Column(
+            Surface(
                 modifier = Modifier.fillMaxSize(),
-
-                horizontalAlignment = Alignment.CenterHorizontally,
+                color = MaterialTheme.colors.background
             ) {
+                Column(
+                    modifier = Modifier.fillMaxSize(),
 
-                SimpleText("Create New Password")
-
-                SubmitButton()
-
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center
+                ) {
+                    SubmitButton()
+                }
             }
         }
     }
@@ -96,8 +109,7 @@ fun NewPassword(text: String) {
 fun CancelButton() {
 
     Column(
-        modifier = Modifier
-            .fillMaxSize(), Arrangement.Bottom, Alignment.CenterHorizontally
+        modifier = Modifier, Arrangement.Bottom, Alignment.CenterHorizontally
     ) {
 
         val context = LocalContext.current
@@ -130,56 +142,139 @@ fun CancelButton() {
     @Composable
     fun SubmitButton() {
 
-        val context = LocalContext.current
+        var primaryColor= Color.Gray
+
         Column(
-
-            horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(20.dp)
-        )
-        {
+                .fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
 
-            var newPasswordInput by rememberSaveable { mutableStateOf("") }
-            var confirmPasswordInput by rememberSaveable { mutableStateOf("") }
+            Image(
+                modifier = Modifier
+                    .size(75.dp)
+                    .clip(CircleShape)
+                    .border(
+                        width = 1.dp,
+                        color = Color.Black,
+                        shape = CircleShape
+                    ),
 
-            NewPassword(text = "Password!")
+                painter = painterResource(id = R.drawable.volunteer),//password drawable
+                contentDescription = "Circular Image"
+            )
 
-            TextField(modifier = Modifier
-                .padding(16.dp)
-                .fillMaxWidth(),
-                value = newPasswordInput,
-                onValueChange = { newPasswordInput = it })
+            Spacer(modifier = Modifier.height(20.dp))
 
-            ConfirmPassword(text = "Confirm Password")
+            var username = remember { mutableStateOf("") }
+            var password = remember { mutableStateOf("") }
+            var passwordConfirm = remember { mutableStateOf("") }
 
-            TextField(modifier = Modifier
-                .padding(16.dp)
-                .fillMaxWidth(),
-                value = confirmPasswordInput,
-                onValueChange = { confirmPasswordInput = it })
+            val passwordVisibility = remember { mutableStateOf(false) }
+            val confirmPasswordVisibility = remember { mutableStateOf(false) }
 
-            var status by rememberSaveable {
-                mutableStateOf("")
+
+            OutlinedTextField(
+                value = username.value,
+                onValueChange = { username.value = it },
+                label = { Text(text = "Username") },
+                placeholder = { Text(text = "Username") },
+                singleLine = true,
+                leadingIcon = {
+                    IconButton(onClick = { /*TODO*/ }) {
+                        Icon(imageVector = Icons.Filled.Person, contentDescription = "Person")
+
+                    }
+                }
+            )
+
+            Spacer(modifier = Modifier.height(20.dp))
+
+            OutlinedTextField(
+                value = password.value,
+                onValueChange = { password.value = it },
+                label = { Text(text = "Password") },
+                placeholder = { Text(text = "Password") },
+                singleLine = true,
+                leadingIcon = {
+                    IconButton(onClick = { /*TODO*/ }) {
+                        Icon(imageVector = Icons.Filled.Lock, contentDescription = "Lock")
+
+                    }
+                },
+                trailingIcon = {
+                    IconButton(onClick = {
+                        passwordVisibility.value=!passwordVisibility.value
+                    }) {
+                        com.ex.volunteerfinder.Icon(
+                            imageVector = vectorResource(id = R.drawable.password),//password drawable
+                            tint = if (passwordVisibility.value) primaryColor else Color.Gray
+                        )
+                    }
+
+
+                },
+                visualTransformation = if (passwordVisibility.value) VisualTransformation.None
+                else PasswordVisualTransformation()
+            )
+
+            Spacer(modifier = Modifier.height(20.dp))
+
+            OutlinedTextField(
+                value = passwordConfirm.value,
+                onValueChange = { passwordConfirm.value = it },
+                label = { Text(text = "Confirm Password") },
+                placeholder = { Text(text = "Confirm Password") },
+                singleLine = true,
+                leadingIcon = {
+                    IconButton(onClick = { /*TODO*/ }) {
+                        Icon(imageVector = Icons.Filled.Lock, contentDescription = "Lock")
+
+                    }
+                },
+                trailingIcon = {
+                    IconButton(onClick = {
+                        confirmPasswordVisibility.value=!confirmPasswordVisibility.value
+                    }) {
+                        val primaryColor= Color.Gray
+                        com.ex.volunteerfinder.Icon(
+                            imageVector = vectorResource(id = R.drawable.password), //password drawable
+                            tint = if (confirmPasswordVisibility.value) primaryColor else Color.Gray
+                        )
+                    }
+
+
+                },
+                visualTransformation = if (confirmPasswordVisibility.value) VisualTransformation.None
+                else PasswordVisualTransformation()
+            )
+
+            Spacer(modifier = Modifier.height(25.dp))
+            val context = LocalContext.current
+            Button(onClick =
+            {
+
+                if (username.value.isEmpty()){
+                    Toast.makeText(context,"Please fill all inputs ",Toast.LENGTH_SHORT).show()
+                }
+                else if(password.value.isEmpty()){
+                    Toast.makeText(context,"Please fill all inputs ",Toast.LENGTH_SHORT).show()
+                }
+                else if(passwordConfirm.value.isEmpty()){
+                    Toast.makeText(context,"Please fill all inputs ",Toast.LENGTH_SHORT).show()
+                }
+                else{
+                    context.startActivity(Intent(context, MainActivity::class.java))
+                    Toast.makeText(context,"Password Updated!",Toast.LENGTH_SHORT).show()
+                }
+            }
+            ) {
+                Text(text = "Submit")
 
             }
 
-            // 'MainActivity' -- main project file
-            val backgroundColor = Color(0xFF1333F3)
-            Button(shape = RoundedCornerShape(10.dp),
-                colors = ButtonDefaults.buttonColors(backgroundColor = backgroundColor),
-                modifier = Modifier
-                    .padding(30.dp)
-                    .width(150.dp),
-                onClick = {
-                    status =
-                        newPasswordInput(
-                            newPasswordInput,
-                            confirmPasswordInput
-                        ); context.startActivity(Intent(context, MainActivity::class.java))
-
-                }
-            )
+            CancelButton()
         }
 
     }
@@ -204,7 +299,3 @@ fun newPasswordInput(new_password: String, confirm_password: String): String {
 fun Button(shape: RoundedCornerShape, colors: ButtonColors, modifier: Modifier, onClick: () -> Unit) {
 
 }
-
-
-
-

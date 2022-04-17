@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import com.ex.volunteerfinder.view.LoginText
 import com.ex.volunteerfinder.view.LoginView
 import com.ex.volunteerfinder.view.LoginViewer
+import com.ex.volunteerfinder.view.ui.CancelButton
 import com.ex.volunteerfinder.view.ui.ForgotPassword
 import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
 
@@ -43,14 +44,11 @@ class SignUp : ComponentActivity() {
 
                     Column(
                         modifier = Modifier.fillMaxSize(),
-                        horizontalAlignment = Alignment.CenterHorizontally
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center
                     ) {
                         SignUpScreen()
                     }
-
-
-
-
                 }
             }
         }
@@ -211,9 +209,10 @@ fun SignUpScreen() {
             Text(text = "Submit")
 
         }
-
+        CancelButton()
 
     }
+
 }
 
 fun Icon(imageVector: Any, tint: Color) {

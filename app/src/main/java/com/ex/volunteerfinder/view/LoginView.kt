@@ -174,7 +174,7 @@ fun LoginViewer() {
         val context = LocalContext.current
 
         Button(shape = Shapes.medium,
-            colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary),
+            //colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary),
             modifier = Modifier
                 .padding(15.dp)
                 .fillMaxWidth(),

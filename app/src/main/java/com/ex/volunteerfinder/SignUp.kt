@@ -78,7 +78,7 @@ fun SignUpScreen() {
                     shape = CircleShape
                 ),
 
-            painter = painterResource(id = R.drawable.volunteer),//password drawable
+            painter = painterResource(id = R.drawable.logoonly),//password drawable
             contentDescription = "Circular Image"
         )
 

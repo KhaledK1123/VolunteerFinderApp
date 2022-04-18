@@ -1,39 +1,34 @@
 package com.ex.volunteerfinder.view.ui
 
+import android.app.Application
 import android.os.Bundle
-import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.TableRow
-import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.animation.expandHorizontally
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontFamily.Companion.SansSerif
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.font.GenericFontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.ex.volunteerfinder.EventListScreen
 import com.ex.volunteerfinder.R
 import com.ex.volunteerfinder.model.data.Conversation
 import com.ex.volunteerfinder.model.data.Message
@@ -43,6 +38,7 @@ import com.ex.volunteerfinder.view.EventDetailedViewScreen
 import com.ex.volunteerfinder.view.NavigationItem
 import com.ex.volunteerfinder.view.ui.composables.ChatCollectionComposable
 import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
+import com.ex.volunteerfinder.viewmodel.EventViewModel
 
 /* From Richard: put 'Composables' in THIS file, going forward; when calling 'ProfileImage()', here,
 have "Boolean=true" */
@@ -76,6 +72,7 @@ fun ProfileImage (thumbnail: Boolean = true) {
     Image(painter = painterResource(R.drawable.blankpfp),
         contentDescription = "Profile Picture",
         modifier = Modifier
+            .absolutePadding(left = 6.dp, top=64.dp)
             .size(
                 if (thumbnail) {
                     40.dp
@@ -92,6 +89,7 @@ fun ProfileImage (thumbnail: Boolean = true) {
 @Composable
 fun PreviewProfileImage() {
     com.ex.volunteerfinder.view.ui.composables.ProfileImage(thumbnail = true)
+
 }
 
 @Composable
@@ -207,10 +205,16 @@ fun Navigation(navController: NavHostController) {
             ProfileScreen()
         }
         composable(NavigationItem.Commons.route) {
-            EventDetailedViewScreen()
+
+                        //val viewModel = ViewModelProvider()
+//            val appObj1 = Application()
+//            val eventViewModel = EventViewModel(appObj1)
+            //EventListScreen(eventViewModel = eventViewModel)
+            EventListScreen()
         }
         composable(NavigationItem.MyEvents.route) {
-            ProfileScreen()
+            EventDetailedViewScreen()
+
         }
         composable(NavigationItem.Map.route) {
             ProfileScreen()
@@ -225,8 +229,8 @@ fun Navigation(navController: NavHostController) {
     }
 }
 
-/* Will use a TableRow, for responses 'One' - 'Four' (see Wireframe), as "TableRow()", mid-page-
-level (corresponding to # of times to "volunteered"/"posts"/"flair?") */
+/* 'TableRow' didn't show, as online examples indicated: either scrap, for similar structure,
+. . . to past works, OR re-do */
 
 @Composable
 fun TableRow(text: String) {
@@ -237,7 +241,8 @@ fun TableRow(text: String) {
             color = Color.DarkGray
         ),
         modifier = Modifier
-            .paddingFromBaseline(bottom = 40.dp)
+            .absolutePadding(left = 4.dp)
+            .paddingFromBaseline(top = 68.dp)
     );
     Text(
         text = "Two",
@@ -246,7 +251,7 @@ fun TableRow(text: String) {
             color = Color.DarkGray
         ),
         modifier = Modifier
-            .paddingFromBaseline(bottom = 40.dp)
+            .paddingFromBaseline(top = 68.dp)
     );
     Text(
         text = "Three",
@@ -255,7 +260,7 @@ fun TableRow(text: String) {
             color = Color.DarkGray
         ),
         modifier = Modifier
-            .paddingFromBaseline(bottom = 40.dp)
+            .paddingFromBaseline(top = 68.dp)
     );
     Text(
         text = "Four",
@@ -264,7 +269,7 @@ fun TableRow(text: String) {
             color = Color.DarkGray
         ),
         modifier = Modifier
-            .paddingFromBaseline(bottom = 40.dp)
+            .paddingFromBaseline(top = 68.dp)
     )
 }
 

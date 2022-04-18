@@ -3,12 +3,13 @@ package com.ex.volunteerfinder.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ex.volunteerfinder.model.data.Event
 import com.ex.volunteerfinder.repository.EventRepository
 import kotlinx.coroutines.launch
 
-class EventViewModel(appObj:Application):AndroidViewModel(appObj) {
+class EventViewModel(appObj:Application): ViewModel() {
 
     private val eventRepository: EventRepository = EventRepository(appObj)
 

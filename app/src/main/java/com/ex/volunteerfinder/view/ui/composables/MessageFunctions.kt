@@ -18,7 +18,7 @@ import com.ex.volunteerfinder.R
 import com.ex.volunteerfinder.model.data.*
 
 @Composable
-fun ChatCollectionComposable(passedList: List<Conversation>) {
+fun ChatCollectionComposable(passedList: List<Message>) {
 
     val pencilDrawable = R.drawable.ic_pencil_plus_outline_black_18dp
 

@@ -72,9 +72,7 @@ fun ProfileImage (thumbnail: Boolean = true) {
     Image(painter = painterResource(R.drawable.blankpfp),
         contentDescription = "Profile Picture",
         modifier = Modifier
-            .absolutePadding(left = 4.dp)
-            .paddingFromBaseline(top = 64.dp)
-
+            .absolutePadding(left = 6.dp, top=64.dp)
             .size(
                 if (thumbnail) {
                     40.dp
@@ -231,13 +229,10 @@ fun Navigation(navController: NavHostController) {
     }
 }
 
-
-/* Will use a TableRow, for responses 'One' - 'Four' (see Wireframe), as "TableRow()", mid-page-
-level (corresponding to # of times to "volunteered"/"posts"/"flair?") */
+/* 'TableRow' didn't show, as online examples indicated: either scrap, for similar structure,
+. . . to past works, OR re-do */
 
 @Composable
-
-// Want MORE space, between top bar & where the numbers show
 fun TableRow(text: String) {
     Text(
         text = "One",
@@ -247,7 +242,7 @@ fun TableRow(text: String) {
         ),
         modifier = Modifier
             .absolutePadding(left = 4.dp)
-            .paddingFromBaseline(top = 72.dp)
+            .paddingFromBaseline(top = 68.dp)
     );
     Text(
         text = "Two",
@@ -256,7 +251,7 @@ fun TableRow(text: String) {
             color = Color.DarkGray
         ),
         modifier = Modifier
-            .paddingFromBaseline(top = 72.dp)
+            .paddingFromBaseline(top = 68.dp)
     );
     Text(
         text = "Three",
@@ -265,7 +260,7 @@ fun TableRow(text: String) {
             color = Color.DarkGray
         ),
         modifier = Modifier
-            .paddingFromBaseline(top = 72.dp)
+            .paddingFromBaseline(top = 68.dp)
     );
     Text(
         text = "Four",
@@ -274,7 +269,7 @@ fun TableRow(text: String) {
             color = Color.DarkGray
         ),
         modifier = Modifier
-            .paddingFromBaseline(top = 72.dp)
+            .paddingFromBaseline(top = 68.dp)
     )
 }
 

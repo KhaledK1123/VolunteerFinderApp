@@ -72,6 +72,8 @@ fun ProfileImage (thumbnail: Boolean = true) {
     Image(painter = painterResource(R.drawable.blankpfp),
         contentDescription = "Profile Picture",
         modifier = Modifier
+            .paddingFromBaseline(top = 64.dp)
+
             .size(
                 if (thumbnail) {
                     40.dp
@@ -88,6 +90,7 @@ fun ProfileImage (thumbnail: Boolean = true) {
 @Composable
 fun PreviewProfileImage() {
     com.ex.volunteerfinder.view.ui.composables.ProfileImage(thumbnail = true)
+
 }
 
 @Composable
@@ -232,6 +235,8 @@ fun Navigation(navController: NavHostController) {
 level (corresponding to # of times to "volunteered"/"posts"/"flair?") */
 
 @Composable
+
+// Want MORE space, between top bar & where the numbers show
 fun TableRow(text: String) {
     Text(
         text = "One",
@@ -240,7 +245,7 @@ fun TableRow(text: String) {
             color = Color.DarkGray
         ),
         modifier = Modifier
-            .paddingFromBaseline(bottom = 40.dp)
+            .paddingFromBaseline(top = 72.dp)
     );
     Text(
         text = "Two",
@@ -249,7 +254,7 @@ fun TableRow(text: String) {
             color = Color.DarkGray
         ),
         modifier = Modifier
-            .paddingFromBaseline(bottom = 40.dp)
+            .paddingFromBaseline(top = 72.dp)
     );
     Text(
         text = "Three",
@@ -258,7 +263,7 @@ fun TableRow(text: String) {
             color = Color.DarkGray
         ),
         modifier = Modifier
-            .paddingFromBaseline(bottom = 40.dp)
+            .paddingFromBaseline(top = 72.dp)
     );
     Text(
         text = "Four",
@@ -267,7 +272,7 @@ fun TableRow(text: String) {
             color = Color.DarkGray
         ),
         modifier = Modifier
-            .paddingFromBaseline(bottom = 40.dp)
+            .paddingFromBaseline(top = 72.dp)
     )
 }
 

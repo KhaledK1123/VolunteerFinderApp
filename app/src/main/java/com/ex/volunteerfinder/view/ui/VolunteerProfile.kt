@@ -72,6 +72,7 @@ fun ProfileImage (thumbnail: Boolean = true) {
     Image(painter = painterResource(R.drawable.blankpfp),
         contentDescription = "Profile Picture",
         modifier = Modifier
+            .absolutePadding(left = 4.dp)
             .paddingFromBaseline(top = 64.dp)
 
             .size(
@@ -245,6 +246,7 @@ fun TableRow(text: String) {
             color = Color.DarkGray
         ),
         modifier = Modifier
+            .absolutePadding(left = 4.dp)
             .paddingFromBaseline(top = 72.dp)
     );
     Text(

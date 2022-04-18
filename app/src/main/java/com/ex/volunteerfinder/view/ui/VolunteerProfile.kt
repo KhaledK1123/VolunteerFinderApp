@@ -72,7 +72,7 @@ fun ProfileImage (thumbnail: Boolean = true) {
     Image(painter = painterResource(R.drawable.blankpfp),
         contentDescription = "Profile Picture",
         modifier = Modifier
-            .absolutePadding(left = 6.dp, top=64.dp)
+            .absolutePadding(left = 7.dp, top=64.dp)
             .size(
                 if (thumbnail) {
                     40.dp
@@ -229,9 +229,8 @@ fun Navigation(navController: NavHostController) {
     }
 }
 
-/* 'TableRow' didn't show, as online examples indicated: either scrap, for similar structure,
+/* 'TableRow' didn't look like researched, online examples: either scrap, for similar structure,
 . . . to past works, OR re-do */
-
 @Composable
 fun TableRow(text: String) {
     Text(

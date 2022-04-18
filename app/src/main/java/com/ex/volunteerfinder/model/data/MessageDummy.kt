@@ -4,6 +4,6 @@ object MessageDummy {
     var obj = Message(
         body = "Hello, we're trying to reach you about your vehicle's extended warranty",
         sendTime = 1649939435935,
-        users = mutableListOf(UserDummy.obj,UserDummy.obj)
+        user = UserDummy.obj
     )
 }

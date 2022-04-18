@@ -25,6 +25,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ex.volunteerfinder.R
+import com.ex.volunteerfinder.SignUp
+import com.ex.volunteerfinder.view.ui.ForgotPassword
 import com.ex.volunteerfinder.view.ui.VolunteerProfile
 import com.ex.volunteerfinder.view.ui.theme.Shapes
 import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
@@ -76,7 +78,7 @@ fun ForgotPasswordButton() {
     val context = LocalContext.current
     TextButton(
         onClick = {
-//            context.startActivity(Intent(context, ForgotPasswordView::class.java))
+            context.startActivity(Intent(context, ForgotPassword::class.java))
 
         },
         modifier = Modifier.absolutePadding(left = 235.dp)
@@ -114,7 +116,7 @@ fun CreateAccountButton() {
                 val context = LocalContext.current
                 TextButton(
                     onClick = {
-//                        context.startActivity(Intent(context, CreateAccountView::class.java))
+                        context.startActivity(Intent(context, SignUp::class.java))
                     },
 
                     ) {
@@ -172,7 +174,7 @@ fun LoginViewer() {
         val context = LocalContext.current
 
         Button(shape = Shapes.medium,
-            colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary),
+            //colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary),
             modifier = Modifier
                 .padding(15.dp)
                 .fillMaxWidth(),

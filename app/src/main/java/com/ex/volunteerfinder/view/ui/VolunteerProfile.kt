@@ -35,11 +35,13 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.ex.volunteerfinder.R
+import com.ex.volunteerfinder.model.data.MessageDummy
 import com.ex.volunteerfinder.view.EventDetailedViewScreen
 import com.ex.volunteerfinder.view.NavigationItem
+import com.ex.volunteerfinder.view.ui.composables.ChatCollectionComposable
 import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
 
-/* From Richard: put Composables in THIS file, going forward; when calling 'ProfileImage()', here,
+/* From Richard: put 'Composables' in THIS file, going forward; when calling 'ProfileImage()', here,
 have "Boolean=true" */
 
 /*  For Buttons indicating 'One', 'Two', 'Three', & 'Four' - look up code examples; also ask about
@@ -127,9 +129,9 @@ fun BottomNavigationBar(navController: NavController) {
                             }
                         }
                         // Avoid multiple copies of the same destination when
-                        // reselecting the same item
+                        // re-selecting the same item
                         launchSingleTop = true
-                        // Restore state when reselecting a previously selected item
+                        // Restore state when re-selecting a previously selected item
                         restoreState = true
                     }
                 }
@@ -181,22 +183,19 @@ fun ProfileScreen() {
                 title = {Text("Profile")})
         }
     ) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(colorResource(id = R.color.gold_400))
-                .wrapContentSize(Alignment.Center)
-        ) {
-            Text(
-                text = "Profile View",
-                fontWeight = FontWeight.Bold,
-                color = Color.White,
-                modifier = Modifier.align(Alignment.CenterHorizontally),
-                textAlign = TextAlign.Center,
-                fontSize = 25.sp
-            )
+//        Column(
+//            modifier = Modifier
+//                .fillMaxSize()
+//                .wrapContentSize(Alignment.Center)
+//        ) {
+//            TableRow(text = "APP")
+//        }
+        Row() {
+            TableRow(text = "Hello")
         }
     }
+
+    ProfileImage()
 }
 @Composable
 fun Navigation(navController: NavHostController) {
@@ -214,13 +213,14 @@ fun Navigation(navController: NavHostController) {
             ProfileScreen()
         }
         composable(NavigationItem.Messages.route) {
-            ProfileScreen()
+            val previewList = listOf(MessageDummy.obj, MessageDummy.obj)
+            ChatCollectionComposable(previewList)
         }
     }
 }
 
-/* Will use 'TableRow', for responses 'One' - 'Four', as "TableRow()", mid-page-level (corresponding
-to # of times to "volunteered"/"posts"/"flair?"); TableRow as its own function */
+/* Will use a TableRow, for responses 'One' - 'Four' (see Wireframe), as "TableRow()", mid-page-
+level (corresponding to # of times to "volunteered"/"posts"/"flair?") */
 
 @Composable
 fun TableRow(text: String) {
@@ -231,7 +231,7 @@ fun TableRow(text: String) {
             color = Color.DarkGray
         ),
         modifier = Modifier
-            .paddingFromBaseline(bottom = 100.dp)
+            .paddingFromBaseline(bottom = 40.dp)
     );
     Text(
         text = "Two",
@@ -240,7 +240,7 @@ fun TableRow(text: String) {
             color = Color.DarkGray
         ),
         modifier = Modifier
-            .paddingFromBaseline(bottom = 100.dp)
+            .paddingFromBaseline(bottom = 40.dp)
     );
     Text(
         text = "Three",
@@ -249,7 +249,7 @@ fun TableRow(text: String) {
             color = Color.DarkGray
         ),
         modifier = Modifier
-            .paddingFromBaseline(bottom = 100.dp)
+            .paddingFromBaseline(bottom = 40.dp)
     );
     Text(
         text = "Four",
@@ -258,7 +258,7 @@ fun TableRow(text: String) {
             color = Color.DarkGray
         ),
         modifier = Modifier
-            .paddingFromBaseline(bottom = 100.dp)
+            .paddingFromBaseline(bottom = 40.dp)
     )
 }
 

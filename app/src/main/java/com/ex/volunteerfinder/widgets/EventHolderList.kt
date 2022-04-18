@@ -1,5 +1,6 @@
 package com.ex.volunteerfinder.widgets
 
+import android.app.Application
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -15,12 +16,16 @@ import androidx.compose.ui.graphics.Color
 import com.ex.volunteerfinder.viewmodel.EventViewModel
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.LiveData
+import com.ex.volunteerfinder.model.data.Event
 
 
 @Composable
-fun EventList(eventViewModel: EventViewModel){
+fun EventList() {
 
-    val eventList = eventViewModel.fetchAllEvents().observeAsState(arrayListOf())
+//    val eventViewModel = EventViewModel(Application())
+//    val eventList = eventViewModel.fetchAllEvents().observeAsState(arrayListOf())
+    val eventList = arrayListOf<Event>()
 
     Scaffold (modifier = Modifier.fillMaxSize(),
         floatingActionButton = {
@@ -37,7 +42,7 @@ fun EventList(eventViewModel: EventViewModel){
         content = {
             LazyColumn(content = {
                 items(
-                    items = eventList.value,
+                    items = eventList,
                     itemContent = {event->
                         Row (
                             modifier = Modifier
@@ -70,7 +75,7 @@ fun EventList(eventViewModel: EventViewModel){
                                     modifier = Modifier
                                         .size(30.dp)
                                         .clickable(onClick = {
-                                            eventViewModel.deleteEventById(event.id)
+                                            //eventViewModel.deleteEventById(event.id)
                                         })
                                 )
                             }

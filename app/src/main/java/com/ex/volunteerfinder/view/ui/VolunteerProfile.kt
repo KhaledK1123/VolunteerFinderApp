@@ -1,5 +1,6 @@
 package com.ex.volunteerfinder.view.ui
 
+import android.app.Application
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -19,11 +20,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.ex.volunteerfinder.EventListScreen
 import com.ex.volunteerfinder.R
 import com.ex.volunteerfinder.model.data.Conversation
 import com.ex.volunteerfinder.model.data.Message
@@ -33,6 +38,7 @@ import com.ex.volunteerfinder.view.EventDetailedViewScreen
 import com.ex.volunteerfinder.view.NavigationItem
 import com.ex.volunteerfinder.view.ui.composables.ChatCollectionComposable
 import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
+import com.ex.volunteerfinder.viewmodel.EventViewModel
 
 /* From Richard: put 'Composables' in THIS file, going forward; when calling 'ProfileImage()', here,
 have "Boolean=true" */
@@ -197,10 +203,16 @@ fun Navigation(navController: NavHostController) {
             ProfileScreen()
         }
         composable(NavigationItem.Commons.route) {
-            EventDetailedViewScreen()
+
+                        //val viewModel = ViewModelProvider()
+//            val appObj1 = Application()
+//            val eventViewModel = EventViewModel(appObj1)
+            //EventListScreen(eventViewModel = eventViewModel)
+            EventListScreen()
         }
         composable(NavigationItem.MyEvents.route) {
-            ProfileScreen()
+            EventDetailedViewScreen()
+
         }
         composable(NavigationItem.Map.route) {
             ProfileScreen()
@@ -214,6 +226,7 @@ fun Navigation(navController: NavHostController) {
         }
     }
 }
+
 
 /* Will use a TableRow, for responses 'One' - 'Four' (see Wireframe), as "TableRow()", mid-page-
 level (corresponding to # of times to "volunteered"/"posts"/"flair?") */

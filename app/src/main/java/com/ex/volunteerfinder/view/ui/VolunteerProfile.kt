@@ -25,7 +25,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.ex.volunteerfinder.R
+import com.ex.volunteerfinder.model.data.Conversation
+import com.ex.volunteerfinder.model.data.Message
 import com.ex.volunteerfinder.model.data.MessageDummy
+import com.ex.volunteerfinder.model.data.UserDummy
 import com.ex.volunteerfinder.view.EventDetailedViewScreen
 import com.ex.volunteerfinder.view.NavigationItem
 import com.ex.volunteerfinder.view.ui.composables.ChatCollectionComposable
@@ -203,8 +206,11 @@ fun Navigation(navController: NavHostController) {
             ProfileScreen()
         }
         composable(NavigationItem.Messages.route) {
-            val previewList = listOf(MessageDummy.obj, MessageDummy.obj)
-            ChatCollectionComposable(previewList)
+//            val previewList = listOf(MessageDummy.obj, MessageDummy.obj)
+            val conversation = Conversation(users = listOf(UserDummy.obj, UserDummy.obj),
+                messages = listOf(MessageDummy.obj,MessageDummy.obj)
+                )
+            ChatCollectionComposable(listOf(conversation))
         }
     }
 }

@@ -36,7 +36,7 @@ import com.ex.volunteerfinder.model.data.EventImg
 import com.ex.volunteerfinder.view.ui.theme.Shapes
 import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
 import com.ex.volunteerfinder.view.ui.theme.background
-import com.ex.volunteerfinder.viewmodel.EventDetails
+import com.ex.volunteerfinder.viewmodel.MyEventDetails
 
 
 class EventList : ComponentActivity() {

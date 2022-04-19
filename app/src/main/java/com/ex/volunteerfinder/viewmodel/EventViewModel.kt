@@ -5,7 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ex.volunteerfinder.model.data.Event
+import com.ex.volunteerfinder.model.data.MyEvent
 import com.ex.volunteerfinder.repository.EventRepository
 import kotlinx.coroutines.launch
 
@@ -13,12 +13,12 @@ class EventViewModel(appObj:Application): ViewModel() {
 
     private val eventRepository: EventRepository = EventRepository(appObj)
 
-    fun fetchAllEvents():LiveData<List<Event>>
+    fun fetchAllEvents():LiveData<List<MyEvent>>
     {
         return eventRepository.readAllEvents
     }
 
-    fun insertEvent(event: Event){
+    fun insertEvent(event: MyEvent){
 
         viewModelScope.launch {
             eventRepository.insertEvent(event)

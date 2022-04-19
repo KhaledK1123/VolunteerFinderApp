@@ -30,7 +30,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.toSize
 import androidx.lifecycle.ViewModelProvider
-import com.ex.volunteerfinder.model.data.Event
+import com.ex.volunteerfinder.model.data.MyEvent
 import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
 import com.ex.volunteerfinder.viewmodel.EventViewModel
 import com.ex.volunteerfinder.widgets.dateScheduler
@@ -229,7 +229,7 @@ fun CreateNewEventScreen(eventViewModel: EventViewModel){
             Spacer(modifier = Modifier.size(20.dp))
 
             Button(onClick = { eventViewModel.insertEvent(
-                Event(
+                MyEvent(
                     name = eventName.value,
                     sponsor = eventSponsor.value,
                     leadership = leader.value,

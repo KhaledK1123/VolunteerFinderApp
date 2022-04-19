@@ -13,9 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VolunteerFinderApp">
 
-<!--        <meta-data-->
-<!--            android:name="com.google.android.geo.API_KEY"-->
-<!--            android:value="${MAPS_API_KEYS}"/>-->
 
         <activity
             android:name=".view.ui.ChatCollection"
@@ -53,6 +50,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAMpdgK0W4QfhkvH8U5AhHcqwe1RJgkztg"/>
+
+
     </application>
 
 </manifest>

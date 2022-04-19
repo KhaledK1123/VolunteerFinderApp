@@ -280,7 +280,7 @@ fun TableRow(text: String) {
         text = "One",
         style = TextStyle(
             fontSize = 16.sp,
-            color = Color.DarkGray
+            color = Color.Black
         ),
         modifier = Modifier
             .absolutePadding(left = 8.dp)
@@ -290,7 +290,7 @@ fun TableRow(text: String) {
         text = "Two",
         style = TextStyle(
             fontSize = 16.sp,
-            color = Color.DarkGray
+            color = Color.Black
         ),
         modifier = Modifier
             .paddingFromBaseline(top = 72.dp)
@@ -299,7 +299,7 @@ fun TableRow(text: String) {
         text = "Three",
         style = TextStyle(
             fontSize = 16.sp,
-            color = Color.DarkGray
+            color = Color.Black
         ),
         modifier = Modifier
             .paddingFromBaseline(top = 72.dp)
@@ -308,7 +308,7 @@ fun TableRow(text: String) {
         text = "Four",
         style = TextStyle(
             fontSize = 16.sp,
-            color = Color.DarkGray
+            color = Color.Black
         ),
         modifier = Modifier
             .paddingFromBaseline(top = 72.dp)

@@ -13,9 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VolunteerFinderApp">
 
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="${MAPS_API_KEYS}"/>
+<!--        <meta-data-->
+<!--            android:name="com.google.android.geo.API_KEY"-->
+<!--            android:value="${MAPS_API_KEYS}"/>-->
 
         <activity
             android:name=".view.ui.ChatCollection"

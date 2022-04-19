@@ -20,7 +20,7 @@ class EventList : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val eventViewModel = ViewModelProvider(this).get(EventViewModel::class.java)
+        //val eventViewModel = ViewModelProvider(this).get(EventViewModel::class.java)
         setContent {
             VolunteerFinderAppTheme {
                 // A surface container using the 'background' color from the theme
@@ -28,7 +28,7 @@ class EventList : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    EventListScreen(eventViewModel)
+                    EventListScreen()
                 }
             }
         }
@@ -38,7 +38,7 @@ class EventList : ComponentActivity() {
 
 
 @Composable
-fun EventListScreen(eventViewModel: EventViewModel){
+fun EventListScreen(){
 
     Column {
         TopAppBar(title = { Text(text = "Event List")})
@@ -49,7 +49,11 @@ fun EventListScreen(eventViewModel: EventViewModel){
 
             Spacer(modifier = Modifier.size(16.dp))
 
-            EventList(eventViewModel)
+            Column(
+                modifier = Modifier.padding(bottom = 50.dp)
+            ){
+                EventList()
+            }
         }
     }
 }

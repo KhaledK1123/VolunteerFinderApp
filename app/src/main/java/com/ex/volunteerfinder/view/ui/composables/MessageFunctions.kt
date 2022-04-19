@@ -14,13 +14,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.ex.volunteerfinder.model.data.Message
-import com.ex.volunteerfinder.model.data.MessageDummy
-import com.ex.volunteerfinder.model.data.UserDummy
 import com.ex.volunteerfinder.R
+import com.ex.volunteerfinder.model.data.*
 
 @Composable
-fun ChatCollectionComposable(passedList: List<Message>) {
+fun ChatCollectionComposable(passedList: List<Conversation>) {
 
     val pencilDrawable = R.drawable.ic_pencil_plus_outline_black_18dp
 
@@ -28,7 +26,7 @@ fun ChatCollectionComposable(passedList: List<Message>) {
         topBar = { SearchBar()},
         bottomBar = { //TODO insert navigator here
             },
-        floatingActionButton = { NewCircleButton(pencilDrawable, ) }
+        floatingActionButton = { NewCircleButton(pencilDrawable,, ) }
     ) {
         Inbox(list = passedList)
     }
@@ -36,9 +34,11 @@ fun ChatCollectionComposable(passedList: List<Message>) {
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun MessageSummary (message: Message) {
+fun MessageSummary (conversation: Conversation) {
 
-    val contact = message.users[1]
+    val mostRecent = conversation.messages.size -1
+    val message = conversation.messages[mostRecent]
+    val contact = message.user
     val receiveDate = message.sendTime
     //TODO I'd rather only present a substring UP TO 30 char, but can't hard code 30 (NPE)
     //Is it possible to count the available length given the layout?
@@ -72,7 +72,7 @@ fun MessageSummary (message: Message) {
 }
 
 @Composable
-fun Inbox (/*Message List, perhaps from data class*/ list: List<Message>) {
+fun Inbox (/*Message List, perhaps from data class*/ list: List<Conversation>) {
 //TODO there should be a different printout if there are no messages.
     //TODO CHECK HERE FOR NPE!
     /*currently repeats the first card; necessary but unfortunate,
@@ -100,18 +100,18 @@ fun SearchBar() {
 }
 
 
-
-
-
 @Composable
-fun Message() {
+fun Message(user: User, message: Message) {
+    val recipient = user.userName
+    val sender = message.user
+//    val recipientBoolean = (recipient == message.user)
 
 }
 
 @Preview
 @Composable
 fun MessageSummaryPreview() {
-    MessageSummary(MessageDummy.obj)
+//    MessageSummary()
 }
 
 @Preview
@@ -120,8 +120,8 @@ fun InboxPreview() {
     val obj = Message(
         body = "John Madden John Madden John Madden",
         sendTime = 1649939435935,
-        users = mutableListOf(UserDummy.obj,UserDummy.obj)
+        user = UserDummy.obj
     )
     val previewList = listOf(MessageDummy.obj,obj,MessageDummy.obj)
-    Inbox(list = previewList)
+//    Inbox(list = previewList)
 }

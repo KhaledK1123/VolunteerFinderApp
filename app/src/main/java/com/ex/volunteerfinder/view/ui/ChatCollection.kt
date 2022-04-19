@@ -27,7 +27,7 @@ class ChatCollection : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    ChatCollectionComposable(passedList = previewList)
+//                    ChatCollectionComposable(passedList = previewList)
                 }
             }
         }

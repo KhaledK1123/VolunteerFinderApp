@@ -26,7 +26,7 @@ fun ChatCollectionComposable(passedList: List<Conversation>) {
         topBar = { SearchBar()},
         bottomBar = { //TODO insert navigator here
             },
-        floatingActionButton = { NewCircleButton(pencilDrawable, ) }
+        floatingActionButton = { NewCircleButton(pencilDrawable) }
     ) {
         Inbox(list = passedList)
     }

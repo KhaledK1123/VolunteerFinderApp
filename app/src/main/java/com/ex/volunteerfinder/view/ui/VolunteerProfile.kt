@@ -194,7 +194,7 @@ fun ProfileScreen() {
 //            TableRow(text = "APP")
 //        }
         Row() {
-            TableRow(text = "Hello")
+            Text(text = "Hello")
         }
     }
 
@@ -274,8 +274,10 @@ fun Navigation(navController: NavHostController) {
     }
 }
 
-/* 'TableRow', here: ineffective, compared to online examples: either scrap, for something similar,
+/* 'TableRow', @ #282: ineffective, compared to online examples: either scrap, for something similar,
 to past work (stressed by Mayur); OR, re-do */
+
+/*  Lines 281-320, until come up w/new arrangement for bar, for # of volunteered events
 @Composable
 fun TableRow(text: String) {
     Text(
@@ -315,7 +317,7 @@ fun TableRow(text: String) {
         modifier = Modifier
             .paddingFromBaseline(top = 72.dp)
     )
-}
+} */
 
 fun Row(verticalAlignment: Alignment.Vertical, modifier: Modifier) {
 

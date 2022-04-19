@@ -204,6 +204,8 @@ fun SignUpScreen() {
                 context.startActivity(Intent(context, MainActivity::class.java))
                 Toast.makeText(context,"Signed Up Successfully",Toast.LENGTH_SHORT).show()
             }
+
+
         }
         ) {
             Text(text = "Submit")

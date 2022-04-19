@@ -3,6 +3,7 @@ package com.ex.volunteerfinder.view.ui
 import android.app.Application
 import android.content.Intent
 import android.os.Bundle
+import android.widget.TableRow
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
@@ -43,6 +44,7 @@ import com.ex.volunteerfinder.view.NavigationItem
 import com.ex.volunteerfinder.view.ui.composables.ChatCollectionComposable
 import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
 import com.ex.volunteerfinder.viewmodel.EventViewModel
+import org.intellij.lang.annotations.JdkConstants
 
 /* From Richard: put 'Composables' in THIS file, going forward; when calling 'ProfileImage()', here,
 have "Boolean=true" */

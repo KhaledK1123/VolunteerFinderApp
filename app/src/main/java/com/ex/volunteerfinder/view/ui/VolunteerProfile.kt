@@ -198,7 +198,7 @@ fun ProfileScreen() {
 
     ProfileImage()
 
-    // Copied & adapted, from previous work: from line 202 - line 238
+    // Copied & adapted, from previous work: from line 202 - line 237
     Column(Modifier.fillMaxWidth()) {
         Row(
             verticalAlignment = Alignment.CenterVertically,

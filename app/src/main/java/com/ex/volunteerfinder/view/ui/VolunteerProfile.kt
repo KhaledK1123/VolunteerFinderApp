@@ -165,6 +165,7 @@ fun TopBarPreview() {
     TopBar()
 }
 
+@Preview
 @Composable
 fun MainScreen() {
     val navController = rememberNavController()
@@ -182,6 +183,7 @@ fun MainScreenPreview() {
     MainScreen()
 }
 //------------------------------------------------------------------------------------------------
+@Preview
 @Composable
 fun ProfileScreen() {
     Scaffold(
@@ -203,7 +205,7 @@ fun ProfileScreen() {
 
     ProfileImage()
 
-    // Copied & adapted, from previous work: from below, to line 239
+    // Copied & adapted, from previous work: from below, to line 244
     Column(Modifier.fillMaxWidth()) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -246,6 +248,7 @@ fun TextButton(onClick: () -> Unit) {
 
 }
 
+@Preview
 @Composable
 fun SubmitButton2() {
 
@@ -328,7 +331,7 @@ fun Navigation(navController: NavHostController) {
     }
 }
 
-/*  Starting below, to line 371, until come up w/new arrangement for bar, for # of volunteered events
+/*  Starting below, to line 374, until come up w/new arrangement for bar, for # of volunteered events
 @Composable
 fun TableRow(text: String) {
     Text(

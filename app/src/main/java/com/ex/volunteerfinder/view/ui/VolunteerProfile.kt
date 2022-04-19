@@ -331,7 +331,7 @@ fun Navigation(navController: NavHostController) {
     }
 }
 
-/*  Starting below, to line 374, until come up w/new layout for a bar (RE: # of volunteered events)
+/*  Starting below, to #374: use, once decide on new layout for a bar (RE: # of volunteered events)
 @Composable
 fun TableRow(text: String) {
     Text(

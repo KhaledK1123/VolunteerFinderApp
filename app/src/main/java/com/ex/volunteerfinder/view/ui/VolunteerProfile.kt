@@ -198,7 +198,7 @@ fun ProfileScreen() {
 
     ProfileImage()
 
-    // Copied & adapted, from previous work: from line 202 - line 244
+    // Copied & adapted, from previous work: from line 202 - line 238
     Column(Modifier.fillMaxWidth()) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -232,16 +232,13 @@ fun ProfileScreen() {
             TextButton(
                 onClick = {
                     context.startActivity(Intent(context, SignUp::class.java))
-                },
-            ) {
-                Text(
-                    "Edit Profile",
-                    style = MaterialTheme.typography.button,
-                    color = Color.Black
-                )
-            }
+                })
         }
     }
+}
+
+fun TextButton(onClick: () -> Unit) {
+
 }
 
 @Composable

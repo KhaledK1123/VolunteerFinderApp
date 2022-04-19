@@ -199,9 +199,6 @@ fun ProfileScreen() {
 //        ) {
 //            TableRow(text = "APP")
 //        }
-        Row() {
-            Text(text = "Hello")
-        }
     }
 
     ProfileImage()
@@ -331,10 +328,7 @@ fun Navigation(navController: NavHostController) {
     }
 }
 
-/* 'TableRow', line 345: ineffective, compared to online examples: either scrap, for something
-similar, to past work (stressed by Mayur); OR, re-do */
-
-/*  Starting below, to line 383, until come up w/new arrangement for bar, for # of volunteered events
+/*  Starting below, to line 371, until come up w/new arrangement for bar, for # of volunteered events
 @Composable
 fun TableRow(text: String) {
     Text(

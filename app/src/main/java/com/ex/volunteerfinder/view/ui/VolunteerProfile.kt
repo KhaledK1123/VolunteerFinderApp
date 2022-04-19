@@ -38,6 +38,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.ex.volunteerfinder.EventListScreen
+import com.ex.volunteerfinder.MainActivity
 import com.ex.volunteerfinder.R
 import com.ex.volunteerfinder.SignUp
 import com.ex.volunteerfinder.model.data.Conversation
@@ -260,21 +261,12 @@ fun SubmitButton2() {
             .padding(1.dp)
     )
     {
-        var donateItemInput by rememberSaveable { mutableStateOf("") }
-        var confirmDonationCompleteInput by rememberSaveable { mutableStateOf("") }
+        var volunteeredNumberOfTimes by rememberSaveable { mutableStateOf("") }
 
         TextField(
-            value = donateItemInput,
-            onValueChange = { donateItemInput = it },
-            label = { Text("Donating an Item") },
-            modifier = Modifier
-                .padding(top = 35.dp, bottom = 25.dp, start = 15.dp, end = 15.dp)
-                .fillMaxWidth()
-        )
-        TextField(
-            value = confirmDonationCompleteInput,
-            onValueChange = { confirmDonationCompleteInput = it },
-            label = { Text("Please Confirm That Your Donation is Complete") },
+            value = volunteeredNumberOfTimes,
+            onValueChange = { volunteeredNumberOfTimes = it },
+            label = { Text("Number of Volunteered Events") },
             modifier = Modifier
                 .padding(top = 35.dp, bottom = 25.dp, start = 15.dp, end = 15.dp)
                 .fillMaxWidth()
@@ -286,14 +278,14 @@ fun SubmitButton2() {
         }
 
         val backgroundColor = Color(0xFF673AB7)
-        Button(shape = RoundedCornerShape(10.dp),
+        Button2(shape = RoundedCornerShape(10.dp),
             colors = ButtonDefaults.buttonColors(backgroundColor = backgroundColor),
             modifier = Modifier
                 .padding(15.dp)
                 .fillMaxWidth(),
             onClick = {
                 status =
-                    DonateItemInput(donateItemInput, confirmDonationCompleteInput);
+                    VolunteeredNumberOfTimes(volunteeredNumberOfTimes);
                 context.startActivity(Intent(context, MainActivity::class.java)
                 )
             }
@@ -301,7 +293,9 @@ fun SubmitButton2() {
     }
 }
 
-fun Button(shape: RoundedCornerShape, colors: ButtonColors, modifier: Modifier,
+fun VolunteeredNumberOfTimes(volunteeredNumberOfTimes: String): String = Unit.toString()
+
+fun Button2(shape: RoundedCornerShape, colors: ButtonColors, modifier: Modifier,
            onClick: () -> Unit) {
 
 }

@@ -72,7 +72,7 @@ fun ProfileImage (thumbnail: Boolean = true) {
     Image(painter = painterResource(R.drawable.blankpfp),
         contentDescription = "Profile Picture",
         modifier = Modifier
-            .absolutePadding(left = 7.dp, top=64.dp)
+            .absolutePadding(left = 8.dp, top=64.dp)
             .size(
                 if (thumbnail) {
                     40.dp

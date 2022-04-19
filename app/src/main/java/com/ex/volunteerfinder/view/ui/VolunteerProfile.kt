@@ -52,7 +52,7 @@ import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
 import com.ex.volunteerfinder.viewmodel.EventViewModel
 import org.intellij.lang.annotations.JdkConstants
 
-/* From Richard: put 'Composables' in THIS file, going forward; when calling 'ProfileImage()', here,
+/* From Richard: 'Composables' go in THIS file, going forward; when calling 'ProfileImage()', here,
 have "Boolean=true" */
 class VolunteerProfile : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -274,7 +274,7 @@ fun SubmitButton2() {
 
         }
 
-        val backgroundColor = Color(0xFF673AB7)
+        val backgroundColor = Color.Black
         Button2(shape = RoundedCornerShape(10.dp),
             colors = ButtonDefaults.buttonColors(backgroundColor = backgroundColor),
             modifier = Modifier

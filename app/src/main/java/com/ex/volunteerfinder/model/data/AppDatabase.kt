@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.ex.volunteerfinder.dao.EventDao
 
 
-@Database(entities = [Event::class],version = 1,exportSchema = false)
+@Database(entities = [MyEvent::class],version = 1,exportSchema = false)
 abstract class AppDatabase:RoomDatabase() {
     abstract fun eventDao():EventDao
 

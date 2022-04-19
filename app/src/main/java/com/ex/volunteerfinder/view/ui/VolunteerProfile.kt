@@ -35,7 +35,6 @@ import com.ex.volunteerfinder.model.data.Message
 import com.ex.volunteerfinder.model.data.MessageDummy
 import com.ex.volunteerfinder.model.data.UserDummy
 import com.ex.volunteerfinder.view.EventDetailedViewScreen
-import com.ex.volunteerfinder.view.MainScreen
 import com.ex.volunteerfinder.view.NavigationItem
 import com.ex.volunteerfinder.view.ui.composables.ChatCollectionComposable
 import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
@@ -93,7 +92,87 @@ fun PreviewProfileImage() {
 
 }
 
+@Composable
+fun BottomNavigationBar(navController: NavController) {
+    val items = listOf(
+        NavigationItem.Profile,
+        NavigationItem.Commons,
+        NavigationItem.MyEvents,
+        NavigationItem.Map,
+        NavigationItem.Messages
+    )
+    BottomNavigation(
+        backgroundColor = colorResource(id = R.color.gold_400),
+        contentColor = Color.White
+    ) {
+        items.forEach { item ->
+            BottomNavigationItem(
+                icon = { Icon(painterResource(id = item.icon), contentDescription = item.title) },
+                label = {
+                    Text(
+                        modifier = Modifier
+                            .width(100.dp),
+                        text = item.title,
+                        fontSize = 11.sp
+                ) },
+                selectedContentColor = Color.White,
+                unselectedContentColor = Color.White.copy(0.4f),
+                alwaysShowLabel = true,
+                selected = false,
+                onClick = {
+                    navController.navigate(item.route) {
+                        // Pop up to the start destination of the graph to
+                        // avoid building up a large stack of destinations
+                        // on the back stack as users select items
+                        navController.graph.startDestinationRoute?.let { route ->
+                            popUpTo(route) {
+                                saveState = true
+                            }
+                        }
+                        // Avoid multiple copies of the same destination when
+                        // re-selecting the same item
+                        launchSingleTop = true
+                        // Restore state when re-selecting a previously selected item
+                        restoreState = true
+                    }
+                }
+            )
+        }
+    }
+}
+@Preview(showBackground = true)
+@Composable
+fun BottomNavigationBarPreview() {
+    //BottomNavigationBar()
+}
 
+@Composable
+fun TopBar() {
+
+}
+
+@Preview(showBackground = true)
+@Composable
+fun TopBarPreview() {
+    TopBar()
+}
+
+@Composable
+fun MainScreen() {
+    val navController = rememberNavController()
+    Scaffold(
+        //topBar = { TopBar() },
+        bottomBar = { BottomNavigationBar(navController) }
+    ) {
+        Navigation(navController)
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun MainScreenPreview() {
+    MainScreen()
+}
 //------------------------------------------------------------------------------------------------
 @Composable
 fun ProfileScreen() {
@@ -119,7 +198,36 @@ fun ProfileScreen() {
 
     ProfileImage()
 }
+@Composable
+fun Navigation(navController: NavHostController) {
+    NavHost(navController, startDestination = NavigationItem.Profile.route) {
+        composable(NavigationItem.Profile.route) {
+            ProfileScreen()
+        }
+        composable(NavigationItem.Commons.route) {
 
+                        //val viewModel = ViewModelProvider()
+//            val appObj1 = Application()
+//            val eventViewModel = EventViewModel(appObj1)
+            //EventListScreen(eventViewModel = eventViewModel)
+            EventListScreen()
+        }
+        composable(NavigationItem.MyEvents.route) {
+            EventDetailedViewScreen()
+
+        }
+        composable(NavigationItem.Map.route) {
+            ProfileScreen()
+        }
+        composable(NavigationItem.Messages.route) {
+//            val previewList = listOf(MessageDummy.obj, MessageDummy.obj)
+            val conversation = Conversation(users = listOf(UserDummy.obj, UserDummy.obj),
+                messages = listOf(MessageDummy.obj,MessageDummy.obj)
+                )
+            ChatCollectionComposable(listOf(conversation))
+        }
+    }
+}
 
 /* 'TableRow' didn't look display (as expected) like researched, online examples: either scrap, for
 a more similar object, to past works, OR re-do */

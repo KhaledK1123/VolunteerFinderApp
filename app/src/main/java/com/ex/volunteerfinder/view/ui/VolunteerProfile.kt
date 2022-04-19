@@ -1,6 +1,7 @@
 package com.ex.volunteerfinder.view.ui
 
 import android.app.Application
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -9,9 +10,11 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -30,6 +33,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.ex.volunteerfinder.EventListScreen
 import com.ex.volunteerfinder.R
+import com.ex.volunteerfinder.SignUp
 import com.ex.volunteerfinder.model.data.Conversation
 import com.ex.volunteerfinder.model.data.Message
 import com.ex.volunteerfinder.model.data.MessageDummy
@@ -193,7 +197,53 @@ fun ProfileScreen() {
     }
 
     ProfileImage()
+
+    // Copied & adapted, from P2: from line 202 - line 245
+    Column(Modifier.fillMaxWidth()) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 20.dp)
+        )
+        Spacer(modifier = Modifier.height(10.dp))
+        ProfileDescription(
+            displayName = "",
+            username = "",
+            email = "",
+            address = "",
+            volunteeredEventsCount = 3
+        )
+        Column(
+            modifier = Modifier
+                .fillMaxHeight()
+                .padding(bottom = 75.dp),
+            Arrangement.Top,
+            Alignment.CenterHorizontally
+        )
+        Column(
+            modifier = Modifier
+                .fillMaxWidth(),
+            Arrangement.Bottom,
+            Alignment.Start
+
+        ) {
+            val context = LocalContext.current
+            TextButton(
+                onClick = {
+                    context.startActivity(Intent(context, SignUp::class.java))
+                },
+            ) {
+                Text(
+                    "Edit Profile",
+                    style = MaterialTheme.typography.button,
+                    color = Color.Black
+                )
+            }
+        }
+    }
 }
+
 @Composable
 fun Navigation(navController: NavHostController) {
     NavHost(navController, startDestination = NavigationItem.Profile.route) {
@@ -236,8 +286,8 @@ fun TableRow(text: String) {
             color = Color.DarkGray
         ),
         modifier = Modifier
-            .absolutePadding(left = 4.dp)
-            .paddingFromBaseline(top = 68.dp)
+            .absolutePadding(left = 8.dp)
+            .paddingFromBaseline(top = 72.dp)
     );
     Text(
         text = "Two",
@@ -246,7 +296,7 @@ fun TableRow(text: String) {
             color = Color.DarkGray
         ),
         modifier = Modifier
-            .paddingFromBaseline(top = 68.dp)
+            .paddingFromBaseline(top = 72.dp)
     );
     Text(
         text = "Three",
@@ -255,7 +305,7 @@ fun TableRow(text: String) {
             color = Color.DarkGray
         ),
         modifier = Modifier
-            .paddingFromBaseline(top = 68.dp)
+            .paddingFromBaseline(top = 72.dp)
     );
     Text(
         text = "Four",
@@ -264,8 +314,20 @@ fun TableRow(text: String) {
             color = Color.DarkGray
         ),
         modifier = Modifier
-            .paddingFromBaseline(top = 68.dp)
+            .paddingFromBaseline(top = 72.dp)
     )
+}
+
+fun Row(verticalAlignment: Alignment.Vertical, modifier: Modifier) {
+
+}
+
+fun ProfileDescription(displayName: String, username: String, email: String, address: String, volunteeredEventsCount: Int) {
+
+}
+
+fun Column(modifier: Modifier, verticalArrangement: Arrangement.Vertical, horizontalAlignment: Alignment.Horizontal) {
+
 }
 
 

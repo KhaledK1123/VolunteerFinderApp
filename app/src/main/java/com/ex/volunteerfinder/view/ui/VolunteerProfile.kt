@@ -9,8 +9,13 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -200,7 +205,7 @@ fun ProfileScreen() {
 
     ProfileImage()
 
-    // Copied & adapted, from previous work: from line 202 - line 237
+    // Copied & adapted, from previous work: from below, to line 239
     Column(Modifier.fillMaxWidth()) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -244,6 +249,64 @@ fun TextButton(onClick: () -> Unit) {
 }
 
 @Composable
+fun SubmitButton2() {
+
+    val context = LocalContext.current
+    Column(
+
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(1.dp)
+    )
+    {
+        var donateItemInput by rememberSaveable { mutableStateOf("") }
+        var confirmDonationCompleteInput by rememberSaveable { mutableStateOf("") }
+
+        TextField(
+            value = donateItemInput,
+            onValueChange = { donateItemInput = it },
+            label = { Text("Donating an Item") },
+            modifier = Modifier
+                .padding(top = 35.dp, bottom = 25.dp, start = 15.dp, end = 15.dp)
+                .fillMaxWidth()
+        )
+        TextField(
+            value = confirmDonationCompleteInput,
+            onValueChange = { confirmDonationCompleteInput = it },
+            label = { Text("Please Confirm That Your Donation is Complete") },
+            modifier = Modifier
+                .padding(top = 35.dp, bottom = 25.dp, start = 15.dp, end = 15.dp)
+                .fillMaxWidth()
+        )
+
+        var status by rememberSaveable {
+            mutableStateOf("")
+
+        }
+
+        val backgroundColor = Color(0xFF673AB7)
+        Button(shape = RoundedCornerShape(10.dp),
+            colors = ButtonDefaults.buttonColors(backgroundColor = backgroundColor),
+            modifier = Modifier
+                .padding(15.dp)
+                .fillMaxWidth(),
+            onClick = {
+                status =
+                    DonateItemInput(donateItemInput, confirmDonationCompleteInput);
+                context.startActivity(Intent(context, MainActivity::class.java)
+                )
+            }
+        )
+    }
+}
+
+fun Button(shape: RoundedCornerShape, colors: ButtonColors, modifier: Modifier,
+           onClick: () -> Unit) {
+
+}
+
+@Composable
 fun Navigation(navController: NavHostController) {
     NavHost(navController, startDestination = NavigationItem.Profile.route) {
         composable(NavigationItem.Profile.route) {
@@ -274,10 +337,10 @@ fun Navigation(navController: NavHostController) {
     }
 }
 
-/* 'TableRow', @ #282: ineffective, compared to online examples: either scrap, for something similar,
-to past work (stressed by Mayur); OR, re-do */
+/* 'TableRow', line 345: ineffective, compared to online examples: either scrap, for something
+similar, to past work (stressed by Mayur); OR, re-do */
 
-/*  Lines 281-320, until come up w/new arrangement for bar, for # of volunteered events
+/*  Starting below, to line 383, until come up w/new arrangement for bar, for # of volunteered events
 @Composable
 fun TableRow(text: String) {
     Text(

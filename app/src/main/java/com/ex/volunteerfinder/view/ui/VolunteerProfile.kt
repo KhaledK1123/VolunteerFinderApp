@@ -229,8 +229,8 @@ fun Navigation(navController: NavHostController) {
     }
 }
 
-/* 'TableRow' didn't look like researched, online examples: either scrap, for similar structure,
-. . . to past works, OR re-do */
+/* 'TableRow' didn't look display (as expected) like researched, online examples: either scrap, for
+a more similar object, to past works, OR re-do */
 @Composable
 fun TableRow(text: String) {
     Text(

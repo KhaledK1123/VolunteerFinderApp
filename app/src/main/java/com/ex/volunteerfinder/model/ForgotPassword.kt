@@ -35,6 +35,7 @@ import com.ex.volunteerfinder.R
 import com.ex.volunteerfinder.vectorResource
 import com.ex.volunteerfinder.view.LoginView
 import org.w3c.dom.Text
+import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
 
 class ForgotPassword: ComponentActivity() {
 
@@ -58,53 +59,6 @@ class ForgotPassword: ComponentActivity() {
     }
 }
 
-
-
-/* Attempted '@Preview', w/Composables, here: decided to forego (time constraints; questioning . . .
-. . . their necessity & usability, as a result) */
-@Composable
-fun SimpleText(displayText: String) {
-
-    Text(
-        text = displayText,
-        fontFamily = FontFamily.SansSerif,
-        fontSize = 30.sp,
-        modifier = Modifier.padding(16.dp)
-    )
-}
-
-@Composable
-fun Username(text: String) {
-    Text(
-        text = text,
-        style = TextStyle(
-            fontSize = 16.sp,
-            color = Color.Blue
-        ),
-        modifier = Modifier
-            .paddingFromBaseline(top = 75.dp)
-            .padding(horizontal = 16.dp)
-            .fillMaxWidth()
-    )
-}
-
-@Composable
-fun NewPassword(text: String) {
-    Text(
-        text = text,
-        style = TextStyle(
-            fontSize = 16.sp,
-            color = Color.Blue
-        ),
-        modifier = Modifier
-            .paddingFromBaseline(top = 50.dp)
-            .padding(horizontal = 16.dp)
-            .fillMaxWidth()
-    )
-
-    CancelButton()
-}
-
 @Composable
 fun CancelButton() {
 
@@ -124,20 +78,7 @@ fun CancelButton() {
     }
 }
 
-    @Composable
-    fun ConfirmPassword(text: String) {
-        Text(
-            text = text,
-            style = TextStyle(
-                fontSize = 16.sp,
-                color = Color.Blue
-            ),
-            modifier = Modifier
-                .paddingFromBaseline(top = 25.dp)
-                .padding(horizontal = 16.dp)
-                .fillMaxWidth()
-        )
-    }
+
 
     @Composable
     fun SubmitButton() {
@@ -279,6 +220,64 @@ fun CancelButton() {
 
     }
 
+/* Attempted '@Preview', w/Composables, here: decided to forego (time constraints; questioning . . .
+. . . their necessity & usability, as a result) */
+@Composable
+fun SimpleText(displayText: String) {
+
+    Text(
+        text = displayText,
+        fontFamily = FontFamily.SansSerif,
+        fontSize = 30.sp,
+        modifier = Modifier.padding(16.dp)
+    )
+}
+
+@Composable
+fun Username(text: String) {
+    Text(
+        text = text,
+        style = TextStyle(
+            fontSize = 16.sp,
+            color = Color.Blue
+        ),
+        modifier = Modifier
+            .paddingFromBaseline(top = 75.dp)
+            .padding(horizontal = 16.dp)
+            .fillMaxWidth()
+    )
+}
+
+@Composable
+fun NewPassword(text: String) {
+    Text(
+        text = text,
+        style = TextStyle(
+            fontSize = 16.sp,
+            color = Color.Blue
+        ),
+        modifier = Modifier
+            .paddingFromBaseline(top = 50.dp)
+            .padding(horizontal = 16.dp)
+            .fillMaxWidth()
+    )
+
+    CancelButton()
+}
+@Composable
+fun ConfirmPassword(text: String) {
+    Text(
+        text = text,
+        style = TextStyle(
+            fontSize = 16.sp,
+            color = Color.Blue
+        ),
+        modifier = Modifier
+            .paddingFromBaseline(top = 25.dp)
+            .padding(horizontal = 16.dp)
+            .fillMaxWidth()
+    )
+}
 
 fun newPasswordInput(new_password: String, confirm_password: String): String {
 

@@ -1,7 +1,7 @@
 package com.ex.volunteerfinder.model.data
 
-object EventDummy {
-    var obj = Event (
+object MyEventDummy {
+    var obj = MyEvent (
         name = "Springtime Tallahassee",
         sponsor = "Tallahassee Memorial Hospital",
         address = "1307 N Monroe St",

@@ -1,6 +1,6 @@
 package com.ex.volunteerfinder.viewmodel
 
-class EventDetails {
+class MyEventDetails {
     var title: String? = null
     var location: String? = null
     var imageUrl: String? = null

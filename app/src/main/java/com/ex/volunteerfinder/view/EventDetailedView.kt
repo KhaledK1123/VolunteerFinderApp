@@ -1,7 +1,9 @@
 package com.ex.volunteerfinder.view
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material.*
@@ -34,7 +36,7 @@ fun EventDetailedViewScreen() {
 
             TopAppBar(
                 backgroundColor = MaterialTheme.colors.primary,
-                title = {Text("Event Details")})
+                title = { Text("Event Details") })
         }
     ) {
         // A surface container using the 'background' color from the theme
@@ -43,55 +45,41 @@ fun EventDetailedViewScreen() {
             color = MaterialTheme.colors.background
         ) {
 
-            val imgList = listOf<Int>(R.drawable.mercedes, R.drawable.iphone, R.drawable.soccerevent)
+            val imgList =
+                listOf<Int>(R.drawable.mercedes, R.drawable.iphone, R.drawable.soccerevent)
             Column(
                 modifier = Modifier.fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Column(
                     verticalArrangement = Arrangement.Top,
-                    modifier = Modifier.height(175.dp)
+                    modifier = Modifier
+                        .height(175.dp)
+                        .border(2.dp,MaterialTheme.colors.primary)
+
 
                 ) {
                     LazyRow {
                         items(imgList.size) { index ->
                             //Text(text = donation.images[index])
-                            Image(painter = painterResource(id = imgList[index]),
-                                contentDescription =null,
-                                modifier= Modifier
+                            Image(
+                                painter = painterResource(id = imgList[index]),
+                                contentDescription = null,
+                                modifier = Modifier
                                     .size(250.dp)
                                     .padding(8.dp),
                                 contentScale = ContentScale.Fit
                             )
                         }
                     }
+
                     //Image(painterResource(R.drawable.soccerevent), "content description")
                 }
                 Column() {
                     CardMessage()
                     //EventLister()
-                    var message by rememberSaveable { mutableStateOf("") }
-                    TextField(
-                        value = message,
-                        isError = false,
-                        onValueChange = { message = it },
-                        label = {
-                            Text(
-                                text = "Message",
-                                style = MaterialTheme.typography.subtitle1
-                            )
-                        },
-                        modifier = Modifier
-                            .padding(
-                                top = 35.dp,
-                                bottom = 25.dp,
-                                start = 15.dp,
-                                end = 15.dp
-                            )
-                            .fillMaxWidth()
-                            .clip(Shapes.medium)
-                    )
                 }
+
                 Row(
                     Modifier
                         .padding(bottom = 55.dp)

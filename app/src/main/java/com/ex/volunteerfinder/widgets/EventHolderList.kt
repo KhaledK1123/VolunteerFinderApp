@@ -17,7 +17,7 @@ import com.ex.volunteerfinder.viewmodel.EventViewModel
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.LiveData
-import com.ex.volunteerfinder.model.data.Event
+import com.ex.volunteerfinder.model.data.MyEvent
 
 
 @Composable
@@ -25,7 +25,7 @@ fun EventList() {
 
 //    val eventViewModel = EventViewModel(Application())
 //    val eventList = eventViewModel.fetchAllEvents().observeAsState(arrayListOf())
-    val eventList = arrayListOf<Event>()
+    val eventList = arrayListOf<MyEvent>()
 
     Scaffold (modifier = Modifier.fillMaxSize(),
         floatingActionButton = {

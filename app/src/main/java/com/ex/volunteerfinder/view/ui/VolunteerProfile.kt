@@ -42,10 +42,6 @@ import com.ex.volunteerfinder.viewmodel.EventViewModel
 
 /* From Richard: put 'Composables' in THIS file, going forward; when calling 'ProfileImage()', here,
 have "Boolean=true" */
-
-/*  For Buttons indicating 'One', 'Two', 'Three', & 'Four' - look up code examples; also ask about
-squiggly lines, representing text, on the UI - actual text, to code in?  */
-
 class VolunteerProfile : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -129,8 +125,8 @@ fun BottomNavigationBar(navController: NavController) {
                                 saveState = true
                             }
                         }
-                        // Avoid multiple copies of the same destination when
-                        // re-selecting the same item
+                        /* Avoid multiple copies of the same destination when
+                        re-selecting the same item */
                         launchSingleTop = true
                         // Restore state when re-selecting a previously selected item
                         restoreState = true
@@ -229,8 +225,8 @@ fun Navigation(navController: NavHostController) {
     }
 }
 
-/* 'TableRow' didn't look display (as expected) like researched, online examples: either scrap, for
-a more similar look, to past works, OR re-do */
+/* 'TableRow', here: ineffective, compared to online examples: either scrap, for something similar,
+to past work (stressed by Mayur); OR, re-do */
 @Composable
 fun TableRow(text: String) {
     Text(

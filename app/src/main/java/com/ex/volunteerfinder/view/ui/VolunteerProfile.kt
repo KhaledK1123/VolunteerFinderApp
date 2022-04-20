@@ -218,7 +218,7 @@ fun SubmitButton2() {
 
 
 
-/*  Starting below, to line 374, until come up w/new layout for a bar (RE: # of volunteered events)
+/*  Starting below, to #374: POSSIBLY re-use/adapt, for a new bar (RE: # of volunteered events)
 @Composable
 fun TableRow(text: String) {
     Text(

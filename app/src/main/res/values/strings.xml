@@ -2,4 +2,6 @@
     <string name="app_name">VolunteerFinderApp</string>
     <string name="title_activity_chat_log">ChatLog</string>
     <string name="title_activity_chat_collection">ChatCollection</string>
+
+    <string name="preference_file_key">My_location_PREFERENCE_FILE_KEY</string>
 </resources>

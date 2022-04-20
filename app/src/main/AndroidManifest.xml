@@ -20,6 +20,11 @@
             android:label="@string/title_activity_chat_collection"
             android:theme="@style/Theme.VolunteerFinderApp" />
         <activity
+            android:name=".EventList"
+            android:exported="false"
+            android:label="@string/title_activity_chat_collection"
+            android:theme="@style/Theme.VolunteerFinderApp" />
+        <activity
             android:name=".view.ui.ForgotPassword"
             android:exported="false"
             android:label="@string/title_activity_chat_collection"

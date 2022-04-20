@@ -9,7 +9,7 @@ import com.ex.volunteerfinder.model.data.MyEvent
 import com.ex.volunteerfinder.repository.EventRepository
 import kotlinx.coroutines.launch
 
-class EventViewModel(appObj:Application): ViewModel() {
+class EventViewModel(appObj:Application): AndroidViewModel(Application()) {
 
     private val eventRepository: EventRepository = EventRepository(appObj)
 

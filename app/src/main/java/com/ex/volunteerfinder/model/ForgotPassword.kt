@@ -42,17 +42,19 @@ class ForgotPassword: ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Surface(
-                modifier = Modifier.fillMaxSize(),
-                color = MaterialTheme.colors.background
-            ) {
-                Column(
+            VolunteerFinderAppTheme {
+                Surface(
                     modifier = Modifier.fillMaxSize(),
-
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center
+                    color = MaterialTheme.colors.background
                 ) {
-                    SubmitButton()
+                    Column(
+                        modifier = Modifier.fillMaxSize(),
+
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center
+                    ) {
+                        SubmitButton()
+                    }
                 }
             }
         }

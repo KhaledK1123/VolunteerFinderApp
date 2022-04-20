@@ -1,10 +1,12 @@
 package com.ex.volunteerfinder.view
 
+import android.content.Intent
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -15,7 +17,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.ex.volunteerfinder.EventListScreen
+import com.ex.volunteerfinder.*
 import com.ex.volunteerfinder.R
 import com.ex.volunteerfinder.model.data.Conversation
 import com.ex.volunteerfinder.model.data.MessageDummy
@@ -36,10 +38,11 @@ fun Navigation(navController: NavHostController) {
 //            val appObj1 = Application()
 //            val eventViewModel = EventViewModel(appObj1)
             //EventListScreen(eventViewModel = eventViewModel)
-            EventListScreen()
+            //EventListScreen()
+            EventDetailedViewScreen()
         }
         composable(NavigationItem.MyEvents.route) {
-            EventDetailedViewScreen()
+            PreEventListScreen()
 
         }
         composable(NavigationItem.Map.route) {

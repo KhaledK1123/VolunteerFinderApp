@@ -21,11 +21,11 @@ import com.ex.volunteerfinder.model.data.MyEvent
 
 
 @Composable
-fun EventList() {
+fun EventList(eventViewModel: EventViewModel) {
 
 //    val eventViewModel = EventViewModel(Application())
-//    val eventList = eventViewModel.fetchAllEvents().observeAsState(arrayListOf())
-    val eventList = arrayListOf<MyEvent>()
+    val eventList = eventViewModel.fetchAllEvents().observeAsState(arrayListOf())
+    //val eventList = arrayListOf<MyEvent>()
 
     Scaffold (modifier = Modifier.fillMaxSize(),
         floatingActionButton = {
@@ -42,7 +42,7 @@ fun EventList() {
         content = {
             LazyColumn(content = {
                 items(
-                    items = eventList,
+                    items = eventList.value,
                     itemContent = {event->
                         Row (
                             modifier = Modifier

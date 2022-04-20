@@ -101,7 +101,7 @@ fun PreviewProfileImage() {
 
 }
 
-//------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------
 @Preview(showBackground = true)
 @Composable
 fun ProfileScreenPreview() {
@@ -222,11 +222,13 @@ fun Row(verticalAlignment: Alignment.Vertical, modifier: Modifier) {
 
 }
 
-fun ProfileDescription(displayName: String, username: String, email: String, address: String, volunteeredEventsCount: Int) {
+fun ProfileDescription(displayName: String, username: String, email: String,
+                       address: String, volunteeredEventsCount: Int) {
 
 }
 
-fun Column(modifier: Modifier, verticalArrangement: Arrangement.Vertical, horizontalAlignment: Alignment.Horizontal) {
+fun Column(modifier: Modifier, verticalArrangement: Arrangement.Vertical,
+           horizontalAlignment: Alignment.Horizontal) {
 
 }
 

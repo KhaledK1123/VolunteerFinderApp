@@ -102,6 +102,12 @@ fun PreviewProfileImage() {
 }
 
 //------------------------------------------------------------------------------------------------
+@Preview(showBackground = true)
+@Composable
+fun ProfileScreenPreview() {
+    ProfileScreen()
+}
+
 @Preview
 @Composable
 fun ProfileScreen() {

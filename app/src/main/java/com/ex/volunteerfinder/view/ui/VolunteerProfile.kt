@@ -214,11 +214,26 @@ fun SubmitButton2() {
     }
 }
 
+fun Row(verticalAlignment: Alignment.Vertical, modifier: Modifier) {
 
+}
 
+fun ProfileDescription(displayName: String, username: String, email: String, address: String, volunteeredEventsCount: Int) {
 
+}
 
-/*  Starting below, to #374: POSSIBLY re-use/adapt, for a new bar (RE: # of volunteered events)
+fun Column(modifier: Modifier, verticalArrangement: Arrangement.Vertical, horizontalAlignment: Alignment.Horizontal) {
+
+}
+
+fun VolunteeredNumberOfTimes(volunteeredNumberOfTimes: String): String = Unit.toString()
+
+fun Button2(shape: RoundedCornerShape, colors: ButtonColors, modifier: Modifier,
+            onClick: () -> Unit) {
+
+}
+
+/*  Starting below, to #276 POSSIBLY re-use/adapt, for a new bar (RE: # of volunteered events)
 @Composable
 fun TableRow(text: String) {
     Text(
@@ -260,23 +275,5 @@ fun TableRow(text: String) {
     )
 } */
 
-fun Row(verticalAlignment: Alignment.Vertical, modifier: Modifier) {
-
-}
-
-fun ProfileDescription(displayName: String, username: String, email: String, address: String, volunteeredEventsCount: Int) {
-
-}
-
-fun Column(modifier: Modifier, verticalArrangement: Arrangement.Vertical, horizontalAlignment: Alignment.Horizontal) {
-
-}
-
-fun VolunteeredNumberOfTimes(volunteeredNumberOfTimes: String): String = Unit.toString()
-
-fun Button2(shape: RoundedCornerShape, colors: ButtonColors, modifier: Modifier,
-            onClick: () -> Unit) {
-
-}
 
 

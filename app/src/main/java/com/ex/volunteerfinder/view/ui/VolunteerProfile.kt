@@ -92,7 +92,6 @@ fun ProfileImage (thumbnail: Boolean = true) {
             )
             .clip(CircleShape)
     )
-
 }
 
 @Preview
@@ -125,7 +124,7 @@ fun ProfileScreen() {
 
     ProfileImage()
 
-    // Copied & adapted, from previous work: from below, to line 244
+    // Copied & adapted, from previous work
     Column(Modifier.fillMaxWidth()) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -232,7 +231,7 @@ fun Button2(shape: RoundedCornerShape, colors: ButtonColors, modifier: Modifier,
 
 }
 
-/*  Starting below, to #276 POSSIBLY re-use/adapt, for a new bar (RE: # of volunteered events)
+/*  Starting below, to the end: POSSIBLY re-use/adapt, for a new bar (RE: # of volunteered events)
 @Composable
 fun TableRow(text: String) {
     Text(

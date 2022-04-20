@@ -54,7 +54,7 @@ import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
 import com.ex.volunteerfinder.viewmodel.EventViewModel
 import org.intellij.lang.annotations.JdkConstants
 
-/* From Richard: 'Composables' go in THIS file, going forward; when calling 'ProfileImage()', here,
+/* Richard's idea: 'Composables' in THIS file, going forward; when calling 'ProfileImage()', here,
 have "Boolean=true" */
 class VolunteerProfile : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

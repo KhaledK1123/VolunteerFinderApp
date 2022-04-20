@@ -231,8 +231,8 @@ fun Button2(shape: RoundedCornerShape, colors: ButtonColors, modifier: Modifier,
 
 }
 
-/* Second line below, through the end: POSSIBLY re-use/adapt (New bar, RE: # of volunteered events);
-otherwise, reference only
+/* Second line below, through the end: POSSIBLY re-use/adapt (Extra bar, RE: # of volunteered
+events); otherwise, reference only
 @Composable
 fun TableRow(text: String) {
     Text(

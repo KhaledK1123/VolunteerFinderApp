@@ -46,7 +46,7 @@ fun Navigation(navController: NavHostController) {
 
         }
         composable(NavigationItem.Map.route) {
-            ProfileScreen()
+            EventMap()
         }
         composable(NavigationItem.Messages.route) {
 //            val previewList = listOf(MessageDummy.obj, MessageDummy.obj)

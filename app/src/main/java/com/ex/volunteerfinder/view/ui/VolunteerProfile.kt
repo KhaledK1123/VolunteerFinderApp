@@ -255,10 +255,6 @@ fun Column(modifier: Modifier, verticalArrangement: Arrangement.Vertical,
 
 }
 
-fun ProfileDescription(displayName: String, username: String, email: String, address: String, volunteeredNumberOfTimesCount: Int) {
-
-}
-
 fun VolunteeredNumberOfTimes(volunteeredNumberOfTimes: String): String = Unit.toString()
 
 fun Button2(shape: RoundedCornerShape, colors: ButtonColors, modifier: Modifier,

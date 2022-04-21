@@ -2,27 +2,34 @@ package com.ex.volunteerfinder.widgets
 
 import android.app.Application
 import android.content.Intent
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import com.ex.volunteerfinder.viewmodel.EventViewModel
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.LiveData
 import com.ex.volunteerfinder.CreateNewEvent
 import com.ex.volunteerfinder.MainActivity
+import com.ex.volunteerfinder.R
 import com.ex.volunteerfinder.model.data.MyEvent
 import com.ex.volunteerfinder.view.EventDetailedView
+import com.ex.volunteerfinder.view.ui.RoundImage
 
 
 @Composable
@@ -55,15 +62,22 @@ fun EventList(eventViewModel: EventViewModel) {
                         Row (
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(horizontal = 16.dp, vertical = 8.dp),content = {
+                                .fillMaxHeight()
+                                .padding(horizontal = 8.dp, vertical = 8.dp),content = {
                                  //color
-//                                    Box (
-//                                        content = {
-//                                           Text(text = (event.name ?: "")[0].titles(),
-//                                               fontSize = 24.sp
-//                                           )
-//                                        }
-//                                    )
+                                    Box (
+                                        content = {
+                                           RoundImage(painterResource(id = R.drawable.blankpfp))
+                                        }, modifier = Modifier
+                                            .size(80.dp)
+                                            .padding(10.dp)
+                                            .border(
+                                                width = 1.2.dp,
+                                                color = MaterialTheme.colors.primaryVariant,
+                                                shape = CircleShape
+                                            ),
+                                        contentAlignment = Alignment.Center
+                                    )
                                 //not sure if I need a Box
 
                                 //Meant to set the event
@@ -73,7 +87,12 @@ fun EventList(eventViewModel: EventViewModel) {
                                     modifier = Modifier
                                         .weight(2F)
                                         .clickable(onClick = {
-                                            context.startActivity(Intent(context, EventDetailedView::class.java))
+                                            context.startActivity(
+                                                Intent(
+                                                    context,
+                                                    EventDetailedView::class.java
+                                                )
+                                            )
                                         }),
                                     content = {
                                         Spacer(modifier = Modifier.size(8.dp))

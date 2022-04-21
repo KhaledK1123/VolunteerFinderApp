@@ -1,12 +1,9 @@
 package com.ex.volunteerfinder.view.ui
 
-import android.app.Application
 import android.content.Intent
 import android.os.Bundle
-import android.widget.TableRow
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -22,38 +19,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.GenericFontFamily
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavController
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
-import com.ex.volunteerfinder.EventList
-import com.ex.volunteerfinder.EventListScreen
 import com.ex.volunteerfinder.MainActivity
 import com.ex.volunteerfinder.R
 import com.ex.volunteerfinder.SignUp
-import com.ex.volunteerfinder.model.data.Conversation
-import com.ex.volunteerfinder.model.data.Message
-import com.ex.volunteerfinder.model.data.MessageDummy
-import com.ex.volunteerfinder.model.data.UserDummy
-import com.ex.volunteerfinder.view.EventDetailedViewScreen
 import com.ex.volunteerfinder.view.MainScreen
-import com.ex.volunteerfinder.view.NavigationItem
-import com.ex.volunteerfinder.view.ui.composables.ChatCollectionComposable
-import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
-import com.ex.volunteerfinder.viewmodel.EventViewModel
-import org.intellij.lang.annotations.JdkConstants
 
 /* Richard's idea: 'Composables' in THIS file, going forward; when calling 'ProfileImage()', here,
 have "Boolean=true" */
@@ -64,7 +39,7 @@ class VolunteerProfile : ComponentActivity() {
         setContent {
             MainScreen()
         }
-            /* Starting below, for next 6 lines: replaced ('MainScreen()')
+            /* Starting below, & for following, 5 lines: replaced ('MainScreen()')
             VolunteerFinderAppTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
@@ -72,6 +47,61 @@ class VolunteerProfile : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) */
             }
+}
+
+@Composable
+fun ProfileDescription(
+    displayName: String,
+    username: String,
+    email: String,
+    address: String,
+    donationCount: Int,
+    volunteeredEventsCount: Int,
+    volunteeredNumberOfTimesCount: Int
+){
+    val letterSpacing = 0.5.sp
+    val lineHeight = 20.sp
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 20.dp)
+    ) {
+        Text(
+            text = "Name: $displayName",
+            style = MaterialTheme.typography.body1,
+            fontWeight = FontWeight.Bold,
+            letterSpacing = letterSpacing,
+            lineHeight = lineHeight
+        )
+        Text(
+            text = "Username: $username",
+            style = MaterialTheme.typography.body1,
+            letterSpacing = letterSpacing,
+            lineHeight = lineHeight
+        )
+        Text(
+            text = "Email: $email",
+            style = MaterialTheme.typography.body1,
+            color = Color(0xFF3D3D91),
+            letterSpacing = letterSpacing,
+            lineHeight = lineHeight
+        )
+        Text(
+            text = "Address: $address",
+            style = MaterialTheme.typography.body1,
+            color = Color(0xFF3D3D91),
+            letterSpacing = letterSpacing,
+            lineHeight = lineHeight
+        )
+        Text(
+            text = buildAnnotatedString {
+                append("Donated $donationCount times!")
+            },
+            letterSpacing = letterSpacing,
+            lineHeight = lineHeight
+        )
+
+    }
 }
 
 @Composable
@@ -143,7 +173,7 @@ fun ProfileScreen() {
             username = "",
             email = "",
             address = "",
-            volunteeredEventsCount = 3
+            volunteeredNumberOfTimesCount= 3
         )
         Column(
             modifier = Modifier
@@ -221,13 +251,12 @@ fun Row(verticalAlignment: Alignment.Vertical, modifier: Modifier) {
 
 }
 
-fun ProfileDescription(displayName: String, username: String, email: String,
-                       address: String, volunteeredEventsCount: Int) {
+fun Column(modifier: Modifier, verticalArrangement: Arrangement.Vertical,
+           horizontalAlignment: Alignment.Horizontal) {
 
 }
 
-fun Column(modifier: Modifier, verticalArrangement: Arrangement.Vertical,
-           horizontalAlignment: Alignment.Horizontal) {
+fun ProfileDescription(displayName: String, username: String, email: String, address: String, volunteeredNumberOfTimesCount: Int) {
 
 }
 

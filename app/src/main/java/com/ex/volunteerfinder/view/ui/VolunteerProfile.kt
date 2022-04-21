@@ -64,7 +64,8 @@ class VolunteerProfile : ComponentActivity() {
         setContent {
             MainScreen()
         }
-            /* VolunteerFinderAppTheme {
+            /* Starting below, for next 6 lines: replaced ('MainScreen()')
+            VolunteerFinderAppTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),

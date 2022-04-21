@@ -69,7 +69,7 @@ fun timeScheduler():String{
     )
 
     Column(
-        modifier = Modifier.fillMaxSize(),
+//        modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {

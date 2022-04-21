@@ -1,16 +1,17 @@
 package com.ex.volunteerfinder.repository
 
 import android.app.Application
+import android.content.Context
 import androidx.lifecycle.LiveData
 import com.ex.volunteerfinder.dao.EventDao
 import com.ex.volunteerfinder.model.data.AppDatabase
 import com.ex.volunteerfinder.model.data.MyEvent
 
-class EventRepository(application: Application) {
-    private lateinit var eventDao: EventDao
+class EventRepository(context: Context) {
 
+    lateinit var eventDao: EventDao
     init {
-        var database = AppDatabase.getDatabase(application)
+        var database = AppDatabase.getDatabase(context)
         eventDao = database.eventDao()
     }
     val readAllEvents:LiveData<List<MyEvent>> = eventDao.fetchAllEvents()

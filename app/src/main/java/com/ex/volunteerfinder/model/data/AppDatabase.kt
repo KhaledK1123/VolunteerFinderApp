@@ -16,7 +16,7 @@ abstract class AppDatabase:RoomDatabase() {
         @Volatile
         private var INSTANCE: AppDatabase? = null
 
-        fun getDatabase(conext:Context):AppDatabase{
+        fun getDatabase(context:Context):AppDatabase{
 
             val tempInstance = INSTANCE
             if (tempInstance != null){
@@ -24,7 +24,7 @@ abstract class AppDatabase:RoomDatabase() {
             }
             synchronized(this){
                 val instance = Room.databaseBuilder(
-                    conext.applicationContext,AppDatabase::class.java,
+                    context.applicationContext,AppDatabase::class.java,
                     "event_database"
                 ).build()
                 INSTANCE = instance

@@ -1,5 +1,6 @@
 package com.ex.volunteerfinder
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -192,41 +193,41 @@ fun CreateNewEventScreen(eventViewModel: EventViewModel){
             val street = rememberSaveable {
                 mutableStateOf("")
             }
-            TextField(value = street.value,
-                onValueChange = {street.value = it},
-                placeholder = { Text(text = "Event Name")},
-                singleLine = true,
-                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
-                keyboardActions = KeyboardActions(
-                    onDone = {keyboardController?.hide()}
-                )
-            )
-            val city = rememberSaveable {
-                mutableStateOf("")
-            }
-            TextField(value = city.value,
-                onValueChange = {city.value = it},
-                placeholder = { Text(text = "Event Name")},
-                singleLine = true,
-                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
-                keyboardActions = KeyboardActions(
-                    onDone = {keyboardController?.hide()}
-                )
-            )
+//            TextField(value = street.value,
+//                onValueChange = {street.value = it},
+//                placeholder = { Text(text = "Event Name")},
+//                singleLine = true,
+//                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
+//                keyboardActions = KeyboardActions(
+//                    onDone = {keyboardController?.hide()}
+//                )
+//            )
+//            val city = rememberSaveable {
+//                mutableStateOf("")
+//            }
+//            TextField(value = city.value,
+//                onValueChange = {city.value = it},
+//                placeholder = { Text(text = "Event Name")},
+//                singleLine = true,
+//                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
+//                keyboardActions = KeyboardActions(
+//                    onDone = {keyboardController?.hide()}
+//                )
+//            )
 
-            stateDropDownMenu(list = stateList, defaultText = "Select or Enter State")
+//            stateDropDownMenu(list = stateList, defaultText = "Select or Enter State")
 
             var stateSelected = stateDropDownMenu(list = stateList, defaultText = "Select or Enter State")
 
-            Spacer(modifier = Modifier.size(16.dp))
+            Spacer(modifier = Modifier.size(4.dp))
             
             dateScheduler()
             
-            Spacer(modifier = Modifier.size(16.dp))
+            Spacer(modifier = Modifier.size(5.dp))
             
             timeScheduler()
             
-            Spacer(modifier = Modifier.size(20.dp))
+//            Spacer(modifier = Modifier.size(8.dp))
 
             Button(onClick = { eventViewModel.insertEvent(
                 MyEvent(
@@ -234,8 +235,9 @@ fun CreateNewEventScreen(eventViewModel: EventViewModel){
                     sponsor = eventSponsor.value,
                     leadership = leader.value,
                     address = street.value,
-                    city = city.value,
+//                    city = city.value,
                     state = stateSelected))
+                context.startActivity(Intent(context, EventList::class.java))
             }) {
                 Text(text = "Finish!")
             }

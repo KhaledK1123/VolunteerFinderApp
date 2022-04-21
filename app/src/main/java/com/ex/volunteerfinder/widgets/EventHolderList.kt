@@ -1,6 +1,7 @@
 package com.ex.volunteerfinder.widgets
 
 import android.app.Application
+import android.content.Intent
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -13,10 +14,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import com.ex.volunteerfinder.viewmodel.EventViewModel
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.LiveData
+import com.ex.volunteerfinder.CreateNewEvent
 import com.ex.volunteerfinder.model.data.MyEvent
 
 
@@ -27,8 +30,10 @@ fun EventList(eventViewModel: EventViewModel) {
     val eventList = eventViewModel.fetchAllEvents().observeAsState(arrayListOf())
     //val eventList = arrayListOf<MyEvent>()
 
+
     Scaffold (modifier = Modifier.fillMaxSize(),
         floatingActionButton = {
+            val context = LocalContext.current
             ExtendedFloatingActionButton(
                 backgroundColor = MaterialTheme.colors.primary,
                 text = {
@@ -36,6 +41,7 @@ fun EventList(eventViewModel: EventViewModel) {
 
             }, onClick = {
                 // this should be for the event view model
+                context.startActivity(Intent(context, CreateNewEvent::class.java))
                 }
             )
         },
@@ -51,7 +57,7 @@ fun EventList(eventViewModel: EventViewModel) {
                                  //color
 //                                    Box (
 //                                        content = {
-//                                           Text(text = (event.name ?: "")[0].titlecase(),
+//                                           Text(text = (event.name ?: "")[0].titles(),
 //                                               fontSize = 24.sp
 //                                           )
 //                                        }
@@ -75,7 +81,7 @@ fun EventList(eventViewModel: EventViewModel) {
                                     modifier = Modifier
                                         .size(30.dp)
                                         .clickable(onClick = {
-                                            //eventViewModel.deleteEventById(event.id)
+                                            eventViewModel.deleteEventById(event.id)
                                         })
                                 )
                             }

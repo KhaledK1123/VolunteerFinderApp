@@ -158,7 +158,7 @@ fun ProfileScreen() {
 
     ProfileImage()
 
-    // Copied & adapted, from previous work
+    /* Copied & adapted; 4/21/22: Commented out, since it's duplicating another, up-program
     Column(Modifier.fillMaxWidth()) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -194,7 +194,7 @@ fun ProfileScreen() {
                     context.startActivity(Intent(context, SignUp::class.java))
                 })
         }
-    }
+    } */
 }
 
 fun TextButton(onClick: () -> Unit) {

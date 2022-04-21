@@ -55,7 +55,6 @@ fun ProfileDescription(
     username: String,
     email: String,
     address: String,
-    donationCount: Int,
     volunteeredEventsCount: Int,
     volunteeredNumberOfTimesCount: Int
 ){
@@ -95,7 +94,7 @@ fun ProfileDescription(
         )
         Text(
             text = buildAnnotatedString {
-                append("Donated $donationCount times!")
+                append("Volunteered $volunteeredEventsCount times!")
             },
             letterSpacing = letterSpacing,
             lineHeight = lineHeight

@@ -58,7 +58,7 @@ import org.intellij.lang.annotations.JdkConstants
 /* Richard's idea: 'Composables' in THIS file, going forward; when calling 'ProfileImage()', here,
 have "Boolean=true" */
 class VolunteerProfile : ComponentActivity() {
-    @ExperimentalFoundationApi
+    // @ExperimentalFoundationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -111,8 +111,8 @@ fun ProfileScreenPreview() {
 }
 
 @Preview
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
+// @OptIn(ExperimentalFoundationApi::class)
 fun ProfileScreen() {
     Scaffold(
         topBar = {

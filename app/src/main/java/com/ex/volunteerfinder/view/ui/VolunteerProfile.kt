@@ -81,14 +81,12 @@ fun ProfileDescription(
         Text(
             text = "Email: $email",
             style = MaterialTheme.typography.body1,
-            color = Color(0xFF3D3D91),
             letterSpacing = letterSpacing,
             lineHeight = lineHeight
         )
         Text(
             text = "Address: $address",
             style = MaterialTheme.typography.body1,
-            color = Color(0xFF3D3D91),
             letterSpacing = letterSpacing,
             lineHeight = lineHeight
         )

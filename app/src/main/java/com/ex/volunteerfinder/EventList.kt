@@ -50,10 +50,17 @@ class EventList : ComponentActivity() {
 @Composable
 fun EventListScreen(eventViewModel: EventViewModel){
 
-    Column {
-        TopAppBar(title = { Text(text = "Event List")})
+    VolunteerFinderAppTheme() {
 
-        Column(modifier = Modifier,horizontalAlignment = Alignment.CenterHorizontally,verticalArrangement = Arrangement.Center) {
+
+    Column {
+        TopAppBar(title = { Text(text = "Event List") })
+
+        Column(
+            modifier = Modifier,
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
 
             dateScheduler()
 
@@ -61,21 +68,26 @@ fun EventListScreen(eventViewModel: EventViewModel){
 
             Column(
                 modifier = Modifier.padding(bottom = 50.dp)
-            ){
+            ) {
                 EventList(eventViewModel)
             }
         }
     }
 }
+}
 
 @Composable
 fun PreEventListScreen()
 {
-    val context = LocalContext.current
-    Column() {
+    VolunteerFinderAppTheme() {
 
-        Button(onClick = { context.startActivity(Intent(context, EventList::class.java)) }) {
-            Text(text = "Go to My Events!")
+
+        val context = LocalContext.current
+        Column() {
+
+            Button(onClick = { context.startActivity(Intent(context, EventList::class.java)) }) {
+                Text(text = "Go to My Events!")
+            }
         }
     }
 }

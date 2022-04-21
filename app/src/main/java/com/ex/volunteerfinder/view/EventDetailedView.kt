@@ -27,67 +27,71 @@ import com.ex.volunteerfinder.R
 import com.ex.volunteerfinder.model.CardMessage
 import com.ex.volunteerfinder.model.MessageButton
 import com.ex.volunteerfinder.view.ui.theme.Shapes
+import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
 
 
 @Composable
 fun EventDetailedViewScreen() {
-    Scaffold(
-        topBar = {
+    VolunteerFinderAppTheme() {
 
-            TopAppBar(
-                backgroundColor = MaterialTheme.colors.primary,
-                title = { Text("Event Details") })
-        }
-    ) {
-        // A surface container using the 'background' color from the theme
-        Surface(
-            modifier = Modifier.fillMaxSize(),
-            color = MaterialTheme.colors.background
+        Scaffold(
+            topBar = {
+
+                TopAppBar(
+                    backgroundColor = MaterialTheme.colors.primary,
+                    title = { Text("Event Details") })
+            }
         ) {
-
-            val imgList =
-                listOf<Int>(R.drawable.mercedes, R.drawable.iphone, R.drawable.soccerevent)
-            Column(
+            // A surface container using the 'background' color from the theme
+            Surface(
                 modifier = Modifier.fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally
+                color = MaterialTheme.colors.background
             ) {
+
+                val imgList =
+                    listOf<Int>(R.drawable.mercedes, R.drawable.iphone, R.drawable.soccerevent)
                 Column(
-                    verticalArrangement = Arrangement.Top,
-                    modifier = Modifier
-                        .height(175.dp)
-                        .border(2.dp,MaterialTheme.colors.primary)
-
-
+                    modifier = Modifier.fillMaxSize(),
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    LazyRow {
-                        items(imgList.size) { index ->
-                            //Text(text = donation.images[index])
-                            Image(
-                                painter = painterResource(id = imgList[index]),
-                                contentDescription = null,
-                                modifier = Modifier
-                                    .size(250.dp)
-                                    .padding(8.dp),
-                                contentScale = ContentScale.Fit
-                            )
+                    Column(
+                        verticalArrangement = Arrangement.Top,
+                        modifier = Modifier
+                            .height(175.dp)
+                            .border(2.dp, MaterialTheme.colors.primary)
+
+
+                    ) {
+                        LazyRow {
+                            items(imgList.size) { index ->
+                                //Text(text = donation.images[index])
+                                Image(
+                                    painter = painterResource(id = imgList[index]),
+                                    contentDescription = null,
+                                    modifier = Modifier
+                                        .size(250.dp)
+                                        .padding(8.dp),
+                                    contentScale = ContentScale.Fit
+                                )
+                            }
                         }
+
+                        //Image(painterResource(R.drawable.soccerevent), "content description")
+                    }
+                    Column() {
+                        CardMessage()
+                        //EventLister()
                     }
 
-                    //Image(painterResource(R.drawable.soccerevent), "content description")
-                }
-                Column() {
-                    CardMessage()
-                    //EventLister()
-                }
-
-                Row(
-                    Modifier
-                        .padding(bottom = 55.dp)
-                        .fillMaxHeight(),
-                    horizontalArrangement = Arrangement.SpaceEvenly
-                ) {
-                    //JoinButton()
-                    MessageButton()
+                    Row(
+                        Modifier
+                            .padding(bottom = 55.dp)
+                            .fillMaxHeight(),
+                        horizontalArrangement = Arrangement.SpaceEvenly
+                    ) {
+                        //JoinButton()
+                        MessageButton()
+                    }
                 }
             }
         }

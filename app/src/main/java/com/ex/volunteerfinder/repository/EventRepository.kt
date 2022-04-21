@@ -7,11 +7,11 @@ import com.ex.volunteerfinder.dao.EventDao
 import com.ex.volunteerfinder.model.data.AppDatabase
 import com.ex.volunteerfinder.model.data.MyEvent
 
-class EventRepository(context: Context) {
+class EventRepository(application: Application) {
 
     lateinit var eventDao: EventDao
     init {
-        var database = AppDatabase.getDatabase(context)
+        var database = AppDatabase.getDatabase(application)
         eventDao = database.eventDao()
     }
     val readAllEvents:LiveData<List<MyEvent>> = eventDao.fetchAllEvents()

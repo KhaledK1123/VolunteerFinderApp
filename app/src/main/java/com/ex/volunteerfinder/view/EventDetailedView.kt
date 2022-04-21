@@ -1,5 +1,8 @@
 package com.ex.volunteerfinder.view
 
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -23,13 +26,33 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.ViewModelProvider
+import com.ex.volunteerfinder.EventListScreen
 import com.ex.volunteerfinder.R
 import com.ex.volunteerfinder.model.CardMessage
 import com.ex.volunteerfinder.model.MessageButton
 import com.ex.volunteerfinder.view.ui.theme.Shapes
 import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
+import com.ex.volunteerfinder.viewmodel.EventViewModel
+
+class EventDetailedView : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
 
+        setContent {
+            VolunteerFinderAppTheme {
+                // A surface container using the 'background' color from the theme
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colors.background
+                ) {
+                    EventDetailedViewScreen()
+                }
+            }
+        }
+    }
+}
 @Composable
 fun EventDetailedViewScreen() {
     VolunteerFinderAppTheme() {

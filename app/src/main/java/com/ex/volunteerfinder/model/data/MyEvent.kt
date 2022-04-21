@@ -12,6 +12,7 @@ data class MyEvent(
 
     @ColumnInfo(name = "name")
     var name: String? = null,
+
     @ColumnInfo(name = "sponsor")
     var sponsor: String? = null,
 
@@ -31,5 +32,9 @@ data class MyEvent(
     var zipCode: Int? = null,
 
     @ColumnInfo(name = "time")
-    var time: Long? = null
+    var time: String? = null,
+
+    @ColumnInfo(name = "date")
+    var date: String? = null
+
 )

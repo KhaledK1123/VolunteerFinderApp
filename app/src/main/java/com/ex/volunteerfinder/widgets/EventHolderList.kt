@@ -20,7 +20,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.LiveData
 import com.ex.volunteerfinder.CreateNewEvent
+import com.ex.volunteerfinder.MainActivity
 import com.ex.volunteerfinder.model.data.MyEvent
+import com.ex.volunteerfinder.view.EventDetailedView
 
 
 @Composable
@@ -65,13 +67,21 @@ fun EventList(eventViewModel: EventViewModel) {
                                 //not sure if I need a Box
 
                                 //Meant to set the event
+                                val context = LocalContext.current
                                 Column (
-                                    modifier = Modifier.weight(2F),
+
+                                    modifier = Modifier
+                                        .weight(2F)
+                                        .clickable(onClick = {
+                                            context.startActivity(Intent(context, EventDetailedView::class.java))
+                                        }),
                                     content = {
                                         Spacer(modifier = Modifier.size(8.dp))
-                                        Text(text = event.name?:"")
-                                        Text(text = "${event.address}")
-                                        Text(text = "${event.sponsor}")
+                                        Text(text = "Name: " + event.name?:"")
+                                        Text(text = "Address: " + "${event.address}")
+                                        Text(text = "Leader: " + "${event.leadership}")
+                                        Text(text = "Date: " + "${event.date} " + "Time: " + "${event.time}")
+
                                     }
                                 )
                                 Spacer(modifier = Modifier.size(16.dp))

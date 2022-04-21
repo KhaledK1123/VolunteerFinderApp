@@ -183,7 +183,7 @@ fun CreateNewEventScreen(eventViewModel: EventViewModel){
             }
             TextField(value = leader.value,
                 onValueChange = {leader.value = it},
-                placeholder = { Text(text = "Event Name")},
+                placeholder = { Text(text = "Leader")},
                 singleLine = true,
                 keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
                 keyboardActions = KeyboardActions(
@@ -193,27 +193,27 @@ fun CreateNewEventScreen(eventViewModel: EventViewModel){
             val street = rememberSaveable {
                 mutableStateOf("")
             }
-//            TextField(value = street.value,
-//                onValueChange = {street.value = it},
-//                placeholder = { Text(text = "Event Name")},
-//                singleLine = true,
-//                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
-//                keyboardActions = KeyboardActions(
-//                    onDone = {keyboardController?.hide()}
-//                )
-//            )
-//            val city = rememberSaveable {
-//                mutableStateOf("")
-//            }
-//            TextField(value = city.value,
-//                onValueChange = {city.value = it},
-//                placeholder = { Text(text = "Event Name")},
-//                singleLine = true,
-//                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
-//                keyboardActions = KeyboardActions(
-//                    onDone = {keyboardController?.hide()}
-//                )
-//            )
+            TextField(value = street.value,
+                onValueChange = {street.value = it},
+                placeholder = { Text(text = "Street")},
+                singleLine = true,
+                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
+                keyboardActions = KeyboardActions(
+                    onDone = {keyboardController?.hide()}
+                )
+            )
+            val city = rememberSaveable {
+                mutableStateOf("")
+            }
+            TextField(value = city.value,
+                onValueChange = {city.value = it},
+                placeholder = { Text(text = "City")},
+                singleLine = true,
+                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
+                keyboardActions = KeyboardActions(
+                    onDone = {keyboardController?.hide()}
+                )
+            )
 
 //            stateDropDownMenu(list = stateList, defaultText = "Select or Enter State")
 
@@ -221,11 +221,11 @@ fun CreateNewEventScreen(eventViewModel: EventViewModel){
 
             Spacer(modifier = Modifier.size(4.dp))
             
-            dateScheduler()
+            var date = dateScheduler()
             
             Spacer(modifier = Modifier.size(5.dp))
             
-            timeScheduler()
+            var time = timeScheduler()
             
 //            Spacer(modifier = Modifier.size(8.dp))
 
@@ -235,8 +235,12 @@ fun CreateNewEventScreen(eventViewModel: EventViewModel){
                     sponsor = eventSponsor.value,
                     leadership = leader.value,
                     address = street.value,
-//                    city = city.value,
-                    state = stateSelected))
+                    city = city.value,
+                    state = stateSelected,
+                    time = time,
+                    date = date
+                    ))
+
                 context.startActivity(Intent(context, EventList::class.java))
             }) {
                 Text(text = "Finish!")

@@ -62,13 +62,12 @@ fun EventListScreen(eventViewModel: EventViewModel){
             verticalArrangement = Arrangement.Center
         ) {
 
-            dateScheduler()
+//            dateScheduler()
 
-            Spacer(modifier = Modifier.size(16.dp))
+//            Spacer(modifier = Modifier.size(16.dp))
 
-            Column(
-                modifier = Modifier.padding(bottom = 50.dp)
-            ) {
+            Column()
+            {
                 EventList(eventViewModel)
             }
         }

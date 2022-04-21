@@ -8,6 +8,6 @@ object MyEventDummy {
         city = "Tallahassee",
         state = "FL",
         zipCode = 32303,
-        time = 1649939480000
+        time = "1649939480000"
     )
 }

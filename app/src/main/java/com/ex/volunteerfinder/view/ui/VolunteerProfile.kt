@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.TableRow
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -57,6 +58,7 @@ import org.intellij.lang.annotations.JdkConstants
 /* Richard's idea: 'Composables' in THIS file, going forward; when calling 'ProfileImage()', here,
 have "Boolean=true" */
 class VolunteerProfile : ComponentActivity() {
+    @ExperimentalFoundationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -109,6 +111,7 @@ fun ProfileScreenPreview() {
 }
 
 @Preview
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun ProfileScreen() {
     Scaffold(

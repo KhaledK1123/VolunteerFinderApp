@@ -14,7 +14,7 @@ class ForgotPasswordRepository(application: Application) {
     }
     val readAllForgotPasswords: LiveData<List<MyForgotPassword>>
         = forgotPasswordDao.fecthAllForgotPasswords
-Commented out, until data class is created */
+Commented out, until data class is created (perhaps 'MyPassword' ??) */
 
 }
 

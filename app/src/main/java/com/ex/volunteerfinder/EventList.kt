@@ -32,15 +32,16 @@ class EventList : ComponentActivity() {
 
         val eventViewModel = ViewModelProvider(this)[EventViewModel::class.java]
         setContent {
-            VolunteerFinderAppTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    EventListScreen(eventViewModel)
-                }
-            }
+
+                    // A surface container using the 'background' color from the theme
+                    Surface(
+                        modifier = Modifier.fillMaxSize(),
+                        color = MaterialTheme.colors.background
+                    ) {
+                        EventListScreen(eventViewModel)
+                    }
+
+
         }
     }
 }
@@ -49,8 +50,6 @@ class EventList : ComponentActivity() {
 
 @Composable
 fun EventListScreen(eventViewModel: EventViewModel){
-
-    VolunteerFinderAppTheme() {
 
 
     Column {
@@ -73,7 +72,7 @@ fun EventListScreen(eventViewModel: EventViewModel){
         }
     }
 }
-}
+
 
 @Composable
 fun PreEventListScreen()

@@ -1,6 +1,6 @@
 package com.ex.volunteerfinder.model.data
 
-data class VolunteerProfile(
+data class MyVolunteerProfile(
     var id: Long,
     var userName: String,
     var password: String,

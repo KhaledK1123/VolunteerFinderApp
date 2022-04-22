@@ -1,7 +1,5 @@
 package com.ex.volunteerfinder.model.data
 
-import com.ex.volunteerfinder.view.ui.VolunteerProfile
-
 object MyVolunteerProfileDummy {
     var obj = VolunteerProfile(id = 100,
         userName = "adam1",

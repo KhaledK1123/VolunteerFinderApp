@@ -7,15 +7,14 @@ import com.ex.volunteerfinder.model.data.MyEvent
 
 class PasswordsRepository(application: Application) {
 /*
-    lateinit var forgotPasswordDao: ForgotPasswordDao
+    lateinit var passwordsDao: PasswordsDao
     init {
         var database = AppDatabase.getDatabase(application)
-        forgotPasswordDao = database.forgotPasswordDao()
+        passwordsDao = database.passwordsDao()
     }
-    val readAllForgotPasswords: LiveData<List<MyForgotPassword>>
-        = forgotPasswordDao.fetchAllForgotPasswords
-Commented out, until data class is created (perhaps 'MyPassword' ??); perhaps need a name change, to
- THIS class (i.e., 'PasswordRepository') */
+    val readAllPasswords: LiveData<List<MyPasswords>>
+        = passwordsDao.fetchAllPasswords
+Commented out, until data class is created (perhaps 'MyPassword' ??) */
 
 }
 

@@ -32,16 +32,7 @@ fun Navigation(navController: NavHostController) {
         composable(NavigationItem.Profile.route) {
             ProfileScreen()
         }
-        composable(NavigationItem.Commons.route) {
-
-            //val viewModel = ViewModelProvider()
-//            val appObj1 = Application()
-//            val eventViewModel = EventViewModel(appObj1)
-            //EventListScreen(eventViewModel = eventViewModel)
-            //EventListScreen()
-            EventDetailedViewScreen()
-        }
-        composable(NavigationItem.MyEvents.route) {
+        composable(NavigationItem.Events.route) {
             PreEventListScreen()
 
         }
@@ -94,8 +85,7 @@ fun MainScreenPreview() {
 fun BottomNavigationBar(navController: NavController) {
     val items = listOf(
         NavigationItem.Profile,
-        NavigationItem.Commons,
-        NavigationItem.MyEvents,
+        NavigationItem.Events,
         NavigationItem.Map,
         NavigationItem.Messages
     )

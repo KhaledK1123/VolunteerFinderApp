@@ -2,6 +2,7 @@ package com.ex.volunteerfinder
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
@@ -229,19 +230,34 @@ fun CreateNewEventScreen(eventViewModel: EventViewModel){
             
 //            Spacer(modifier = Modifier.size(8.dp))
 
-            Button(onClick = { eventViewModel.insertEvent(
-                MyEvent(
-                    name = eventName.value,
-                    sponsor = eventSponsor.value,
-                    leadership = leader.value,
-                    address = street.value,
-                    city = city.value,
-                    state = stateSelected,
-                    time = time,
-                    date = date
-                    ))
+            Button(onClick = {
+                if (eventName.value.equals("")
+                    || eventSponsor.value.equals("")
+                    || leader.value.equals("")
+                    || street.value.equals("")
+                    || city.value.equals("")
+                    || stateSelected.equals("")
+                    || time.equals("")
+                    || date.equals("")
 
-                context.startActivity(Intent(context, EventList::class.java))
+                ){
+                    //This alerts that the Creation of the Event is not completed
+                    Toast.makeText(context,"Event information is incomplete",Toast.LENGTH_LONG).show()
+                }else{
+                    eventViewModel.insertEvent(
+                        MyEvent(
+                            name = eventName.value,
+                            sponsor = eventSponsor.value,
+                            leadership = leader.value,
+                            address = street.value,
+                            city = city.value,
+                            state = stateSelected,
+                            time = time,
+                            date = date))
+                    context.startActivity(Intent(context, EventList::class.java))
+                }
+
+
             }) {
                 Text(text = "Finish!")
             }

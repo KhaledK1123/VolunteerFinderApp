@@ -49,7 +49,7 @@ fun EventList(eventViewModel: EventViewModel) {
                        Text(text = "Event",color = Color.Black)
 
             }, onClick = {
-                // this should be for the event view model
+                // this goes to the Create New Event page
                 context.startActivity(Intent(context, CreateNewEvent::class.java))
                 }
             )
@@ -97,10 +97,10 @@ fun EventList(eventViewModel: EventViewModel) {
                                     content = {
                                         Spacer(modifier = Modifier.size(8.dp))
                                         Text(text = "Name: " + event.name?:"")
-                                        Text(text = "Address: " + "${event.address}")
+                                        Text(text = "Address: " + "${event.address} " +"${event.city}, " +"${event.state}")
                                         Text(text = "Leader: " + "${event.leadership}")
                                         Text(text = "Date: " + "${event.date} " + "Time: " + "${event.time}")
-
+                                        //Insert clickeable hypertext from Login but redirect it to edit event
                                     }
                                 )
                                 Spacer(modifier = Modifier.size(16.dp))

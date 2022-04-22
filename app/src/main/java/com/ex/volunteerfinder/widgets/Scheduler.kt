@@ -63,8 +63,27 @@ fun timeScheduler():String{
 
     val timePickerDialog = TimePickerDialog(
         context,
-        {_,hour: Int, minute:Int->
-            time.value ="$hour:$minute"
+        {_,hour: Int, minute:Int,->
+            var hour = hour
+            var meridiem = ""
+            when{hour == 0 -> {hour+=12
+                meridiem = "AM"
+            }
+                hour == 12-> meridiem ="PM"
+                hour > 12 -> {hour -= 12
+                    meridiem = "PM"
+                }
+                else -> meridiem = "AM"
+
+            }
+            if(minute ==0){
+                time.value ="$hour:00 $meridiem"
+            }else if(minute < 10){
+                time.value ="$hour:0$minute $meridiem"
+            }else{
+                time.value ="$hour:$minute $meridiem"
+            }
+
         },hour,minute,false
     )
 

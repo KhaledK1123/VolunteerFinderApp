@@ -13,7 +13,7 @@ class ForgotPasswordRepository(application: Application) {
         forgotPasswordDao = database.forgotPasswordDao()
     }
     val readAllForgotPasswords: LiveData<List<MyForgotPassword>>
-        = forgotPasswordDao.fecthAllForgotPasswords
+        = forgotPasswordDao.fetchAllForgotPasswords
 Commented out, until data class is created (perhaps 'MyPassword' ??); perhaps need a name change, to
  THIS class (i.e., 'PasswordRepository') */
 

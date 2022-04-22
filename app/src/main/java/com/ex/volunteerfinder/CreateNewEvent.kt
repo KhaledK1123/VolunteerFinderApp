@@ -37,6 +37,7 @@ import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
 import com.ex.volunteerfinder.viewmodel.EventViewModel
 import com.ex.volunteerfinder.widgets.dateScheduler
 import com.ex.volunteerfinder.widgets.timeScheduler
+import java.lang.NumberFormatException
 
 class CreateNewEvent : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -122,6 +123,15 @@ fun stateDropDownMenu(list: List<String>,defaultText:String):String{
         }
     }
     return state
+}
+//This checks to make sure that the Zip Code is numerical.
+fun checkNumber(s:String):Boolean{
+    return try {
+        s.toInt()
+        true
+    } catch (ex: NumberFormatException) {
+        false
+    }
 }
 
 @OptIn(ExperimentalComposeUiApi::class)
@@ -257,7 +267,9 @@ fun CreateNewEventScreen(eventViewModel: EventViewModel){
                 ){
                     //This alerts that the Creation of the Event is not completed
                     Toast.makeText(context,"Event information is incomplete",Toast.LENGTH_LONG).show()
-                }else{
+                }else if (checkNumber(zip.value) == false) {
+                    Toast.makeText(context,"Invalid Zip Code",Toast.LENGTH_LONG).show()
+                } else{
                     eventViewModel.insertEvent(
                         MyEvent(
                             name = eventName.value,

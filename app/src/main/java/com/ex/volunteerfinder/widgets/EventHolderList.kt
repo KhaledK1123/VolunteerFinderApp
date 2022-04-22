@@ -97,7 +97,7 @@ fun EventList(eventViewModel: EventViewModel) {
                                     content = {
                                         Spacer(modifier = Modifier.size(8.dp))
                                         Text(text = "Name: " + event.name?:"")
-                                        Text(text = "Address: " + "${event.address} " +"${event.city}, " +"${event.state}, "+"${event.zipCode}")
+                                        Text(text = "Address: " + "${event.address} " +"${event.city}, " +"${event.state} "+"${event.zipCode}")
                                         Text(text = "Leader: " + "${event.leadership}")
                                         Text(text = "Date: " + "${event.date} " + "Time: " + "${event.time}")
                                         //Insert clickeable hypertext from Login but redirect it to edit event

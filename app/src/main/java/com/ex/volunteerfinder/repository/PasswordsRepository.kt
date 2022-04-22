@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import com.ex.volunteerfinder.model.data.AppDatabase
 import com.ex.volunteerfinder.model.data.MyEvent
 
-class ForgotPasswordRepository(application: Application) {
+class PasswordsRepository(application: Application) {
 /*
     lateinit var forgotPasswordDao: ForgotPasswordDao
     init {

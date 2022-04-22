@@ -32,15 +32,15 @@ class EventList : ComponentActivity() {
 
         val eventViewModel = ViewModelProvider(this)[EventViewModel::class.java]
         setContent {
-
-                    // A surface container using the 'background' color from the theme
-                    Surface(
-                        modifier = Modifier.fillMaxSize(),
-                        color = MaterialTheme.colors.background
-                    ) {
-                        EventListScreen(eventViewModel)
-                    }
-
+            VolunteerFinderAppTheme {
+                // A surface container using the 'background' color from the theme
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colors.background
+                ) {
+                    EventListScreen(eventViewModel)
+                }
+            }
 
         }
     }

@@ -216,6 +216,19 @@ fun CreateNewEventScreen(eventViewModel: EventViewModel){
                 )
             )
 
+            val zip = rememberSaveable {
+                mutableStateOf("")
+            }
+            TextField(value = zip.value,
+                onValueChange = {zip.value = it},
+                placeholder = { Text(text = "Zip Code")},
+                singleLine = true,
+                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
+                keyboardActions = KeyboardActions(
+                    onDone = {keyboardController?.hide()}
+                )
+            )
+
 //            stateDropDownMenu(list = stateList, defaultText = "Select or Enter State")
 
             var stateSelected = stateDropDownMenu(list = stateList, defaultText = "Select or Enter State")
@@ -239,6 +252,7 @@ fun CreateNewEventScreen(eventViewModel: EventViewModel){
                     || stateSelected.equals("")
                     || time.equals("")
                     || date.equals("")
+                    || zip.value == null
 
                 ){
                     //This alerts that the Creation of the Event is not completed
@@ -253,7 +267,9 @@ fun CreateNewEventScreen(eventViewModel: EventViewModel){
                             city = city.value,
                             state = stateSelected,
                             time = time,
-                            date = date))
+                            date = date,
+                            zipCode = zip.value.toInt()
+                        ))
                     context.startActivity(Intent(context, EventList::class.java))
                 }
 

@@ -137,7 +137,7 @@ fun PreviewProfileImage() {
 }
 
 //-------------------------------------------------------------------------------------------------
-/*@Preview(showBackground = true)
+/* @Preview(showBackground = true)
 @Composable
 fun ProfileScreenPreview() {
     ProfileScreen()
@@ -204,7 +204,6 @@ fun ProfileScreen() {
         }
     }
 }
-*/
  */
 
 fun TextButton(onClick: () -> Unit) {
@@ -623,4 +622,4 @@ fun PostSection(
             )
         }
     }
-}
+} */

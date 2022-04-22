@@ -5,15 +5,15 @@ import androidx.lifecycle.LiveData
 import com.ex.volunteerfinder.model.data.AppDatabase
 import com.ex.volunteerfinder.model.data.MyEvent
 
-class ForgotPasswordRepository(application: Application) {
+class PasswordsRepository(application: Application) {
 /*
-    lateinit var forgotPasswordDao: ForgotPasswordDao
+    lateinit var passwordsDao: PasswordsDao
     init {
         var database = AppDatabase.getDatabase(application)
-        forgotPasswordDao = database.forgotPasswordDao()
+        passwordsDao = database.passwordsDao()
     }
-    val readAllForgotPasswords: LiveData<List<MyForgotPassword>>
-        = forgotPasswordDao.fecthAllForgotPasswords
+    val readAllPasswords: LiveData<List<MyPasswords>>
+        = passwordsDao.fetchAllPasswords
 Commented out, until data class is created (perhaps 'MyPassword' ??) */
 
 }

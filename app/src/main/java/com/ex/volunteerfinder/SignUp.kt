@@ -24,16 +24,20 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModelProvider
+import com.ex.volunteerfinder.model.data.User
 import com.ex.volunteerfinder.view.LoginText
 import com.ex.volunteerfinder.view.LoginView
 import com.ex.volunteerfinder.view.LoginViewer
 import com.ex.volunteerfinder.view.ui.CancelButton
 import com.ex.volunteerfinder.view.ui.ForgotPassword
 import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
+import com.ex.volunteerfinder.viewmodel.UserViewModel
 
 class SignUp : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         setContent {
             VolunteerFinderAppTheme {
                 // A surface container using the 'background' color from the theme
@@ -47,7 +51,7 @@ class SignUp : ComponentActivity() {
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center
                     ) {
-                        SignUpScreen()
+                        SignUpScreen(userViewModel)
                     }
                 }
             }
@@ -56,7 +60,7 @@ class SignUp : ComponentActivity() {
 }
 
 @Composable
-fun SignUpScreen() {
+fun SignUpScreen(userViewModel: UserViewModel) {
 
 
     var primaryColor= Color.Gray
@@ -86,6 +90,10 @@ fun SignUpScreen() {
 
         var username = remember { mutableStateOf("") }
         var email = remember { mutableStateOf("") }
+        var name = remember { mutableStateOf("")}
+        var city = remember { mutableStateOf("")}
+        var state = remember { mutableStateOf("")}
+        var zip = remember { mutableStateOf("")}
         var password = remember { mutableStateOf("") }
         var passwordConfirm = remember { mutableStateOf("") }
 
@@ -121,7 +129,62 @@ fun SignUpScreen() {
                 }
             }
         )
+        Spacer(modifier = Modifier.height(20.dp))
+        OutlinedTextField(
+            value = name.value,
+            onValueChange = { name.value = it },
+            label = { Text(text = "Email") },
+            placeholder = { Text(text = "Email") },
+            singleLine = true,
+            leadingIcon = {
+                IconButton(onClick = { /*TODO*/ }) {
+                    Icon(imageVector = Icons.Filled.Email, contentDescription = "Email")
 
+                }
+            }
+        )
+        Spacer(modifier = Modifier.height(20.dp))
+        OutlinedTextField(
+            value = city.value,
+            onValueChange = { city.value = it },
+            label = { Text(text = "Email") },
+            placeholder = { Text(text = "Email") },
+            singleLine = true,
+            leadingIcon = {
+                IconButton(onClick = { /*TODO*/ }) {
+                    Icon(imageVector = Icons.Filled.Email, contentDescription = "Email")
+
+                }
+            }
+        )
+        Spacer(modifier = Modifier.height(20.dp))
+        OutlinedTextField(
+            value = state.value,
+            onValueChange = { state.value = it },
+            label = { Text(text = "Email") },
+            placeholder = { Text(text = "Email") },
+            singleLine = true,
+            leadingIcon = {
+                IconButton(onClick = { /*TODO*/ }) {
+                    Icon(imageVector = Icons.Filled.Email, contentDescription = "Email")
+
+                }
+            }
+        )
+        Spacer(modifier = Modifier.height(20.dp))
+        OutlinedTextField(
+            value = zip.value,
+            onValueChange = { zip.value = it },
+            label = { Text(text = "Email") },
+            placeholder = { Text(text = "Email") },
+            singleLine = true,
+            leadingIcon = {
+                IconButton(onClick = { /*TODO*/ }) {
+                    Icon(imageVector = Icons.Filled.Email, contentDescription = "Email")
+
+                }
+            }
+        )
         Spacer(modifier = Modifier.height(20.dp))
 
         OutlinedTextField(
@@ -194,6 +257,18 @@ fun SignUpScreen() {
             else if(email.value.isEmpty()){
             Toast.makeText(context,"Please fill all inputs ",Toast.LENGTH_SHORT).show()
             }
+            else if(name.value.isEmpty()){
+                Toast.makeText(context,"Please fill all inputs ",Toast.LENGTH_SHORT).show()
+            }
+            else if(city.value.isEmpty()){
+                Toast.makeText(context,"Please fill all inputs ",Toast.LENGTH_SHORT).show()
+            }
+            else if(state.value.isEmpty()){
+                Toast.makeText(context,"Please fill all inputs ",Toast.LENGTH_SHORT).show()
+            }
+            else if(zip.value.isEmpty()){
+                Toast.makeText(context,"Please fill all inputs ",Toast.LENGTH_SHORT).show()
+            }
             else if(password.value.isEmpty()){
                 Toast.makeText(context,"Please fill all inputs ",Toast.LENGTH_SHORT).show()
             }
@@ -201,6 +276,15 @@ fun SignUpScreen() {
                 Toast.makeText(context,"Please fill all inputs ",Toast.LENGTH_SHORT).show()
             }
             else{
+                userViewModel.insertUser(User(
+                    userName = username.value,
+                    email = email.value,
+                    password = password.value,
+                    name = name.value,
+                    city = city.value,
+                    state = state.value,
+                    zipCode = zip.value.toInt()
+                ))
                 context.startActivity(Intent(context, MainActivity::class.java))
                 Toast.makeText(context,"Signed Up Successfully",Toast.LENGTH_SHORT).show()
             }

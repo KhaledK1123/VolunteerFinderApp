@@ -11,6 +11,7 @@ import androidx.compose.material.*
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -24,16 +25,19 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.ViewModelProvider
 import com.ex.volunteerfinder.R
 import com.ex.volunteerfinder.SignUp
 import com.ex.volunteerfinder.view.ui.ForgotPassword
 import com.ex.volunteerfinder.view.ui.VolunteerProfile
 import com.ex.volunteerfinder.view.ui.theme.Shapes
 import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
+import com.ex.volunteerfinder.viewmodel.UserViewModel
 
 class LoginView : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         setContent {
             VolunteerFinderAppTheme {
                 // A surface container using the 'background' color from the theme
@@ -48,7 +52,7 @@ class LoginView : ComponentActivity() {
                     ) {
                         LoginText(displayText = "Volunteer Finder")
                         Image(painterResource(R.drawable.icon),"content")
-                        LoginViewer()
+                        LoginViewer(userViewModel)
                     }
 
 
@@ -128,8 +132,9 @@ fun CreateAccountButton() {
 }
 
 @Composable
-fun LoginViewer() {
+fun LoginViewer(userViewModel: UserViewModel) {
     LocalContext.current
+    val userList = userViewModel.fetchAllUsers().observeAsState(arrayListOf())
     Column(
 
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -181,14 +186,19 @@ fun LoginViewer() {
 
             onClick = {
                 //This allows the login button to traverse to Home page
-                if (!isError) {
-                    //viewModel.login(username, password)
-                    context.startActivity(Intent(context, VolunteerProfile::class.java))
-                    Toast.makeText(context, "Login Successful!", Toast.LENGTH_SHORT).show()
+                val log = userList.value
+                log.forEach { user ->
+                    if (!isError && user.userName ==username && user.password ==password) {
+
+                        context.startActivity(Intent(context, VolunteerProfile::class.java))
+
+                        Toast.makeText(context, "Login Successful!", Toast.LENGTH_SHORT).show()
+                    }
+                    else{
+                        Toast.makeText(context, "Login Unsuccessful!", Toast.LENGTH_SHORT).show()
+                    }
                 }
-                else{
-                    Toast.makeText(context, "Login Unsuccessful!", Toast.LENGTH_SHORT).show()
-                }
+
 
             }) {
 

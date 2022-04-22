@@ -262,12 +262,12 @@ fun CreateNewEventScreen(eventViewModel: EventViewModel){
                     || stateSelected.equals("")
                     || time.equals("")
                     || date.equals("")
-                    || zip.value == null
+                    || zip.value.equals("")
 
                 ){
                     //This alerts that the Creation of the Event is not completed
                     Toast.makeText(context,"Event information is incomplete",Toast.LENGTH_LONG).show()
-                }else if (checkNumber(zip.value) == false) {
+                }else if (!checkNumber(zip.value)) {
                     Toast.makeText(context,"Invalid Zip Code",Toast.LENGTH_LONG).show()
                 } else{
                     eventViewModel.insertEvent(

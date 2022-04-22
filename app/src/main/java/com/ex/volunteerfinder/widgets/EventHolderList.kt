@@ -51,6 +51,8 @@ fun EventList(eventViewModel: EventViewModel) {
             }, onClick = {
                 // this goes to the Create New Event page
                 context.startActivity(Intent(context, CreateNewEvent::class.java))
+                },icon = {
+                    Icon(imageVector = Icons.Default.Add, contentDescription = "image", tint = Color.White)
                 }
             )
         },

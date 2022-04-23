@@ -292,7 +292,13 @@ Scaffold() {
                         zipCode = zip.value.toInt()
                     )
                 )
-                context.startActivity(Intent(context, LoginView::class.java))
+                context.startActivity(Intent(context, LoginView::class.java)
+                    .putExtra("username", username.value)
+                    .putExtra("email", email.value)
+                    .putExtra("name", name.value)
+                    .putExtra("city", city.value)
+                    .putExtra("zip", zip.value)
+                    .putExtra("state", state.value))
                 Toast.makeText(context, "Signed Up Successfully", Toast.LENGTH_SHORT).show()
             }
 

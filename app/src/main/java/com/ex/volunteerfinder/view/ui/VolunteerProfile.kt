@@ -41,16 +41,7 @@ import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
 
 /* Richard's idea: 'Composables' in THIS file, going forward; when calling 'ProfileImage()', here,
 have "Boolean=true" */
-class VolunteerProfile(
-    id: Int,
-    userName: String,
-    password: String,
-    email: String,
-    name: String,
-    city: String,
-    state: String,
-    zipCode: Int
-) : ComponentActivity() {
+class VolunteerProfile : ComponentActivity() {
     // @ExperimentalFoundationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

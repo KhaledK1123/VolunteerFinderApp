@@ -1,16 +1,31 @@
 package com.ex.volunteerfinder.model.data
 
-/* Not certain if THIS file needs to resemble 'MyEvent' data class, in terms of structure, OR
-if THIS structure will capture profile data the best (similar to that of 'Message' data class) */
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
-data class VolunteerProfile(
-    var id: Long,
-    var userName: String,
-    var password: String,
-    var email: String,
-    var name: String,
-    var city: String,
-    var state: String,
-    var zipCode: Int
+@Entity(tableName = "volunteer profile")
+data class MyVolunteerProfile(
+
+    @PrimaryKey(autoGenerate = true)
+    val id: Long = 0,
+
+    @ColumnInfo(name = "username")
+    var userName: String?= null,
+
+    @ColumnInfo(name = "password")
+    var password: String?= null,
+
+    @ColumnInfo(name = "volunteer name")
+    var name: String?= null,
+
+    @ColumnInfo(name = "city")
+    var city: String?= null,
+
+    @ColumnInfo(name = "state")
+    var state: String?= null,
+
+    @ColumnInfo(name = "zip code")
+    var zipCode: Long?= 0
 
 )

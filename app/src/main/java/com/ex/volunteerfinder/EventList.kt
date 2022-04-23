@@ -41,10 +41,10 @@ class EventList : ComponentActivity() {
                     EventListScreen(eventViewModel)
                 }
             }
-
+            }
         }
     }
-}
+
 
 
 

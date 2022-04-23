@@ -9,13 +9,17 @@ import com.ex.volunteerfinder.model.data.MyEvent
 
 class EventRepository(application: Application) {
 
-    lateinit var eventDao: EventDao
+    var eventDao: EventDao
     init {
         var database = AppDatabase.getDatabase(application)
         eventDao = database.eventDao()
     }
     val readAllEvents:LiveData<List<MyEvent>> = eventDao.fetchAllEvents()
 
+
+//    suspend fun readOneEvent(id:Int){
+//        eventDao.fetchOneEvent(id)
+//    }
     suspend fun deleteEventById(id:Int){
         eventDao.deleteEventById(id)
     }

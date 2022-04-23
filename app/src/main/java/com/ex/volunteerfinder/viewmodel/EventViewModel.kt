@@ -19,6 +19,11 @@ class EventViewModel(appObj:Application): AndroidViewModel(Application()) {
         return eventRepository.readAllEvents
     }
 
+//    suspend fun fetchOneEvent(id:Int)
+//    {
+//        return eventRepository.readOneEvent(id)
+//    }
+
     fun insertEvent(event: MyEvent){
 
         viewModelScope.launch {

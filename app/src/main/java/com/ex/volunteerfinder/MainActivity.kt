@@ -39,7 +39,7 @@ class MainActivity : ComponentActivity() {
                     ) {
                         LoginText(displayText = "Volunteer Finder")
                         Image(painterResource(R.drawable.icon),"content")
-                        LoginViewer()
+                        //LoginViewer()
 //                        EventMap()
                     }
 

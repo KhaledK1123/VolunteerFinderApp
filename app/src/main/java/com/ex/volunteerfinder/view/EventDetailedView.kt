@@ -12,6 +12,7 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -47,7 +48,8 @@ class EventDetailedView : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    EventDetailedViewScreen()
+                    val id = intent.getIntExtra("id", 0)
+                    EventDetailedViewScreen(id)
                 }
             }
         }
@@ -121,3 +123,70 @@ fun EventDetailedViewScreen() {
     }
 }
 
+@Composable
+fun EventDetailedViewScreen(id:Int) {
+    VolunteerFinderAppTheme() {
+
+        Scaffold(
+            topBar = {
+
+                TopAppBar(
+                    backgroundColor = MaterialTheme.colors.primary,
+                    title = { Text("Event Details") })
+            }
+        ) {
+            // A surface container using the 'background' color from the theme
+            Surface(
+                modifier = Modifier.fillMaxSize(),
+                color = MaterialTheme.colors.background
+            ) {
+                //val event = eventViewModel.fetchOneEvent().observeAsState(arrayListOf())
+                val imgList =
+                    listOf<Int>(R.drawable.mercedes, R.drawable.iphone, R.drawable.soccerevent)
+                Column(
+                    modifier = Modifier.fillMaxSize(),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Column(
+                        verticalArrangement = Arrangement.Top,
+                        modifier = Modifier
+                            .height(175.dp)
+                            .border(2.dp, MaterialTheme.colors.primary)
+
+
+                    ) {
+                        LazyRow {
+                            items(imgList.size) { index ->
+                                //Text(text = donation.images[index])
+                                Image(
+                                    painter = painterResource(id = imgList[index]),
+                                    contentDescription = null,
+                                    modifier = Modifier
+                                        .size(250.dp)
+                                        .padding(8.dp),
+                                    contentScale = ContentScale.Fit
+                                )
+                            }
+                        }
+
+                        //Image(painterResource(R.drawable.soccerevent), "content description")
+                    }
+                    Column() {
+                        CardMessage()
+                        //EventLister()
+                    }
+
+                    Row(
+                        Modifier
+                            .padding(bottom = 55.dp)
+                            .fillMaxHeight(),
+                        horizontalArrangement = Arrangement.SpaceEvenly
+                    ) {
+                        //JoinButton()
+                        MessageButton()
+                    }
+                }
+            }
+        }
+    }
+}

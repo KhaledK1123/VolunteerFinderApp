@@ -71,7 +71,7 @@ fun CancelButton() {
         val context = LocalContext.current
         TextButton(
             onClick = {
-                context.startActivity(Intent(context, MainActivity::class.java))
+                context.startActivity(Intent(context, LoginView::class.java))
             },
 
             ) {
@@ -208,7 +208,7 @@ fun CancelButton() {
                     Toast.makeText(context,"Please fill all inputs ",Toast.LENGTH_SHORT).show()
                 }
                 else{
-                    context.startActivity(Intent(context, MainActivity::class.java))
+                    context.startActivity(Intent(context, LoginView::class.java))
                     Toast.makeText(context,"Password Updated!",Toast.LENGTH_SHORT).show()
                 }
             }

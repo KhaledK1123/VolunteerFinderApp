@@ -52,11 +52,13 @@ fun MessageSummary (conversation: Conversation) {
         ) {
             ProfileImage() //TODO add padding to ProfileImage
             Column(modifier = Modifier.padding(4.dp)) {
-                Text(
-                    text = contact.userName,
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold
-                )
+                contact.userName?.let {
+                    Text(
+                        text = it,
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
                 Text(
                     text = preview,
                     fontSize = 12.sp

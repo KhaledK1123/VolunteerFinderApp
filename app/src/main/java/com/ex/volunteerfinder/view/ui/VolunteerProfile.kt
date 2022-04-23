@@ -312,7 +312,7 @@ fun TableRow(text: String) {
         modifier = Modifier
             .paddingFromBaseline(top = 72.dp)
     )
-} */
+} */ */
 
 
 @Composable
@@ -622,4 +622,4 @@ fun PostSection(
             )
         }
     }
-} */
+}

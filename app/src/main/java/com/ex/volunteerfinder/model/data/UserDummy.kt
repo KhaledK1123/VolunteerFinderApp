@@ -1,7 +1,7 @@
 package com.ex.volunteerfinder.model.data
 
 object UserDummy {
-    val obj = User(id = 0L,
+    val obj = User(id = 0,
         userName = "volunteer",
         password = "password",
         email = "johndoe@gmail.com",

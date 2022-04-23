@@ -11,6 +11,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
@@ -21,6 +22,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
@@ -64,6 +66,8 @@ fun SignUpScreen(userViewModel: UserViewModel) {
 
 
     var primaryColor= Color.Gray
+Scaffold() {
+
 
     Column(
         modifier = Modifier
@@ -86,14 +90,14 @@ fun SignUpScreen(userViewModel: UserViewModel) {
             contentDescription = "Circular Image"
         )
 
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(5.dp))
 
         var username = remember { mutableStateOf("") }
         var email = remember { mutableStateOf("") }
-        var name = remember { mutableStateOf("")}
-        var city = remember { mutableStateOf("")}
-        var state = remember { mutableStateOf("")}
-        var zip = remember { mutableStateOf("")}
+        var name = remember { mutableStateOf("") }
+        var city = remember { mutableStateOf("") }
+        var state = remember { mutableStateOf("") }
+        var zip = remember { mutableStateOf("00000") }
         var password = remember { mutableStateOf("") }
         var passwordConfirm = remember { mutableStateOf("") }
 
@@ -104,17 +108,17 @@ fun SignUpScreen(userViewModel: UserViewModel) {
         OutlinedTextField(
             value = username.value,
             onValueChange = { username.value = it },
-            label = { Text(text = "Name") },
-            placeholder = { Text(text = "Name") },
+            label = { Text(text = "Username") },
+            placeholder = { Text(text = "Username") },
             singleLine = true,
             leadingIcon = {
                 IconButton(onClick = { /*TODO*/ }) {
-                    Icon(imageVector = Icons.Filled.Person, contentDescription = "Person")
+                    Icon(imageVector = Icons.Filled.Person, contentDescription = "Username")
 
                 }
             }
         )
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(5.dp))
 
         OutlinedTextField(
             value = email.value,
@@ -129,63 +133,64 @@ fun SignUpScreen(userViewModel: UserViewModel) {
                 }
             }
         )
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(5.dp))
         OutlinedTextField(
             value = name.value,
             onValueChange = { name.value = it },
-            label = { Text(text = "Email") },
-            placeholder = { Text(text = "Email") },
+            label = { Text(text = "Name") },
+            placeholder = { Text(text = "Name") },
             singleLine = true,
             leadingIcon = {
                 IconButton(onClick = { /*TODO*/ }) {
-                    Icon(imageVector = Icons.Filled.Email, contentDescription = "Email")
+                    Icon(imageVector = Icons.Filled.Email, contentDescription = "Name")
 
                 }
             }
         )
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(5.dp))
         OutlinedTextField(
             value = city.value,
             onValueChange = { city.value = it },
-            label = { Text(text = "Email") },
-            placeholder = { Text(text = "Email") },
+            label = { Text(text = "City") },
+            placeholder = { Text(text = "City") },
             singleLine = true,
             leadingIcon = {
                 IconButton(onClick = { /*TODO*/ }) {
-                    Icon(imageVector = Icons.Filled.Email, contentDescription = "Email")
+                    Icon(imageVector = Icons.Filled.Email, contentDescription = "City")
 
                 }
             }
         )
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(5.dp))
         OutlinedTextField(
             value = state.value,
             onValueChange = { state.value = it },
-            label = { Text(text = "Email") },
-            placeholder = { Text(text = "Email") },
+            label = { Text(text = "State") },
+            placeholder = { Text(text = "State") },
             singleLine = true,
             leadingIcon = {
                 IconButton(onClick = { /*TODO*/ }) {
-                    Icon(imageVector = Icons.Filled.Email, contentDescription = "Email")
+                    Icon(imageVector = Icons.Filled.Email, contentDescription = "State")
 
                 }
             }
         )
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(5.dp))
         OutlinedTextField(
             value = zip.value,
             onValueChange = { zip.value = it },
-            label = { Text(text = "Email") },
-            placeholder = { Text(text = "Email") },
+            label = { Text(text = "Zip Code") },
+            placeholder = { Text(text = "Zip Code") },
             singleLine = true,
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             leadingIcon = {
                 IconButton(onClick = { /*TODO*/ }) {
-                    Icon(imageVector = Icons.Filled.Email, contentDescription = "Email")
+                    Icon(imageVector = Icons.Filled.Email, contentDescription = "Zip Code")
 
                 }
             }
         )
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(5.dp))
 
         OutlinedTextField(
             value = password.value,
@@ -201,7 +206,7 @@ fun SignUpScreen(userViewModel: UserViewModel) {
             },
             trailingIcon = {
                 IconButton(onClick = {
-                    passwordVisibility.value=!passwordVisibility.value
+                    passwordVisibility.value = !passwordVisibility.value
                 }) {
                     Icon(
                         imageVector = vectorResource(id = R.drawable.password),//password drawable
@@ -215,7 +220,7 @@ fun SignUpScreen(userViewModel: UserViewModel) {
             else PasswordVisualTransformation()
         )
 
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(5.dp))
 
         OutlinedTextField(
             value = passwordConfirm.value,
@@ -231,9 +236,9 @@ fun SignUpScreen(userViewModel: UserViewModel) {
             },
             trailingIcon = {
                 IconButton(onClick = {
-                    confirmPasswordVisibility.value=!confirmPasswordVisibility.value
+                    confirmPasswordVisibility.value = !confirmPasswordVisibility.value
                 }) {
-                    val primaryColor= Color.Gray
+                    val primaryColor = Color.Gray
                     Icon(
                         imageVector = vectorResource(id = R.drawable.password), //password drawable
                         tint = if (confirmPasswordVisibility.value) primaryColor else Color.Gray
@@ -246,47 +251,49 @@ fun SignUpScreen(userViewModel: UserViewModel) {
             else PasswordVisualTransformation()
         )
 
-        Spacer(modifier = Modifier.height(25.dp))
+        Spacer(modifier = Modifier.height(10.dp))
         val context = LocalContext.current
         Button(onClick =
         {
 
-            if (username.value.isEmpty()){
-                Toast.makeText(context,"Please fill all inputs ",Toast.LENGTH_SHORT).show()
+            if (username.value.isEmpty()) {
+                Toast.makeText(context, "Please fill all inputs ", Toast.LENGTH_SHORT).show()
+            } else if (email.value.isEmpty()) {
+                Toast.makeText(context, "Please fill all inputs ", Toast.LENGTH_SHORT).show()
+            } else if (name.value.isEmpty()) {
+                Toast.makeText(context, "Please fill all inputs ", Toast.LENGTH_SHORT).show()
+            } else if (city.value.isEmpty()) {
+                Toast.makeText(context, "Please fill all inputs ", Toast.LENGTH_SHORT).show()
+            } else if (state.value.isEmpty()) {
+                Toast.makeText(context, "Please fill all inputs ", Toast.LENGTH_SHORT).show()
+            } else if (zip.value.isEmpty()) {
+                Toast.makeText(context, "Please fill all inputs ", Toast.LENGTH_SHORT).show()
+            } else if (password.value.isEmpty()) {
+                Toast.makeText(context, "Please fill all inputs ", Toast.LENGTH_SHORT).show()
+            } else if (passwordConfirm.value.isEmpty()) {
+                Toast.makeText(context, "Please fill all inputs ", Toast.LENGTH_SHORT).show()
+            } else if (passwordConfirm.value != password.value ) {
+                Toast.makeText(context, "Passwords must match ", Toast.LENGTH_SHORT).show()
+            } else if (username.value == password.value) {
+                Toast.makeText(context, "Username and password can not match", Toast.LENGTH_SHORT).show()
             }
-            else if(email.value.isEmpty()){
-            Toast.makeText(context,"Please fill all inputs ",Toast.LENGTH_SHORT).show()
-            }
-            else if(name.value.isEmpty()){
-                Toast.makeText(context,"Please fill all inputs ",Toast.LENGTH_SHORT).show()
-            }
-            else if(city.value.isEmpty()){
-                Toast.makeText(context,"Please fill all inputs ",Toast.LENGTH_SHORT).show()
-            }
-            else if(state.value.isEmpty()){
-                Toast.makeText(context,"Please fill all inputs ",Toast.LENGTH_SHORT).show()
-            }
-            else if(zip.value.isEmpty()){
-                Toast.makeText(context,"Please fill all inputs ",Toast.LENGTH_SHORT).show()
-            }
-            else if(password.value.isEmpty()){
-                Toast.makeText(context,"Please fill all inputs ",Toast.LENGTH_SHORT).show()
-            }
-            else if(passwordConfirm.value.isEmpty()){
-                Toast.makeText(context,"Please fill all inputs ",Toast.LENGTH_SHORT).show()
-            }
-            else{
-                userViewModel.insertUser(User(
-                    userName = username.value,
-                    email = email.value,
-                    password = password.value,
-                    name = name.value,
-                    city = city.value,
-                    state = state.value,
-                    zipCode = zip.value.toInt()
-                ))
-                context.startActivity(Intent(context, MainActivity::class.java))
-                Toast.makeText(context,"Signed Up Successfully",Toast.LENGTH_SHORT).show()
+//            else if (zip.value < 0) {
+//                Toast.makeText(context, "Passwords must match ", Toast.LENGTH_SHORT).show()
+//            }
+            else {
+                userViewModel.insertUser(
+                    User(
+                        userName = username.value,
+                        email = email.value,
+                        password = password.value,
+                        name = name.value,
+                        city = city.value,
+                        state = state.value,
+                        zipCode = zip.value.toInt()
+                    )
+                )
+                context.startActivity(Intent(context, LoginView::class.java))
+                Toast.makeText(context, "Signed Up Successfully", Toast.LENGTH_SHORT).show()
             }
 
 
@@ -298,7 +305,7 @@ fun SignUpScreen(userViewModel: UserViewModel) {
         CancelButton()
 
     }
-
+}
 }
 
 fun Icon(imageVector: Any, tint: Color) {

@@ -16,20 +16,25 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ex.volunteerfinder.R
 import com.ex.volunteerfinder.model.data.*
+import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
 
 @Composable
 fun ChatCollectionComposable(passedList: List<Conversation>) {
 
     val pencilDrawable = R.drawable.ic_pencil_plus_outline_black_18dp
+    VolunteerFinderAppTheme() {
 
-    Scaffold (
-        topBar = { SearchBar()},
+
+    Scaffold(
+
+        topBar = { SearchBar() },
         bottomBar = { //TODO insert navigator here
-            },
+        },
         floatingActionButton = { NewCircleButton(pencilDrawable) }
     ) {
         Inbox(list = passedList)
     }
+}
 }
 
 @OptIn(ExperimentalMaterialApi::class)

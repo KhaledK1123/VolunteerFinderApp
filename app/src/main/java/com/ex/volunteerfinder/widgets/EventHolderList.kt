@@ -89,7 +89,8 @@ fun EventList(eventViewModel: EventViewModel) {
                                     modifier = Modifier
                                         .weight(2F)
                                         .clickable(onClick = {
-                                            context.startActivity(Intent(context,EventDetailedView::class.java).putExtra("id", event.id))
+                                            context.startActivity(Intent(context,EventDetailedView::class.java)
+                                                .putExtra("id", event.id))
                                         }),
                                     content = {
                                         Spacer(modifier = Modifier.size(8.dp))

@@ -39,7 +39,7 @@ import com.ex.volunteerfinder.view.ui.theme.background
 import com.ex.volunteerfinder.viewmodel.MyEventDetails
 
 
-class EventList : ComponentActivity() {
+class EventListener : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

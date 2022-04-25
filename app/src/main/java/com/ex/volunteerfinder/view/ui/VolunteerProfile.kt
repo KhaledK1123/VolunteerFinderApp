@@ -46,7 +46,12 @@ class VolunteerProfile : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MainScreen()
+            Scaffold(
+
+            ) {
+                MainScreen()
+            }
+
 
         }
             /* Starting below, & for following, 5 lines: replaced ('MainScreen()')

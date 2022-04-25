@@ -188,7 +188,7 @@ fun LoginViewer(userViewModel: UserViewModel) {
                 //This allows the login button to traverse to Home page
                 val log = userList.value
                 log.forEach { user ->
-                    if (!isError && user.userName ==username && user.password ==password) {
+                    if (!isError && user.userName == username && user.password == password) {
 
                         context.startActivity(Intent(context, VolunteerProfile::class.java))
 

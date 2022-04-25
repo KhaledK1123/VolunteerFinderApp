@@ -1,8 +1,12 @@
 package com.ex.volunteerfinder.view
 
 import android.content.Intent
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -56,7 +60,23 @@ fun BottomNavigationBarPreview() {
 
 @Composable
 fun TopBar() {
+//    val navController = rememberNavController()
+//    TopAppBar(
+//        title = { Text(text = "app bar title") },
+//        navigationIcon = if (navController.previousBackStackEntry != null) {
+//            {
+//                IconButton(onClick = { navController.navigateUp() }) {
+//                    Icon(
+//                        imageVector = Icons.Filled.ArrowBack,
+//                        contentDescription = "Back"
+//                    )
+//                }
+//            }
+//        } else {
+//            null
+//        }
 
+//    )
 }
 
 @Preview(showBackground = true)
@@ -71,8 +91,12 @@ fun MainScreen() {
     Scaffold(
         //topBar = { TopBar() },
         bottomBar = { BottomNavigationBar(navController) }
-    ) {
-        Navigation(navController)
+    ) { innerPadding ->
+            // Apply the padding globally to the whole BottomNavScreensController
+            Box(modifier = Modifier.padding(innerPadding)) {
+                Navigation(navController)
+            }
+
     }
 }
 

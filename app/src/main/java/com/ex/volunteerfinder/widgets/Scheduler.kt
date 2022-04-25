@@ -41,7 +41,7 @@ fun dateScheduler():String{
     }) {
         Text(text = "Enter Event Date")
     }
-    Spacer(modifier = Modifier.size(16.dp))
+    Spacer(modifier = Modifier.size(9.dp))
 
     Text(text = "Selected Date: $event",
         fontSize = 15.sp,
@@ -76,12 +76,16 @@ fun timeScheduler():String{
                 else -> meridiem = "AM"
 
             }
-            if(minute ==0){
-                time.value ="$hour:00 $meridiem"
-            }else if(minute < 10){
-                time.value ="$hour:0$minute $meridiem"
-            }else{
-                time.value ="$hour:$minute $meridiem"
+            when {
+                minute ==0 -> {
+                    time.value ="$hour:00 $meridiem"
+                }
+                minute < 10 -> {
+                    time.value ="$hour:0$minute $meridiem"
+                }
+                else -> {
+                    time.value ="$hour:$minute $meridiem"
+                }
             }
 
         },hour,minute,false
@@ -92,11 +96,16 @@ fun timeScheduler():String{
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "Selected Time: ${time.value}")
-        Spacer(modifier = Modifier.size(16.dp))
         Button(onClick = { timePickerDialog.show() }) {
             Text(text = "Select The Time")
         }
+        Spacer(modifier = Modifier.size(9.dp))
+        Text(text = "Selected Time: ${time.value}",
+                fontSize = 15.sp,
+                textAlign = TextAlign.Center
+        )
+
+
     }
     return time.value
 }

@@ -95,7 +95,23 @@ fun EventList(eventViewModel: EventViewModel) {
                                     content = {
                                         Spacer(modifier = Modifier.size(8.dp))
                                         Text(text = "Name: " + event.name?:"")
-                                        Text(text = "Address: " + "${event.address} " +"${event.city}, " +"${event.state} "+"${event.zipCode}")
+                                        when {
+                                            event.zipCode!! <10 -> {
+                                                Text(text = "Address: " + "${event.address} " +"${event.city}, " +"${event.state} "+"0000${event.zipCode}")
+                                            }
+                                            event.zipCode!!<100 -> {
+                                                Text(text = "Address: " + "${event.address} " +"${event.city}, " +"${event.state} "+"000${event.zipCode}")
+                                            }
+                                            event.zipCode!!<1000 -> {
+                                                Text(text = "Address: " + "${event.address} " +"${event.city}, " +"${event.state} "+"00${event.zipCode}")
+                                            }
+                                            event.zipCode!!<10000 -> {
+                                                Text(text = "Address: " + "${event.address} " +"${event.city}, " +"${event.state} "+"0${event.zipCode}")
+                                            }
+                                            else -> {
+                                                Text(text = "Address: " + "${event.address} " +"${event.city}, " +"${event.state} "+"${event.zipCode}")
+                                            }
+                                        }
                                         Text(text = "Leader: " + "${event.leadership}")
                                         Text(text = "Date: " + "${event.date} " + "Time: " + "${event.time}")
                                         //Insert clickeable hypertext from Login but redirect it to edit event

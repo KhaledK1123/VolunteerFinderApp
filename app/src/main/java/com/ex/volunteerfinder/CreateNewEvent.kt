@@ -10,6 +10,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
@@ -74,24 +75,24 @@ fun stateDropDownMenu(list: List<String>,defaultText:String):String{
     }
 
     Column(modifier = Modifier
-        .padding(20.dp)
+        .padding(10.dp)
     ) {
         Box(modifier = Modifier
-            .fillMaxWidth()
+
             .onGloballyPositioned { coordinates ->
                 textFilledSize = coordinates.size.toSize()
             }
-            .border(border = BorderStroke(2.dp, Color.Black))
-            .padding(3.dp)
+
         ) {
-            Row(modifier = Modifier
-                .fillMaxWidth(),
+            Row(modifier = Modifier,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                TextField(value = state,
+                OutlinedTextField(
+                    value = state,
                     onValueChange = {state = it},
                     modifier = Modifier
-                        .fillMaxWidth()
+                        .width(220.dp)
+                        .height(55.dp)
                         .onGloballyPositioned { coordinates ->
                             textFilledSize = coordinates.size.toSize()
                         },
@@ -158,16 +159,20 @@ fun CreateNewEventScreen(eventViewModel: EventViewModel){
             "Washington", "West Virginia", "Wisconsin", "Wyoming"
     )
 
+
     Column {
         TopAppBar(title = { Text(text = "Create New Event")})
 
-        Column(modifier = Modifier,horizontalAlignment = Alignment.CenterHorizontally,verticalArrangement = Arrangement.Center) {
+        Column(modifier = Modifier.fillMaxSize(),horizontalAlignment = Alignment.CenterHorizontally,verticalArrangement = Arrangement.Center) {
             //Event Name
             val eventName = rememberSaveable {
                 mutableStateOf("")
             }
-            TextField(value = eventName.value,
+            OutlinedTextField(modifier = Modifier.width(220.dp)
+                .height(55.dp),
+                value = eventName.value,
                 onValueChange = {eventName.value = it},
+                label = {Text(text = "Event Name")},
                 placeholder = { Text(text = "Event Name")},
                 singleLine = true,
                 keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
@@ -175,12 +180,16 @@ fun CreateNewEventScreen(eventViewModel: EventViewModel){
                     onDone = {keyboardController?.hide()}
                 )
             )
+//            Spacer(modifier = Modifier.height(5.dp))
             //Event Sponsor
             val eventSponsor = rememberSaveable {
                 mutableStateOf("")
             }
-            TextField(value = eventSponsor.value,
+            OutlinedTextField(modifier = Modifier.width(220.dp)
+                .height(55.dp),
+                value = eventSponsor.value,
                 onValueChange = {eventSponsor.value = it},
+                label ={Text(text = "Event Sponsor")},
                 placeholder = { Text(text = "Event Sponsor")},
                 singleLine = true,
                 keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
@@ -188,12 +197,16 @@ fun CreateNewEventScreen(eventViewModel: EventViewModel){
                     onDone = {keyboardController?.hide()}
                 )
             )
+//            Spacer(modifier = Modifier.height(5.dp))
             //Head person of the event
             val leader = rememberSaveable {
                 mutableStateOf("")
             }
-            TextField(value = leader.value,
+            OutlinedTextField(modifier = Modifier.width(220.dp)
+                .height(55.dp),
+                value = leader.value,
                 onValueChange = {leader.value = it},
+                label = {Text(text = "Leader")},
                 placeholder = { Text(text = "Leader")},
                 singleLine = true,
                 keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
@@ -201,11 +214,15 @@ fun CreateNewEventScreen(eventViewModel: EventViewModel){
                     onDone = {keyboardController?.hide()}
                 )
             )
+//            Spacer(modifier = Modifier.height(5.dp))
             val street = rememberSaveable {
                 mutableStateOf("")
             }
-            TextField(value = street.value,
+            OutlinedTextField(modifier = Modifier.width(220.dp)
+                .height(55.dp),
+                value = street.value,
                 onValueChange = {street.value = it},
+                label = {Text(text = "Street")},
                 placeholder = { Text(text = "Street")},
                 singleLine = true,
                 keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
@@ -213,11 +230,15 @@ fun CreateNewEventScreen(eventViewModel: EventViewModel){
                     onDone = {keyboardController?.hide()}
                 )
             )
+//            Spacer(modifier = Modifier.height(5.dp))
             val city = rememberSaveable {
                 mutableStateOf("")
             }
-            TextField(value = city.value,
+            OutlinedTextField(modifier = Modifier.width(220.dp)
+                .height(55.dp),
+                value = city.value,
                 onValueChange = {city.value = it},
+                label ={Text(text = "City")},
                 placeholder = { Text(text = "City")},
                 singleLine = true,
                 keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
@@ -229,8 +250,11 @@ fun CreateNewEventScreen(eventViewModel: EventViewModel){
             val zip = rememberSaveable {
                 mutableStateOf("")
             }
-            TextField(value = zip.value,
+            OutlinedTextField(modifier = Modifier.width(220.dp)
+                .height(55.dp),
+                value = zip.value,
                 onValueChange = {zip.value = it},
+                label ={Text(text = "Zip Code")},
                 placeholder = { Text(text = "Zip Code")},
                 singleLine = true,
                 keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
@@ -239,19 +263,16 @@ fun CreateNewEventScreen(eventViewModel: EventViewModel){
                 )
             )
 
-//            stateDropDownMenu(list = stateList, defaultText = "Select or Enter State")
 
             var stateSelected = stateDropDownMenu(list = stateList, defaultText = "Select or Enter State")
 
-            Spacer(modifier = Modifier.size(4.dp))
-            
+
+
             var date = dateScheduler()
-            
-            Spacer(modifier = Modifier.size(5.dp))
+
             
             var time = timeScheduler()
-            
-//            Spacer(modifier = Modifier.size(8.dp))
+
 
             Button(onClick = {
                 if (eventName.value.equals("")
@@ -267,7 +288,9 @@ fun CreateNewEventScreen(eventViewModel: EventViewModel){
                 ){
                     //This alerts that the Creation of the Event is not completed
                     Toast.makeText(context,"Event information is incomplete",Toast.LENGTH_LONG).show()
-                }else if (!checkNumber(zip.value)) {
+                }else if (!checkNumber(zip.value)
+                    || zip.value.toInt() >= 100000
+                    || zip.value.toInt() <0) {
                     Toast.makeText(context,"Invalid Zip Code",Toast.LENGTH_LONG).show()
                 } else{
                     eventViewModel.insertEvent(

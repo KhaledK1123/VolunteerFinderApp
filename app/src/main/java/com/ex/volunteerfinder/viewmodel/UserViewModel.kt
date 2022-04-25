@@ -29,4 +29,10 @@ class UserViewModel(app:Application):AndroidViewModel(app) {
             userRepository.deleteUserByName(name)
         }
     }
+
+    fun updateUser(user: User){
+        viewModelScope.launch {
+            userRepository.updateUser(user)
+        }
+    }
 }

@@ -1,10 +1,7 @@
 package com.ex.volunteerfinder.dao
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.ex.volunteerfinder.model.data.User
 
 @Dao
@@ -15,6 +12,9 @@ interface UserDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertUser(user: User)
+
+    @Update(User::class)
+    suspend fun updateUser(vararg user: User)
 
     @Query("DELETE FROM user where name =:name")
     suspend fun deleteUserByName(name:String)

@@ -16,6 +16,7 @@ import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.runtime.*
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -30,17 +31,21 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.ViewModelProvider
 import com.ex.volunteerfinder.MainActivity
 import com.ex.volunteerfinder.R
+import com.ex.volunteerfinder.model.data.User
 import com.ex.volunteerfinder.vectorResource
 import com.ex.volunteerfinder.view.LoginView
 import org.w3c.dom.Text
 import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
+import com.ex.volunteerfinder.viewmodel.UserViewModel
 
 class ForgotPassword: ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         setContent {
             VolunteerFinderAppTheme {
                 Surface(
@@ -53,7 +58,7 @@ class ForgotPassword: ComponentActivity() {
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center
                     ) {
-                        SubmitButton()
+                        SubmitButton(userViewModel)
                     }
                 }
             }
@@ -83,9 +88,11 @@ fun CancelButton() {
 
 
     @Composable
-    fun SubmitButton() {
+    fun SubmitButton(userViewModel: UserViewModel) {
+
 
         var primaryColor= Color.Gray
+        val userList = userViewModel.fetchAllUsers().observeAsState(arrayListOf())
 
         Column(
             modifier = Modifier
@@ -198,20 +205,36 @@ fun CancelButton() {
             Button(onClick =
             {
 
-                if (username.value.isEmpty()){
-                    Toast.makeText(context,"Please fill all inputs ",Toast.LENGTH_SHORT).show()
-                }
-                else if(password.value.isEmpty()){
-                    Toast.makeText(context,"Please fill all inputs ",Toast.LENGTH_SHORT).show()
-                }
-                else if(passwordConfirm.value.isEmpty()){
-                    Toast.makeText(context,"Please fill all inputs ",Toast.LENGTH_SHORT).show()
-                }
-                else{
-                    context.startActivity(Intent(context, LoginView::class.java))
-                    Toast.makeText(context,"Password Updated!",Toast.LENGTH_SHORT).show()
+                val change = userList.value
+                change.forEach {user ->
+                    if (username.value.isEmpty()){
+                        Toast.makeText(context,"Please fill all inputs ",Toast.LENGTH_SHORT).show()
+                    }
+                    else if(password.value.isEmpty()){
+                        Toast.makeText(context,"Please fill all inputs ",Toast.LENGTH_SHORT).show()
+                    }
+                    else if(passwordConfirm.value.isEmpty()){
+                        Toast.makeText(context,"Please fill all inputs ",Toast.LENGTH_SHORT).show()
+                    }
+                    else if (!username.value.equals(user.userName)){
+                        Toast.makeText(context,"Username is not recognized",Toast.LENGTH_SHORT).show()
+                    }
+                    else{
+                        userViewModel.updateUser(User(
+                            userName = user.userName,
+                            password = password.value,
+                            email = user.email,
+                            name = user.name,
+                            city = user.city,
+                            state = user.state,
+                            zipCode = user.zipCode
+                        ))
+                        context.startActivity(Intent(context, LoginView::class.java))
+                        Toast.makeText(context,"Password Updated!",Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
+
             ) {
                 Text(text = "Submit")
 

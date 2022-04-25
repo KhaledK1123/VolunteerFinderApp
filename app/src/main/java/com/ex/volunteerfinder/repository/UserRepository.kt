@@ -23,4 +23,8 @@ class UserRepository(application: Application) {
     suspend fun insertUser(user: User){
         userDao.insertUser(user)
     }
+
+    suspend fun updateUser(user: User){
+        userDao.updateUser(user)
+    }
 }

@@ -200,16 +200,41 @@ fun EventDetailedViewScreen(id:Int, name:String?, sponsor:String?, leader:String
                         //Text(text = "2$message")
                         //CardMessage()
                         //EventLister()
+
+                        //Old Format-------------------------------------------------------------
+//                        Text(text = "Name: $name")
+//                        Text(text = "Address: $address, $city, $state, $zip")
+//                        //Text(text = "name: $city")
+//                        Text(text = "Leader: $leader")
+////                        Text(text = "name: $")
+////                        Text(text = "name: $name")
+////                        Text(text = "name: $name")
+//                        Text(text = "Sponsor: $sponsor")
+//                        Text(text = "Date: $date")
+//                        Text(text = "Time: $time")
+
+                        //New Format--------------------------------------------
                         Text(text = "Name: $name")
-                        Text(text = "Address: $address, $city, $state, $zip")
-                        //Text(text = "name: $city")
+                        when {
+                            zip <10 -> {
+                                Text(text = "Address: " + "$address " +"$city, " +"$state "+"0000${zip}")
+                            }
+                            zip<100 -> {
+                                Text(text = "Address: " + "$address " +"$city, " +"$state "+"000${zip}")
+                            }
+                            zip<1000 -> {
+                                Text(text = "Address: " + "$address " +"$city, " +"$state "+"00${zip}")
+                            }
+                            zip<10000 -> {
+                                Text(text = "Address: " + "$address " +"$city, " +"$state "+"0${zip}")
+                            }
+                            else -> {
+                                Text(text = "Address: $address, $city, $state $zip")
+                            }
+                        }
                         Text(text = "Leader: $leader")
-//                        Text(text = "name: $")
-//                        Text(text = "name: $name")
-//                        Text(text = "name: $name")
                         Text(text = "Sponsor: $sponsor")
-                        Text(text = "Date: $date")
-                        Text(text = "Time: $time")
+                        Text(text = "Date: $date Time: $time")
 
                     }
 

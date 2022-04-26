@@ -1,6 +1,8 @@
 package com.ex.volunteerfinder.view
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -8,13 +10,9 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
-
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -28,11 +26,14 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.ViewModelProvider
 import com.ex.volunteerfinder.R
 import com.ex.volunteerfinder.SignUp
+import com.ex.volunteerfinder.model.data.StoreUserInfo
 import com.ex.volunteerfinder.view.ui.ForgotPassword
 import com.ex.volunteerfinder.view.ui.VolunteerProfile
 import com.ex.volunteerfinder.view.ui.theme.Shapes
 import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
 import com.ex.volunteerfinder.viewmodel.UserViewModel
+import kotlinx.coroutines.launch
+
 
 class LoginView : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -133,7 +134,10 @@ fun CreateAccountButton() {
 
 @Composable
 fun LoginViewer(userViewModel: UserViewModel) {
-    LocalContext.current
+    val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+    // we instantiate the saveEmail class
+    val dataStore = StoreUserInfo(context)
     val userList = userViewModel.fetchAllUsers().observeAsState(arrayListOf())
     Column(
 
@@ -189,8 +193,28 @@ fun LoginViewer(userViewModel: UserViewModel) {
                 val log = userList.value
                 log.forEach { user ->
                     if (!isError && user.userName == username && user.password == password) {
+//                        val prefs: SharedPreferences = this.getSharedPreferences(
+//                            "com.example.app", Context.MODE_PRIVATE
+//                        )
+//                        prefs.edit().putString("name", user.userName).apply()
+                        scope.launch {
+                            user.userName?.let { dataStore.saveUsername(it) }
+                            user.name?.let { dataStore.saveName(it) }
+                            user.city?.let { dataStore.saveCity(it) }
+                            user.email?.let { dataStore.saveEmail(it) }
+                            user.zipCode?.let { dataStore.saveZipCode(it) }
+                            user.state?.let { dataStore.saveState(it) }
+                        }
 
-                        context.startActivity(Intent(context, VolunteerProfile::class.java))
+                        context.startActivity(Intent(context, VolunteerProfile::class.java)
+                            .putExtra("username", user.userName)
+                            .putExtra("email", user.email)
+                            .putExtra("name", user.name)
+                            .putExtra("city", user.city)
+                            .putExtra("zip", user.zipCode)
+                            .putExtra("state", user.state)
+                            .putExtra("username1", username)
+                            .putExtra("password1", password))
 
                         Toast.makeText(context, "Login Successful!", Toast.LENGTH_SHORT).show()
                     }

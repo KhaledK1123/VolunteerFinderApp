@@ -29,6 +29,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardCapitalization
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.toSize
@@ -92,7 +94,7 @@ fun stateDropDownMenu(list: List<String>,defaultText:String):String{
                     onValueChange = {state = it},
                     modifier = Modifier
                         .width(220.dp)
-                        .height(55.dp)
+                        .height(60.dp)
                         .onGloballyPositioned { coordinates ->
                             textFilledSize = coordinates.size.toSize()
                         },
@@ -169,7 +171,7 @@ fun CreateNewEventScreen(eventViewModel: EventViewModel){
                 mutableStateOf("")
             }
             OutlinedTextField(modifier = Modifier.width(220.dp)
-                .height(55.dp),
+                .height(60.dp),
                 value = eventName.value,
                 onValueChange = {eventName.value = it},
                 label = {Text(text = "Event Name")},
@@ -186,7 +188,7 @@ fun CreateNewEventScreen(eventViewModel: EventViewModel){
                 mutableStateOf("")
             }
             OutlinedTextField(modifier = Modifier.width(220.dp)
-                .height(55.dp),
+                .height(60.dp),
                 value = eventSponsor.value,
                 onValueChange = {eventSponsor.value = it},
                 label ={Text(text = "Event Sponsor")},
@@ -203,7 +205,7 @@ fun CreateNewEventScreen(eventViewModel: EventViewModel){
                 mutableStateOf("")
             }
             OutlinedTextField(modifier = Modifier.width(220.dp)
-                .height(55.dp),
+                .height(60.dp),
                 value = leader.value,
                 onValueChange = {leader.value = it},
                 label = {Text(text = "Leader")},
@@ -219,7 +221,7 @@ fun CreateNewEventScreen(eventViewModel: EventViewModel){
                 mutableStateOf("")
             }
             OutlinedTextField(modifier = Modifier.width(220.dp)
-                .height(55.dp),
+                .height(60.dp),
                 value = street.value,
                 onValueChange = {street.value = it},
                 label = {Text(text = "Street")},
@@ -235,7 +237,7 @@ fun CreateNewEventScreen(eventViewModel: EventViewModel){
                 mutableStateOf("")
             }
             OutlinedTextField(modifier = Modifier.width(220.dp)
-                .height(55.dp),
+                .height(60.dp),
                 value = city.value,
                 onValueChange = {city.value = it},
                 label ={Text(text = "City")},
@@ -251,13 +253,14 @@ fun CreateNewEventScreen(eventViewModel: EventViewModel){
                 mutableStateOf("")
             }
             OutlinedTextField(modifier = Modifier.width(220.dp)
-                .height(55.dp),
+                .height(60.dp),
                 value = zip.value,
                 onValueChange = {zip.value = it},
                 label ={Text(text = "Zip Code")},
                 placeholder = { Text(text = "Zip Code")},
                 singleLine = true,
-                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
+                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done,
+                    keyboardType = KeyboardType.Number),
                 keyboardActions = KeyboardActions(
                     onDone = {keyboardController?.hide()}
                 )

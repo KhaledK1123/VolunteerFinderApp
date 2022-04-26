@@ -16,8 +16,8 @@ class UserRepository(application: Application) {
     }
     val readAllUsers:LiveData<List<User>> =userDao.fetchAllUsers()
 
-    suspend fun deleteUserByName(name:String){
-        userDao.deleteUserByName(name)
+    suspend fun deleteUser(id:Int){
+        userDao.deleteUser(id)
     }
 
     suspend fun insertUser(user: User){

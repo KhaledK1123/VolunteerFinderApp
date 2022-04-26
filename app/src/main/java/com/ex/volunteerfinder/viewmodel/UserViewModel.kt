@@ -24,9 +24,9 @@ class UserViewModel(app:Application):AndroidViewModel(app) {
         }
     }
 
-    fun deleteUserByName(name:String){
+    fun deleteUser(id:Int){
         viewModelScope.launch {
-            userRepository.deleteUserByName(name)
+            userRepository.deleteUser(id)
         }
     }
 

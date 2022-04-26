@@ -16,6 +16,6 @@ interface UserDao {
     @Update(User::class)
     suspend fun updateUser(vararg user: User)
 
-    @Query("DELETE FROM user where name =:name")
-    suspend fun deleteUserByName(name:String)
+    @Query("DELETE FROM user where id =:id")
+    suspend fun deleteUser(id:Int)
 }

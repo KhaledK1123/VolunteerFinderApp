@@ -220,7 +220,7 @@ fun CancelButton() {
                         Toast.makeText(context,"Username is not recognized",Toast.LENGTH_SHORT).show()
                     }
                     else{
-                        userViewModel.updateUser(User(
+                        userViewModel.insertUser(User(
                             userName = user.userName,
                             password = password.value,
                             email = user.email,
@@ -229,6 +229,7 @@ fun CancelButton() {
                             state = user.state,
                             zipCode = user.zipCode
                         ))
+                        userViewModel.deleteUser(user.id)
                         context.startActivity(Intent(context, LoginView::class.java))
                         Toast.makeText(context,"Password Updated!",Toast.LENGTH_SHORT).show()
                     }

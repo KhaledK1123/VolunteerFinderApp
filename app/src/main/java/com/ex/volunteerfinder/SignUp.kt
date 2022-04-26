@@ -142,7 +142,7 @@ Scaffold() {
             singleLine = true,
             leadingIcon = {
                 IconButton(onClick = { /*TODO*/ }) {
-                    Icon(imageVector = Icons.Filled.Email, contentDescription = "Name")
+                    Icon(imageVector = Icons.Filled.Face, contentDescription = "Name")
 
                 }
             }
@@ -156,7 +156,7 @@ Scaffold() {
             singleLine = true,
             leadingIcon = {
                 IconButton(onClick = { /*TODO*/ }) {
-                    Icon(imageVector = Icons.Filled.Email, contentDescription = "City")
+                    Icon(imageVector = Icons.Filled.Home, contentDescription = "City")
 
                 }
             }
@@ -170,7 +170,7 @@ Scaffold() {
             singleLine = true,
             leadingIcon = {
                 IconButton(onClick = { /*TODO*/ }) {
-                    Icon(imageVector = Icons.Filled.Email, contentDescription = "State")
+                    Icon(imageVector = Icons.Filled.Home, contentDescription = "State")
 
                 }
             }
@@ -185,7 +185,7 @@ Scaffold() {
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             leadingIcon = {
                 IconButton(onClick = { /*TODO*/ }) {
-                    Icon(imageVector = Icons.Filled.Email, contentDescription = "Zip Code")
+                    Icon(imageVector = Icons.Filled.Star, contentDescription = "Zip Code")
 
                 }
             }

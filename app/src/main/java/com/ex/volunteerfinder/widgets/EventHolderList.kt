@@ -94,7 +94,7 @@ fun EventList(eventViewModel: EventViewModel) {
                                         }),
                                     content = {
                                         Spacer(modifier = Modifier.size(8.dp))
-                                        Text(text = "Name: " + event.name?:"")
+                                        Text(text = "Event: " + event.name?:"")
                                         when {
                                             event.zipCode!! <10 -> {
                                                 Text(text = "Address: " + "${event.address} " +"${event.city}, " +"${event.state} "+"0000${event.zipCode}")
@@ -113,6 +113,7 @@ fun EventList(eventViewModel: EventViewModel) {
                                             }
                                         }
                                         Text(text = "Leader: " + "${event.leadership}")
+                                        Text(text = "Sponsor: " + "${event.sponsor}")
                                         Text(text = "Date: " + "${event.date} " + "Time: " + "${event.time}")
                                         //Insert clickeable hypertext from Login but redirect it to edit event
                                     }

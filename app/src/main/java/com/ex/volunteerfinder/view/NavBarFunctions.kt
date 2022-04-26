@@ -8,6 +8,7 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -28,12 +29,15 @@ import com.ex.volunteerfinder.model.data.MessageDummy
 import com.ex.volunteerfinder.model.data.UserDummy
 import com.ex.volunteerfinder.view.BottomNavigationBar
 import com.ex.volunteerfinder.view.ui.ProfileScreen
+import com.ex.volunteerfinder.view.ui.VolunteerProfile
 import com.ex.volunteerfinder.view.ui.composables.ChatCollectionComposable
 
 @Composable
 fun Navigation(navController: NavHostController) {
     NavHost(navController, startDestination = NavigationItem.Profile.route) {
         composable(NavigationItem.Profile.route) {
+//            val context = LocalContext.current
+//            context.startActivity(Intent(context, VolunteerProfile::class.java))
             ProfileScreen()
         }
         composable(NavigationItem.Events.route) {

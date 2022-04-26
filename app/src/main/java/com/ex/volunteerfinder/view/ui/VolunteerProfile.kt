@@ -15,6 +15,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -32,12 +33,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.ViewModelProvider
 import com.ex.volunteerfinder.ImageWithText
 import com.ex.volunteerfinder.MainActivity
 import com.ex.volunteerfinder.R
 import com.ex.volunteerfinder.SignUp
 import com.ex.volunteerfinder.view.MainScreen
 import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
+import com.ex.volunteerfinder.viewmodel.UserViewModel
 
 /* Richard's idea: 'Composables' in THIS file, going forward; when calling 'ProfileImage()', here,
 have "Boolean=true" */
@@ -45,19 +48,22 @@ class VolunteerProfile : ComponentActivity() {
     // @ExperimentalFoundationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //val userViewModel = ViewModelProvider(this)[UserViewModel::class.java]
         val bundle = intent.extras
         //val username = bundle!!.getInt("id")
         val username = bundle?.getString("username")
         val name = bundle?.getString("name")
         val email = bundle?.getString("email")
         val state = bundle?.getString("state")
-        val zip = bundle?.getString("zip")
+        val zip = bundle?.getInt("zip")
         val city = bundle?.getString("city")
+        val username1 = bundle?.getString("username1")
+        val password1 = bundle?.getString("password1")
         setContent {
-            Scaffold(
-
-            ) {
+            Scaffold {
                 //Text(text = "$username")
+                ProfileScreen()
+                //ProfileScreen(username, name, email, state, zip, city)
                 MainScreen()
 
             }
@@ -83,6 +89,88 @@ fun PreviewProfileImage() {
 
 
 @Composable
+fun ProfileScreen(username:String?, name:String?, email:String?, state:String?, zip:Int?, city:String?) {
+    VolunteerFinderAppTheme() {
+
+
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            //verticalArrangement = Arrangement.Top,
+            modifier = Modifier
+                .fillMaxSize()
+                .background(colorResource(id = R.color.white))
+                .wrapContentSize(Alignment.TopCenter)
+        ) {
+            Scaffold(
+                topBar = {
+
+                    TopAppBar(
+                        backgroundColor = MaterialTheme.colors.primary,
+                        title = { Text("Profile") })
+                }
+            )
+            {
+                Column(Modifier.fillMaxWidth()) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 20.dp)
+                    ) {
+                        RoundImage(
+                            image = painterResource(id = R.drawable.img2),
+                            modifier = Modifier
+                                .size(100.dp)
+                                .weight(3f)
+                        )
+                        Spacer(modifier = Modifier.width(16.dp))
+                        StatSection(modifier = Modifier.weight(7f))
+                    }
+
+                    Spacer(modifier = Modifier.height(10.dp))
+                    ProfileDescription(
+                        displayName = "$name",
+                        username = "$username",
+                        email = "$email",
+                        address = "$city, $state, $zip",
+                        donationCount = 18
+                    )
+                    Column(
+
+                        modifier = Modifier
+                            .fillMaxHeight()
+                            .padding(bottom = 75.dp),
+                        Arrangement.Top,
+                        Alignment.CenterHorizontally
+                    ) {
+                        belowProfile()
+                    }
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        Arrangement.Bottom,
+                        Alignment.Start
+
+                    ) {
+                        val context = LocalContext.current
+                        TextButton(
+                            onClick = {
+                                //context.startActivity(Intent(context, EditProfileView::class.java))
+                            },
+                        ) {
+                            Text(
+                                "Edit Profile",
+                                style = MaterialTheme.typography.button,
+                                color = Color(0xFF673AB7)
+                            )
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@Composable
 fun ProfileScreen() {
     VolunteerFinderAppTheme() {
 
@@ -95,92 +183,80 @@ fun ProfileScreen() {
                 .background(colorResource(id = R.color.white))
                 .wrapContentSize(Alignment.TopCenter)
         ) {
-            //SimpleText2("Donate Item")
+            Scaffold(
+                topBar = {
 
-            //SubmitButton2()
-
-            ProfileSection()
-        }
-    }
-}
-@Preview(showBackground = true)
-@Composable
-fun ProfileScreenPreview() {
-    VolunteerProfile()
-}
-
-@Composable
-fun ProfileSection(){
-    VolunteerFinderAppTheme() {
-
-        Scaffold(
-            topBar = {
-
-                TopAppBar(
-                    backgroundColor = MaterialTheme.colors.primary,
-                    title = { Text("Profile") })
-            }
-        )
-        {
-            Column(Modifier.fillMaxWidth()) {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 20.dp)
-                ) {
-                    RoundImage(
-                        image = painterResource(id = R.drawable.img2),
+                    TopAppBar(
+                        backgroundColor = MaterialTheme.colors.primary,
+                        title = { Text("Profile") })
+                }
+            )
+            {
+                Column(Modifier.fillMaxWidth()) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier
-                            .size(100.dp)
-                            .weight(3f)
-                    )
-                    Spacer(modifier = Modifier.width(16.dp))
-                    StatSection(modifier = Modifier.weight(7f))
-                }
-
-                Spacer(modifier = Modifier.height(10.dp))
-                ProfileDescription(
-                    displayName = "John Adams",
-                    username = "AdamsApple74",
-                    email = "JohnnyBoy74@gmail.com",
-                    address = "47129 Cabron Ave, Winchester, CA, 92596",
-                    donationCount = 18
-                )
-                Column(
-
-                    modifier = Modifier
-                        .fillMaxHeight()
-                        .padding(bottom = 75.dp),
-                    Arrangement.Top,
-                    Alignment.CenterHorizontally
-                ) {
-                    belowProfile()
-                }
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                    Arrangement.Bottom,
-                    Alignment.Start
-
-                ) {
-                    val context = LocalContext.current
-                    TextButton(
-                        onClick = {
-                            //context.startActivity(Intent(context, EditProfileView::class.java))
-                        },
+                            .fillMaxWidth()
+                            .padding(horizontal = 20.dp)
                     ) {
-                        Text(
-                            "Edit Profile",
-                            style = MaterialTheme.typography.button,
-                            color = Color(0xFF673AB7)
+                        RoundImage(
+                            image = painterResource(id = R.drawable.img2),
+                            modifier = Modifier
+                                .size(100.dp)
+                                .weight(3f)
                         )
+                        Spacer(modifier = Modifier.width(16.dp))
+                        StatSection(modifier = Modifier.weight(7f))
+                    }
+                    val context = LocalContext.current
+                    Spacer(modifier = Modifier.height(10.dp))
+                    TextButton(onClick = {
+                        context.startActivity(Intent(context, ProfileDetails::class.java))
+                    }) {
+                        Text(text = "View Profile Details")
+                    }
+                    Column(
+
+                        modifier = Modifier
+                            .fillMaxHeight()
+                            .padding(bottom = 75.dp),
+                        Arrangement.Top,
+                        Alignment.CenterHorizontally
+                    ) {
+                        belowProfile()
+                    }
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        Arrangement.Bottom,
+                        Alignment.Start
+
+                    ) {
+                        val context = LocalContext.current
+                        TextButton(
+                            onClick = {
+                                //context.startActivity(Intent(context, EditProfileView::class.java))
+                            },
+                        ) {
+                            Text(
+                                "Edit Profile",
+                                style = MaterialTheme.typography.button,
+                                color = Color(0xFF673AB7)
+                            )
+                        }
                     }
                 }
             }
         }
     }
 }
+
+@Preview(showBackground = true)
+@Composable
+fun ProfileScreenPreview() {
+    VolunteerProfile()
+}
+
 @Composable
 fun RoundImage(
     image: Painter,

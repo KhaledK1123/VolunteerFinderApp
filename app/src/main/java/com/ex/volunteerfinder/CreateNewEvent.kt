@@ -15,6 +15,7 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.runtime.*
@@ -36,6 +37,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.toSize
 import androidx.lifecycle.ViewModelProvider
 import com.ex.volunteerfinder.model.data.MyEvent
+import com.ex.volunteerfinder.view.ui.VolunteerProfile
 import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
 import com.ex.volunteerfinder.viewmodel.EventViewModel
 import com.ex.volunteerfinder.widgets.dateScheduler
@@ -163,7 +165,23 @@ fun CreateNewEventScreen(eventViewModel: EventViewModel){
 
 
     Column {
-        TopAppBar(title = { Text(text = "Create New Event")})
+        TopAppBar(title = { Text(text = "Create New Event")},
+        navigationIcon = {
+            val context = LocalContext.current
+            IconButton(onClick = {
+                context.startActivity(
+                    Intent(
+                        context,
+                        EventList::class.java
+                    )
+                )
+            }) {
+                Icon(
+                    imageVector = Icons.Filled.ArrowBack,
+                    contentDescription = "Back"
+                )
+            }
+        })
 
         Column(modifier = Modifier.fillMaxSize(),horizontalAlignment = Alignment.CenterHorizontally,verticalArrangement = Arrangement.Center) {
             //Event Name

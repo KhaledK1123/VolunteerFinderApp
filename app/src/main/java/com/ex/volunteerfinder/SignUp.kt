@@ -299,6 +299,7 @@ Scaffold() {
                     .putExtra("city", city.value)
                     .putExtra("zip", zip.value)
                     .putExtra("state", state.value))
+                    //.putExtra("password", password.value)
                 Toast.makeText(context, "Signed Up Successfully", Toast.LENGTH_SHORT).show()
             }
 

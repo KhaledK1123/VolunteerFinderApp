@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.sp
 import com.ex.volunteerfinder.R
 import com.ex.volunteerfinder.model.data.DummyDonation
 import com.ex.volunteerfinder.model.data.EventImg
+import com.ex.volunteerfinder.view.CardMessage
 import com.ex.volunteerfinder.view.ui.theme.Shapes
 import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
 import com.ex.volunteerfinder.view.ui.theme.background
@@ -108,38 +109,7 @@ fun EventLister(eventsImg: EventImg.EventImg)
     }
 }
 
-@Composable
-fun CardMessage() {
-    Card(
-        elevation = 10.dp,
-        modifier = Modifier.padding(10.dp),
-        backgroundColor = background,
-        border = BorderStroke(
-            1.dp,
-            MaterialTheme.colors.primaryVariant
-        )
-    ) {
 
-        //.fillMaxWidth()
-        Column(
-            modifier = Modifier.padding(100.dp)
-        ) {
-
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-            ) {
-                Text(
-                    text = "Message",
-                    color = Color.White,
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier.padding(8.dp)
-                )
-            }
-        }
-    }
-}
 @Preview
 @Composable
 fun MessageButton() {

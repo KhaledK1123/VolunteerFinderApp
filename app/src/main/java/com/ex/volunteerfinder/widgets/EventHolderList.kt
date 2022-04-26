@@ -90,7 +90,17 @@ fun EventList(eventViewModel: EventViewModel) {
                                         .weight(2F)
                                         .clickable(onClick = {
                                             context.startActivity(Intent(context,EventDetailedView::class.java)
-                                                .putExtra("id", event.id))
+                                                .putExtra("id", event.id)
+                                                .putExtra("address", event.address)
+                                                .putExtra("city", event.city)
+                                                .putExtra("date", event.date)
+                                                .putExtra("leadership", event.leadership)
+                                                .putExtra("name", event.name)
+                                                .putExtra("sponsor", event.sponsor)
+                                                .putExtra("state", event.state)
+                                                .putExtra("time", event.time)
+                                                .putExtra("zip", event.zipCode))
+                                                //.putExtra("description", event.description))
                                         }),
                                     content = {
                                         Spacer(modifier = Modifier.size(8.dp))

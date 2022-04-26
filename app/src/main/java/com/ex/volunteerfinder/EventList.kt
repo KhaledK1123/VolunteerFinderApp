@@ -19,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.compose.rememberNavController
@@ -92,7 +93,7 @@ fun EventListScreen(eventViewModel: EventViewModel){
     }
 }
 
-
+@Preview
 @Composable
 fun PreEventListScreen()
 {
@@ -100,7 +101,10 @@ fun PreEventListScreen()
 
 
         val context = LocalContext.current
-        Column() {
+        Column(
+            verticalArrangement = Arrangement.Bottom,
+            horizontalAlignment = Alignment.End
+        ) {
 
             Button(onClick = { context.startActivity(Intent(context, EventList::class.java)) }) {
                 Text(text = "Go to My Events!")

@@ -27,6 +27,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ex.volunteerfinder.ImageWithText
@@ -201,7 +202,7 @@ fun ProfileScreen() {
                         StatSection(modifier = Modifier.weight(7f))
                     }
                     val context = LocalContext.current
-                    Spacer(modifier = Modifier.height(10.dp))
+                    Spacer(modifier = Modifier.height(14.dp))
                     TextButton(onClick = {
                         context.startActivity(Intent(context, ProfileDetails::class.java))
                     }) {
@@ -214,7 +215,8 @@ fun ProfileScreen() {
                             .padding(bottom = 75.dp),
                         Arrangement.Top,
                         Alignment.CenterHorizontally
-                    ) {
+                    )
+                     {
                         belowProfile()
                     }
                     Column(
@@ -294,10 +296,13 @@ fun ProfileStat(
         Text(
             text = numberText,
             style = MaterialTheme.typography.body1,
-            fontSize = 20.sp
+            fontSize = 24.sp
         )
         Spacer(modifier = Modifier.height(4.dp))
-        Text(text = text)
+        Text(
+            text = text,
+            fontSize = 18.sp
+        )
     }
 }
 

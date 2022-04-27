@@ -9,6 +9,7 @@
     <color name="gold_400">#FFE2AA00</color>
     <color name="gold_600">#FFffd700</color>
     <color name="green_900">#FF065535</color>
+    <color name="orange_400">#FFffa500</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>

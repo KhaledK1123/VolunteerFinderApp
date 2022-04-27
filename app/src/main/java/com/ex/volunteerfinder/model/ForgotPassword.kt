@@ -147,6 +147,7 @@ fun CancelButton() {
                 placeholder = { Text(text = "Password") },
                 singleLine = true,
                 leadingIcon = {
+                    //Checking for it to work
                     IconButton(onClick = { passwordVisibility.value=!passwordVisibility.value }) {
                         Icon(imageVector = Icons.Filled.Lock, contentDescription = "Lock")
 

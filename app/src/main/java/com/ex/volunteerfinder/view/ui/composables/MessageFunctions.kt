@@ -16,6 +16,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ex.volunteerfinder.R
 import com.ex.volunteerfinder.model.data.*
+import com.ex.volunteerfinder.model.data.model.Conversation
+import com.ex.volunteerfinder.model.data.model.Message
 import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
 
 @Composable
@@ -57,7 +59,7 @@ fun MessageSummary (conversation: Conversation) {
         ) {
             ProfileImage() //TODO add padding to ProfileImage
             Column(modifier = Modifier.padding(4.dp)) {
-                contact.userName?.let {
+                contact.let {
                     Text(
                         text = it,
                         fontSize = 16.sp,
@@ -127,7 +129,7 @@ fun InboxPreview() {
     val obj = Message(
         body = "John Madden John Madden John Madden",
         sendTime = 1649939435935,
-        user = UserDummy.obj
+        user = "JohnMan"
     )
     val previewList = listOf(MessageDummy.obj,obj,MessageDummy.obj)
 //    Inbox(list = previewList)

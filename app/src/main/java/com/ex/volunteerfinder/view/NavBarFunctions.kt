@@ -1,17 +1,12 @@
 package com.ex.volunteerfinder.view
 
-import android.content.Intent
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -24,12 +19,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.ex.volunteerfinder.*
 import com.ex.volunteerfinder.R
-import com.ex.volunteerfinder.model.data.Conversation
+import com.ex.volunteerfinder.model.data.model.Conversation
 import com.ex.volunteerfinder.model.data.MessageDummy
 import com.ex.volunteerfinder.model.data.UserDummy
-import com.ex.volunteerfinder.view.BottomNavigationBar
 import com.ex.volunteerfinder.view.ui.ProfileScreen
-import com.ex.volunteerfinder.view.ui.VolunteerProfile
 import com.ex.volunteerfinder.view.ui.composables.ChatCollectionComposable
 
 @Composable
@@ -49,7 +42,7 @@ fun Navigation(navController: NavHostController) {
         }
         composable(NavigationItem.Messages.route) {
 //            val previewList = listOf(MessageDummy.obj, MessageDummy.obj)
-            val conversation = Conversation(users = listOf(UserDummy.obj, UserDummy.obj),
+            val conversation = Conversation(users = listOf(MessageDummy.obj.user, MessageDummy.obj.user),
                 messages = listOf(MessageDummy.obj, MessageDummy.obj)
             )
             ChatCollectionComposable(listOf(conversation))

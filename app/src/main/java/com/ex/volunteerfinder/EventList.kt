@@ -61,7 +61,7 @@ fun EventListScreen(eventViewModel: EventViewModel){
 
     Column {
 
-        TopAppBar(title = { Text(text = "Event List") },
+        TopAppBar(title = { Text(text = "My Event List") },
             navigationIcon =
                 {
                     val context = LocalContext.current
@@ -105,6 +105,7 @@ fun PreEventListScreen()
             verticalArrangement = Arrangement.Bottom,
             horizontalAlignment = Alignment.End
         ) {
+            //TODO put Column of Api events here!
 
             Button(onClick = { context.startActivity(Intent(context, EventList::class.java)) }) {
                 Text(text = "Go to My Events!")

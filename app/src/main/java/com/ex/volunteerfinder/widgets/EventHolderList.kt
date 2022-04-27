@@ -1,8 +1,6 @@
 package com.ex.volunteerfinder.widgets
 
-import android.app.Application
 import android.content.Intent
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -22,12 +20,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import com.ex.volunteerfinder.viewmodel.EventViewModel
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import androidx.lifecycle.LiveData
 import com.ex.volunteerfinder.CreateNewEvent
-import com.ex.volunteerfinder.MainActivity
 import com.ex.volunteerfinder.R
-import com.ex.volunteerfinder.model.data.MyEvent
 import com.ex.volunteerfinder.view.EventDetailedView
 import com.ex.volunteerfinder.view.ui.RoundImage
 

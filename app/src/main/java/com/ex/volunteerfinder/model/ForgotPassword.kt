@@ -219,9 +219,6 @@ fun CancelButton() {
                     Icon(imageVector = Icons.Filled.Email, contentDescription = "Email")
                 }
             )
-            Spacer(modifier = Modifier.height(20.dp))
-
-
 
             Spacer(modifier = Modifier.height(25.dp))
             Button(onClick =

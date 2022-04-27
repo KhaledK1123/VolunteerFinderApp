@@ -2,6 +2,7 @@ package com.ex.volunteerfinder.view.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.GestureDetector
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -15,6 +16,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
@@ -145,19 +147,19 @@ fun CancelButton() {
                 placeholder = { Text(text = "Password") },
                 singleLine = true,
                 leadingIcon = {
-                    IconButton(onClick = { /*TODO*/ }) {
+                    IconButton(onClick = { passwordVisibility.value=!passwordVisibility.value }) {
                         Icon(imageVector = Icons.Filled.Lock, contentDescription = "Lock")
+
 
                     }
                 },
                 trailingIcon = {
                     IconButton(onClick = {
                         passwordVisibility.value=!passwordVisibility.value
+
                     }) {
-                        com.ex.volunteerfinder.Icon(
-                            imageVector = vectorResource(id = R.drawable.password),//password drawable
-                            tint = if (passwordVisibility.value) primaryColor else Color.Gray
-                        )
+                        Icon(painter = painterResource(id = R.drawable.password), contentDescription = "visibility icon")
+
                     }
 
 
@@ -185,9 +187,10 @@ fun CancelButton() {
                         confirmPasswordVisibility.value=!confirmPasswordVisibility.value
                     }) {
                         val primaryColor= Color.Gray
+
                         com.ex.volunteerfinder.Icon(
-                            imageVector = vectorResource(id = R.drawable.password), //password drawable
-                            tint = if (confirmPasswordVisibility.value) primaryColor else Color.Gray
+                            imageVector = vectorResource(id = R.drawable.password),//password drawable
+                            tint = if (passwordVisibility.value) primaryColor else Color.Gray
                         )
                     }
 

@@ -20,6 +20,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import com.ex.volunteerfinder.viewmodel.EventViewModel
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.ex.volunteerfinder.CreateNewEvent
 import com.ex.volunteerfinder.R
 import com.ex.volunteerfinder.view.EventDetailedView
@@ -83,42 +84,50 @@ fun EventList(eventViewModel: EventViewModel) {
                                     modifier = Modifier
                                         .weight(2F)
                                         .clickable(onClick = {
-                                            context.startActivity(Intent(context,EventDetailedView::class.java)
-                                                .putExtra("id", event.id)
-                                                .putExtra("address", event.address)
-                                                .putExtra("city", event.city)
-                                                .putExtra("date", event.date)
-                                                .putExtra("leadership", event.leadership)
-                                                .putExtra("name", event.name)
-                                                .putExtra("sponsor", event.sponsor)
-                                                .putExtra("state", event.state)
-                                                .putExtra("time", event.time)
-                                                .putExtra("zip", event.zipCode))
-                                                //.putExtra("description", event.description))
+                                            context.startActivity(
+                                                Intent(context, EventDetailedView::class.java)
+                                                    .putExtra("id", event.id)
+                                                    .putExtra("address", event.address)
+                                                    .putExtra("city", event.city)
+                                                    .putExtra("date", event.date)
+                                                    .putExtra("leadership", event.leadership)
+                                                    .putExtra("name", event.name)
+                                                    .putExtra("sponsor", event.sponsor)
+                                                    .putExtra("state", event.state)
+                                                    .putExtra("time", event.time)
+                                                    .putExtra("zip", event.zipCode)
+                                            )
+                                            //.putExtra("description", event.description))
                                         }),
                                     content = {
                                         Spacer(modifier = Modifier.size(8.dp))
-                                        Text(text = "Event: " + event.name?:"")
-                                        when {
-                                            event.zipCode!! <10 -> {
-                                                Text(text = "Address: " + "${event.address} " +"${event.city}, " +"${event.state} "+"0000${event.zipCode}")
-                                            }
-                                            event.zipCode!!<100 -> {
-                                                Text(text = "Address: " + "${event.address} " +"${event.city}, " +"${event.state} "+"000${event.zipCode}")
-                                            }
-                                            event.zipCode!!<1000 -> {
-                                                Text(text = "Address: " + "${event.address} " +"${event.city}, " +"${event.state} "+"00${event.zipCode}")
-                                            }
-                                            event.zipCode!!<10000 -> {
-                                                Text(text = "Address: " + "${event.address} " +"${event.city}, " +"${event.state} "+"0${event.zipCode}")
-                                            }
-                                            else -> {
-                                                Text(text = "Address: " + "${event.address} " +"${event.city}, " +"${event.state} "+"${event.zipCode}")
-                                            }
-                                        }
-                                        Text(text = "Leader: " + "${event.leadership}")
-                                        Text(text = "Sponsor: " + "${event.sponsor}")
-                                        Text(text = "Date: " + "${event.date} " + "Time: " + "${event.time}")
+                                       Card(Modifier.height(130.dp),elevation = 3.dp) {
+                                           Column(Modifier.width(300.dp)) {
+                                               Text(text = "Event: " + event.name?:"",fontSize = 14.sp)
+                                               when {
+                                                   event.zipCode!! <10 -> {
+                                                       Text(text = "Address: " + "${event.address} " +"${event.city}, " +"${event.state} "+"0000${event.zipCode}",fontSize = 14.sp)
+                                                   }
+                                                   event.zipCode!!<100 -> {
+                                                       Text(text = "Address: " + "${event.address} " +"${event.city}, " +"${event.state} "+"000${event.zipCode}",fontSize = 14.sp)
+                                                   }
+                                                   event.zipCode!!<1000 -> {
+                                                       Text(text = "Address: " + "${event.address} " +"${event.city}, " +"${event.state} "+"00${event.zipCode}",fontSize = 14.sp)
+                                                   }
+                                                   event.zipCode!!<10000 -> {
+                                                       Text(text = "Address: " + "${event.address} " +"${event.city}, " +"${event.state} "+"0${event.zipCode}",fontSize = 14.sp)
+                                                   }
+                                                   else -> {
+                                                       Text(text = "Address: " + "${event.address} " +"${event.city}, " +"${event.state} "+"${event.zipCode}",fontSize = 14.sp)
+                                                   }
+                                               }
+                                               Text(text = "Leader: " + "${event.leadership}",fontSize = 14.sp)
+                                               Text(text = "Sponsor: " + "${event.sponsor}",fontSize = 14.sp)
+                                               Text(text = "Date: " + "${event.date} " + "Time: " + "${event.time}",fontSize = 14.sp)
+                                           }
+
+                                       }
+
                                         //Insert clickeable hypertext from Login but redirect it to edit event
                                     }
                                 )

@@ -1,7 +1,10 @@
 package com.ex.volunteerfinder.view.ui
 
+import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -13,6 +16,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.runtime.*
@@ -40,6 +44,7 @@ import com.ex.volunteerfinder.view.LoginView
 import org.w3c.dom.Text
 import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
 import com.ex.volunteerfinder.viewmodel.UserViewModel
+import java.util.*
 
 class ForgotPassword: ComponentActivity() {
 
@@ -93,7 +98,7 @@ fun CancelButton() {
 
         var primaryColor= Color.Gray
         val userList = userViewModel.fetchAllUsers().observeAsState(arrayListOf())
-
+        val context = LocalContext.current
         Column(
             modifier = Modifier
                 .fillMaxSize(),
@@ -119,6 +124,7 @@ fun CancelButton() {
 
             var username = remember { mutableStateOf("") }
             var password = remember { mutableStateOf("") }
+            var email = remember { mutableStateOf("")}
             var passwordConfirm = remember { mutableStateOf("") }
 
             val passwordVisibility = remember { mutableStateOf(false) }
@@ -200,8 +206,24 @@ fun CancelButton() {
                 else PasswordVisualTransformation()
             )
 
+            Spacer(modifier = Modifier.height(20.dp))
+
+            OutlinedTextField(value = email.value,
+                onValueChange = {email.value = it},
+                label = {
+                    Text(text = "Verify your Email")
+                },
+                placeholder = { Text(text = "Verify your Email") },
+                singleLine = true,
+                leadingIcon = {
+                    Icon(imageVector = Icons.Filled.Email, contentDescription = "Email")
+                }
+            )
+            Spacer(modifier = Modifier.height(20.dp))
+
+
+
             Spacer(modifier = Modifier.height(25.dp))
-            val context = LocalContext.current
             Button(onClick =
             {
 
@@ -215,6 +237,12 @@ fun CancelButton() {
                     }
                     else if(passwordConfirm.value.isEmpty()){
                         Toast.makeText(context,"Please fill all inputs ",Toast.LENGTH_SHORT).show()
+                    }
+                    else if(email.value.isEmpty()){
+                        Toast.makeText(context,"Please fill all inputs ",Toast.LENGTH_SHORT).show()
+                    }
+                    else if (!email.value.equals(user.email)){
+                        Toast.makeText(context,"Wrong Entry",Toast.LENGTH_SHORT).show()
                     }
                     else if (!username.value.equals(user.userName)){
                         Toast.makeText(context,"Username is not recognized",Toast.LENGTH_SHORT).show()

@@ -102,7 +102,7 @@ fun ProfileScreen(userViewModel: UserViewModel) {
                             .fillMaxHeight()
                             .padding(bottom = 75.dp),
                         Arrangement.Top,
-                        Alignment.CenterHorizontally
+                        Alignment.Start
                     ) {
 
 

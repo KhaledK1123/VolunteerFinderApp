@@ -284,7 +284,7 @@ fun StatSection(modifier: Modifier = Modifier){
         modifier = modifier
     ) {
         ProfileStat(numberText = "18", text = "Friends")
-        ProfileStat(numberText = "16", text = "Jobs Taken")
+        ProfileStat(numberText = "16", text = "Jobs")
         ProfileStat(numberText = "523", text = "Hours Worked")
     }
 }

@@ -95,7 +95,7 @@ fun stateDropDownMenu(list: List<String>,defaultText:String):String{
                     value = state,
                     onValueChange = {state = it},
                     modifier = Modifier
-                        .width(220.dp)
+                        .width(300.dp)
                         .height(60.dp)
                         .onGloballyPositioned { coordinates ->
                             textFilledSize = coordinates.size.toSize()
@@ -188,7 +188,7 @@ fun CreateNewEventScreen(eventViewModel: EventViewModel){
             val eventName = rememberSaveable {
                 mutableStateOf("")
             }
-            OutlinedTextField(modifier = Modifier.width(220.dp)
+            OutlinedTextField(modifier = Modifier.width(300.dp)
                 .height(60.dp),
                 value = eventName.value,
                 onValueChange = {eventName.value = it},
@@ -205,7 +205,7 @@ fun CreateNewEventScreen(eventViewModel: EventViewModel){
             val eventSponsor = rememberSaveable {
                 mutableStateOf("")
             }
-            OutlinedTextField(modifier = Modifier.width(220.dp)
+            OutlinedTextField(modifier = Modifier.width(300.dp)
                 .height(60.dp),
                 value = eventSponsor.value,
                 onValueChange = {eventSponsor.value = it},
@@ -222,7 +222,7 @@ fun CreateNewEventScreen(eventViewModel: EventViewModel){
             val leader = rememberSaveable {
                 mutableStateOf("")
             }
-            OutlinedTextField(modifier = Modifier.width(220.dp)
+            OutlinedTextField(modifier = Modifier.width(300.dp)
                 .height(60.dp),
                 value = leader.value,
                 onValueChange = {leader.value = it},
@@ -238,7 +238,7 @@ fun CreateNewEventScreen(eventViewModel: EventViewModel){
             val street = rememberSaveable {
                 mutableStateOf("")
             }
-            OutlinedTextField(modifier = Modifier.width(220.dp)
+            OutlinedTextField(modifier = Modifier.width(300.dp)
                 .height(60.dp),
                 value = street.value,
                 onValueChange = {street.value = it},
@@ -254,7 +254,7 @@ fun CreateNewEventScreen(eventViewModel: EventViewModel){
             val city = rememberSaveable {
                 mutableStateOf("")
             }
-            OutlinedTextField(modifier = Modifier.width(220.dp)
+            OutlinedTextField(modifier = Modifier.width(300.dp)
                 .height(60.dp),
                 value = city.value,
                 onValueChange = {city.value = it},
@@ -270,7 +270,7 @@ fun CreateNewEventScreen(eventViewModel: EventViewModel){
             val zip = rememberSaveable {
                 mutableStateOf("")
             }
-            OutlinedTextField(modifier = Modifier.width(220.dp)
+            OutlinedTextField(modifier = Modifier.width(300.dp)
                 .height(60.dp),
                 value = zip.value,
                 onValueChange = {zip.value = it},

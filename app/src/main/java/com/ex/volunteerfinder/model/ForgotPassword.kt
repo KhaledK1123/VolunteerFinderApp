@@ -202,9 +202,9 @@ fun CancelButton() {
             OutlinedTextField(value = email.value,
                 onValueChange = {email.value = it},
                 label = {
-                    Text(text = "Verify your Email")
+                    Text(text = "Verify Your Email")
                 },
-                placeholder = { Text(text = "Verify your Email") },
+                placeholder = { Text(text = "Verify Your Email") },
                 singleLine = true,
                 leadingIcon = {
                     Icon(imageVector = Icons.Filled.Email, contentDescription = "Email")

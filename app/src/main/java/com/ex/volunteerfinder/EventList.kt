@@ -27,6 +27,7 @@ import com.ex.volunteerfinder.model.data.MyEvent
 import com.ex.volunteerfinder.view.LoginView
 import com.ex.volunteerfinder.view.MainScreen
 import com.ex.volunteerfinder.view.NavigationItem
+import com.ex.volunteerfinder.view.ui.ApiEvents
 import com.ex.volunteerfinder.view.ui.VolunteerProfile
 import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
 import com.ex.volunteerfinder.viewmodel.EventViewModel
@@ -102,12 +103,18 @@ fun PreEventListScreen()
 
         val context = LocalContext.current
         Column(
-            verticalArrangement = Arrangement.Bottom,
+            verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.End
         ) {
             //TODO put Column of Api events here!
 
-            Button(onClick = { context.startActivity(Intent(context, EventList::class.java)) }) {
+            Button(onClick = { context.startActivity(Intent(context, ApiEvents::class.java)) },
+                modifier = Modifier.fillMaxWidth()) {
+                Text(text = "Go to previously posted Events")
+            }
+
+            Button(onClick = { context.startActivity(Intent(context, EventList::class.java)) },
+                modifier = Modifier.fillMaxWidth()) {
                 Text(text = "Go to My Events!")
             }
         }

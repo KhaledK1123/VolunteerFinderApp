@@ -9,7 +9,6 @@ import androidx.lifecycle.viewModelScope
 import com.ex.volunteerfinder.model.data.model.Conversation
 import com.ex.volunteerfinder.model.data.network.RetrofitInstance
 import com.ex.volunteerfinder.model.data.repository.ConversationRepository
-import com.ex.volunteerfinder.model.data.repository.OrgEventRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

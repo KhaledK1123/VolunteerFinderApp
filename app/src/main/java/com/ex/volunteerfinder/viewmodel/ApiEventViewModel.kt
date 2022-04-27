@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ex.volunteerfinder.model.data.model.ApiEvent
 import com.ex.volunteerfinder.model.data.network.RetrofitInstance
-import com.ex.volunteerfinder.model.data.repository.OrgEventRepository
+import com.ex.volunteerfinder.model.data.repository.ApiEventRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -24,16 +24,16 @@ class ApiEventViewModel(): ViewModel() {
 
     fun fetchEvents() {
 
-        var repository = OrgEventRepository(apiService)
+        var repository = ApiEventRepository(apiService)
         viewModelScope.launch(Dispatchers.IO) {
             var response = repository.fetchEvents()
             when (response) {
-                is OrgEventRepository.Result.Success ->
+                is ApiEventRepository.Result.Success ->
                 {
                     Log.d("EventViewModel", "Success")
                     events = response.eventList
                 }
-                is OrgEventRepository.Result.Failure ->
+                is ApiEventRepository.Result.Failure ->
                 {
                     Log.d("EventViewModel", "Failure")
                 }

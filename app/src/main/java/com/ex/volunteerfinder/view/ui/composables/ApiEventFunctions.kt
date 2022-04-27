@@ -21,7 +21,6 @@ import com.ex.volunteerfinder.viewmodel.ApiEventViewModel
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun LazyEventColumn(apiEventViewModel: ApiEventViewModel) {
-    apiEventViewModel.fetchEvents()
     var events = apiEventViewModel.events
     var listLength = events.size
 

@@ -22,6 +22,7 @@ import com.ex.volunteerfinder.R
 import com.ex.volunteerfinder.model.data.model.Conversation
 import com.ex.volunteerfinder.model.data.MessageDummy
 import com.ex.volunteerfinder.model.data.UserDummy
+import com.ex.volunteerfinder.model.data.model.Message
 import com.ex.volunteerfinder.view.ui.ProfileScreen
 import com.ex.volunteerfinder.view.ui.composables.ChatCollectionComposable
 
@@ -43,7 +44,10 @@ fun Navigation(navController: NavHostController) {
         composable(NavigationItem.Messages.route) {
 //            val previewList = listOf(MessageDummy.obj, MessageDummy.obj)
             val conversation = Conversation(users = listOf(MessageDummy.obj.user, MessageDummy.obj.user),
-                messages = listOf(MessageDummy.obj, MessageDummy.obj)
+                messages = listOf(MessageDummy.obj, Message(
+                    body = "Message me back! The folks at the firehouse need help",
+                    sendTime = 1649939435935,
+                    user = "ListCraig"))
             )
             ChatCollectionComposable(listOf(conversation))
         }

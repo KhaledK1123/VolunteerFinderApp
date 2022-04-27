@@ -4,7 +4,7 @@ import android.util.Log
 import com.ex.volunteerfinder.model.data.model.ApiEvent
 import com.ex.volunteerfinder.model.data.network.VolunteerApi
 
-class OrgEventRepository (private val volunteerApi: VolunteerApi) {
+class ApiEventRepository (private val volunteerApi: VolunteerApi) {
 
     sealed class Result{
         data class Success(val eventList:List<ApiEvent>):Result()

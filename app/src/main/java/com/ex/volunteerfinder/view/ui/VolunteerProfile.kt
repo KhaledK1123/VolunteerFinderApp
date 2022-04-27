@@ -283,9 +283,9 @@ fun StatSection(modifier: Modifier = Modifier){
         horizontalArrangement = Arrangement.SpaceAround,
         modifier = modifier
     ) {
-        ProfileStat(numberText = "18", text = "Donations")
-        ProfileStat(numberText = "16", text = "Items Received")
-        ProfileStat(numberText = "523", text = "Flair")
+        ProfileStat(numberText = "18", text = "Friends")
+        ProfileStat(numberText = "16", text = "Jobs Taken")
+        ProfileStat(numberText = "523", text = "Hours Worked")
     }
 }
 @Composable
@@ -398,6 +398,8 @@ fun belowProfile()
                 painterResource(id = R.drawable.mercedes)
 
             ),
+
+
             modifier = Modifier.fillMaxWidth()
         )
     }

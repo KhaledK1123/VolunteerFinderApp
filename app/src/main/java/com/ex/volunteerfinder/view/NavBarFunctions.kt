@@ -12,6 +12,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -21,6 +22,7 @@ import com.ex.volunteerfinder.*
 import com.ex.volunteerfinder.R
 import com.ex.volunteerfinder.view.ui.ProfileScreen
 import com.ex.volunteerfinder.view.ui.composables.ChatCollectionComposable
+import com.ex.volunteerfinder.viewmodel.ConversationViewModel
 
 @Composable
 fun Navigation(navController: NavHostController) {
@@ -38,7 +40,9 @@ fun Navigation(navController: NavHostController) {
             EventMap()
         }
         composable(NavigationItem.Messages.route) {
-            ChatCollectionComposable()
+            val conversationViewModel = viewModel<ConversationViewModel>()
+            val conversations = conversationViewModel.conversations
+            ChatCollectionComposable(conversations = conversations)
         }
     }
 }

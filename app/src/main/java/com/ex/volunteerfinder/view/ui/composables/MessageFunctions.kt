@@ -14,20 +14,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.ex.volunteerfinder.R
 import com.ex.volunteerfinder.model.data.*
 import com.ex.volunteerfinder.model.data.model.Conversation
 import com.ex.volunteerfinder.model.data.model.Message
 import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
-import com.ex.volunteerfinder.viewmodel.ConversationViewModel
-import com.ex.volunteerfinder.viewmodel.factories.ConversationViewModelFactory
 
 @Composable
-fun ChatCollectionComposable() {
-    val conversationViewModel: ConversationViewModel = viewModel(factory = ConversationViewModelFactory())
+fun ChatCollectionComposable(conversations: List<Conversation>) {
+
     val pencilDrawable = R.drawable.ic_pencil_plus_outline_black_18dp
-    val passedList = conversationViewModel.conversations
 
     VolunteerFinderAppTheme() {
 
@@ -38,7 +34,7 @@ fun ChatCollectionComposable() {
             },
             floatingActionButton = { NewCircleButton(pencilDrawable) }
         ) {
-            Inbox(list = passedList)
+            Inbox(conversationList = conversations)
         }
     }
 }
@@ -86,23 +82,16 @@ fun MessageSummary(conversation: Conversation) {
 }
 
 @Composable
-fun Inbox(/*Message List, perhaps from data class*/ list: List<Conversation>) {
+fun Inbox(conversationList: List<Conversation>) {
 //TODO there should be a different printout if there are no messages.
     //TODO CHECK HERE FOR NPE!
-    /*currently repeats the first card; necessary but unfortunate,
-    * as I want to put dividers between each card
-    */
 
-    val length = list.size
-    list.subList(1, length)
+    val length = conversationList.size
 
     LazyColumn() {
-        item {
-            MessageSummary(list[0])
-        }
-        items(list.size) { index ->
+        items(conversationList.size) { index ->
             Divider()
-            MessageSummary(list[index])
+            MessageSummary(conversationList[index])
         }
     }
 

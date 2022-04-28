@@ -159,7 +159,7 @@ fun CancelButton() {
                         passwordVisibility.value=!passwordVisibility.value
 
                     }) {
-                        Icon(painter = painterResource(id = R.drawable.password), contentDescription = "visibility icon")
+                        Icon(painter = painterResource(id = R.drawable.visibility_fill0_wght400_grad0_opsz48), contentDescription = "visibility icon")
 
                     }
 

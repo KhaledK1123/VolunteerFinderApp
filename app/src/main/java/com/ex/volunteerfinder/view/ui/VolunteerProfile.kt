@@ -104,7 +104,7 @@ fun ProfileScreen(username:String?, name:String?, email:String?, state:String?, 
 
                     TopAppBar(
                         backgroundColor = MaterialTheme.colors.primary,
-                        title = { Text("Profil") },
+                        title = { Text("Profile") },
                         navigationIcon =
                         {
                             val context = LocalContext.current
@@ -388,7 +388,7 @@ fun ProfileDescription(
 @Composable
 fun belowProfile()
 {
-    var selectedTabIntex by remember {
+    var selectedTabIndex by remember {
         mutableStateOf(0)
     }
     PostTabView(
@@ -411,9 +411,9 @@ fun belowProfile()
             ),
         )
     ){
-        selectedTabIntex = it
+        selectedTabIndex = it
     }
-    when(selectedTabIntex){
+    when(selectedTabIndex){
         0 -> PostSection(
             posts = listOf(
                 painterResource(id = R.drawable.trophy),
@@ -841,4 +841,4 @@ fun TableRow(text: String) {
         modifier = Modifier
             .paddingFromBaseline(top = 72.dp)
     )
-} */ */
+} */

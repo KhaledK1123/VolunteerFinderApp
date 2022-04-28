@@ -64,7 +64,7 @@ fun EventList(eventViewModel: EventViewModel) {
                                  //color
                                     Box (
                                         content = {
-                                           RoundImage(painterResource(id = R.drawable.blankpfp))
+                                           RoundImage(painterResource(id = R.drawable.img2))
                                         }, modifier = Modifier
                                             .size(80.dp)
                                             .padding(10.dp)

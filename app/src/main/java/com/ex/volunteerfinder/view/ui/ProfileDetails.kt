@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
@@ -31,6 +32,7 @@ import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.lifecycle.ViewModelProvider
 import com.ex.volunteerfinder.R
 import com.ex.volunteerfinder.model.data.StoreUserInfo
+import com.ex.volunteerfinder.model.data.User
 import com.ex.volunteerfinder.view.LoginView
 import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
 import com.ex.volunteerfinder.viewmodel.UserViewModel
@@ -55,7 +57,7 @@ fun ProfileScreen(userViewModel: UserViewModel) {
     VolunteerFinderAppTheme() {
         val context = LocalContext.current
         val dataStore = StoreUserInfo(context)
-        //val userList = userViewModel.fetchAllUsers().observeAsState(arrayListOf())
+        val userList = userViewModel.fetchAllUsers().observeAsState(arrayListOf())
         val userEmail = dataStore.getEmail.collectAsState(initial = "")
         val userUserName = dataStore.getUsername.collectAsState(initial = "")
         val userName = dataStore.getName.collectAsState(initial = "")
@@ -293,7 +295,48 @@ fun ProfileScreen(userViewModel: UserViewModel) {
                             else PasswordVisualTransformation()
                         )
                         //val context = LocalContext.current
-                        Button(onClick = { context.startActivity(Intent(context, VolunteerProfile::class.java)) }) {
+                        Button(onClick = {
+                            val change =userList.value
+                            change.forEach {user->
+                                if (username.value.isEmpty()){
+                                    Toast.makeText(context,"Please fill all inputs ", Toast.LENGTH_SHORT).show()
+                                }
+                                else if(password.value.isEmpty()){
+                                    Toast.makeText(context,"Please fill all inputs ", Toast.LENGTH_SHORT).show()
+                                }
+                                else if(passwordConfirm.value.isEmpty()){
+                                    Toast.makeText(context,"Please fill all inputs ", Toast.LENGTH_SHORT).show()
+                                }
+                                else if(email.value.isEmpty()){
+                                    Toast.makeText(context,"Please fill all inputs ", Toast.LENGTH_SHORT).show()
+                                }
+                                else if (!email.value.equals(user.email)){
+                                    Toast.makeText(context,"Wrong Entry", Toast.LENGTH_SHORT).show()
+                                }
+                                else if (!username.value.equals(user.userName)){
+                                    Toast.makeText(context,"Username is not recognized", Toast.LENGTH_SHORT).show()
+                                }
+                                else{
+                                    userViewModel.insertUser(
+                                        User(
+                                        userName = user.userName,
+                                        password = password.value,
+                                        email = user.email,
+                                        name = user.name,
+                                        city = user.city,
+                                        state = user.state,
+                                        zipCode = user.zipCode
+                                    )
+                                    )
+                                    userViewModel.deleteUser(user.id)
+                                    context.startActivity(Intent(context, VolunteerProfile::class.java))
+                                    Toast.makeText(context,"Password Updated!",Toast.LENGTH_SHORT).show()
+                                }
+                            }
+
+
+                            context.startActivity(Intent(context, VolunteerProfile::class.java)) }
+                        ) {
                                 Text(text = "Change Info")
                         }
                     }

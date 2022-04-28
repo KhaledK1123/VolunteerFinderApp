@@ -19,6 +19,7 @@ import com.ex.volunteerfinder.R
 import com.ex.volunteerfinder.model.data.*
 import com.ex.volunteerfinder.model.data.model.Conversation
 import com.ex.volunteerfinder.model.data.model.Message
+import com.ex.volunteerfinder.view.NavigationItem
 import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
 
 @Composable
@@ -31,31 +32,32 @@ fun ChatCollectionComposable(conversations: List<Conversation>, navController: N
         Scaffold(
 //            floatingActionButton = { NewCircleButton(pencilDrawable) }
         ) {
-            Inbox(conversationList = conversations)
+            Inbox(conversationList = conversations, navController = navController)
         }
     }
 }
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun MessageSummary(conversation: Conversation) {
+fun ConversationSummary(id: Int, conversation: Conversation, navController: NavHostController) {
 
     val mostRecent = conversation.messages.size - 1
     val message = conversation.messages[mostRecent]
     val contact = message.user
     val receiveDate = message.sendTime
-    //TODO I'd rather only present a substring UP TO 30 char, but can't hard code 30 (NPE)
     //Is it possible to count the available length given the layout?
     val preview = message.body + "..."
 
     Card(modifier = Modifier.padding(4.dp),
         elevation = 0.dp,
-        onClick = {/*TODO Probably should be passed from parameters*/ }) {
+        onClick = {
+            navController.navigate(NavigationItem.Conversation.withArgs(id.toString()))
+        }) {
         Row(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            ProfileImage() //TODO add padding to ProfileImage
+            ProfileImage()
             Column(modifier = Modifier.padding(4.dp)) {
                 contact.let {
                     Text(
@@ -79,16 +81,14 @@ fun MessageSummary(conversation: Conversation) {
 }
 
 @Composable
-fun Inbox(conversationList: List<Conversation>) {
-//TODO there should be a different printout if there are no messages.
-    //TODO CHECK HERE FOR NPE!
+fun Inbox(conversationList: List<Conversation>, navController: NavHostController) {
 
     val length = conversationList.size
 
     LazyColumn() {
         items(conversationList.size) { index ->
             Divider()
-            MessageSummary(conversationList[index])
+            ConversationSummary(index, conversationList[index], navController)
         }
     }
 
@@ -99,11 +99,16 @@ fun SearchBar() {
 
 }
 
+@Composable
+fun Conversation (conversation: Conversation) {
+//    val thisConversation = inbox[conversationId]
+
+}
 
 @Composable
-fun Message(user: User, message: Message) {
-    val recipient = user.userName
-    val sender = message.user
+fun Message(message: Message) {
+//    val recipient = user.userName
+//    val sender = message.user
 //    val recipientBoolean = (recipient == message.user)
 
 }

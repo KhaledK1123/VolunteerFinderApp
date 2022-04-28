@@ -12,7 +12,7 @@ import com.ex.volunteerfinder.model.data.repository.ConversationRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class ConversationViewModel(): ViewModel() {
+class InboxViewModel(): ViewModel() {
 
     private val apiService = RetrofitInstance.volunteerApi
 
@@ -40,5 +40,10 @@ class ConversationViewModel(): ViewModel() {
         }
 
 
+    }
+
+    fun itemClicked(item:Conversation)
+    {
+        clickedItem=item
     }
 }

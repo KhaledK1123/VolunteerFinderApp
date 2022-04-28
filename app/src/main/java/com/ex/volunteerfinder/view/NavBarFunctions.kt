@@ -1,5 +1,6 @@
 package com.ex.volunteerfinder.view
 
+import androidx.compose.animation.defaultDecayAnimationSpec
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -15,15 +16,18 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.ex.volunteerfinder.*
 import com.ex.volunteerfinder.R
 import com.ex.volunteerfinder.view.ui.ProfileScreen
-import com.ex.volunteerfinder.view.ui.composables.ChatCollectionComposable
+import com.ex.volunteerfinder.view.ui.composables.Conversation
 import com.ex.volunteerfinder.view.ui.composables.Inbox
 import com.ex.volunteerfinder.viewmodel.ConversationViewModel
+import com.ex.volunteerfinder.viewmodel.InboxViewModel
 
 @Composable
 fun Navigation(navController: NavHostController) {
@@ -40,26 +44,45 @@ fun Navigation(navController: NavHostController) {
         composable(NavigationItem.Map.route) {
             EventMap()
         }
-        composable(NavigationItem.Messages.route) {
-            val conversationViewModel = viewModel<ConversationViewModel>()
-            val conversations = conversationViewModel.conversations
-            ChatCollectionComposable(conversations = conversations,
+        composable(NavigationItem.Inbox.route) {
+            val inboxViewModel = viewModel<InboxViewModel>()
+            val conversations = inboxViewModel.conversations
+            Inbox(conversationList = conversations,
                 navController = navController)
+
+        }
+        composable(
+            NavigationItem.Conversation.route+"/{conversationId}",
+            arguments = listOf(
+                navArgument("conversationId") {
+                    type = NavType.IntType
+                    defaultValue = 0
+                    nullable = false
+                }
+            )
+        ) {
+                entry ->
+            val conversationViewModel =viewModel<ConversationViewModel>()
+            val inbox = conversationViewModel.conversations
+            val conversation = inbox[entry.arguments!!.getInt("conversationId")]
+            Conversation(conversation)
         }
     }
 }
 
-@Composable
-fun InboxNavigation(navController: NavHostController) {
-//    NavHost(navController = navController, startDestination = InboxScreen.Inbox.route)
-    NavHost(navController = navController,
-        startDestination = InboxScreen.Inbox.route) {
-        composable(InboxScreen.Inbox.route) {
-
-        }
-    }
-
-}
+//@Composable
+//fun InboxNavigation(navController: NavHostController) {
+////    NavHost(navController = navController, startDestination = InboxScreen.Inbox.route)
+//    NavHost(
+//        navController = navController,
+//        startDestination = InboxScreen.Inbox.route
+//    ) {
+//        composable(InboxScreen.Inbox.route) {
+//
+//        }
+//    }
+//
+//}
 
 @Preview(showBackground = true)
 @Composable
@@ -101,10 +124,10 @@ fun MainScreen() {
         //topBar = { TopBar() },
         bottomBar = { BottomNavigationBar(navController) }
     ) { innerPadding ->
-            // Apply the padding globally to the whole BottomNavScreensController
-            Box(modifier = Modifier.padding(innerPadding)) {
-                Navigation(navController)
-            }
+        // Apply the padding globally to the whole BottomNavScreensController
+        Box(modifier = Modifier.padding(innerPadding)) {
+            Navigation(navController)
+        }
 
     }
 }
@@ -114,13 +137,14 @@ fun MainScreen() {
 fun MainScreenPreview() {
     MainScreen()
 }
+
 @Composable
 fun BottomNavigationBar(navController: NavController) {
     val items = listOf(
         NavigationItem.Profile,
         NavigationItem.Events,
         NavigationItem.Map,
-        NavigationItem.Messages
+        NavigationItem.Inbox
     )
     BottomNavigation(
         backgroundColor = colorResource(id = R.color.gold_400),
@@ -135,7 +159,8 @@ fun BottomNavigationBar(navController: NavController) {
                             .width(100.dp),
                         text = item.title,
                         fontSize = 11.sp
-                    ) },
+                    )
+                },
                 selectedContentColor = Color.White,
                 unselectedContentColor = Color.White.copy(0.4f),
                 alwaysShowLabel = true,

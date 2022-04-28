@@ -127,7 +127,7 @@ fun PreEventListScreen()
                         //TODO put Column of Api events here!
 
                         Spacer(modifier = Modifier.height(50.dp))
-                        Text(text = "Go to previously posted Events",
+                        Text(text = "Go to Previously Posted Events",
                             style = MaterialTheme.typography.h2,
                             color = MaterialTheme.colors.primaryVariant,
                             fontSize = 20.sp,

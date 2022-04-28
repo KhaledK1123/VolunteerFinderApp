@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -475,6 +476,8 @@ private fun setMapLongClick(
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun ListEvents(){
+VolunteerFinderAppTheme() {
+
 
     val scope = rememberCoroutineScope()
     val drawerState = rememberBottomDrawerState(initialValue = BottomDrawerValue.Closed)
@@ -486,7 +489,7 @@ fun ListEvents(){
         drawerContent = {
 
             Button(onClick = { scope.launch { drawerState.close() } }) {
-                Text("CloseX")
+                Text("Close")
             }
 
 //            Spacer(modifier = Modifier.height(16.dp)) // some padding
@@ -501,6 +504,7 @@ fun ListEvents(){
 //            }
         }
     )
+}
 }
 
 @Composable
@@ -536,11 +540,12 @@ fun BottomDrawerSurface() {
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(20.dp),
+                            .padding(20.dp)
+                            .clickable(onClick = {}),
                         verticalAlignment = Alignment.Bottom,
                         horizontalArrangement = Arrangement.spacedBy(12.dp)
                     ) {
-                        Text(text = "event $i")
+                        Text(text = "Event $i")
 
                     }
 

@@ -138,7 +138,7 @@ fun EventList(eventViewModel: EventViewModel) {
                                 Spacer(modifier = Modifier.size(16.dp))
                                 Icon(imageVector = Icons.Default.Delete,
                                     contentDescription = "image",
-                                    tint = Color.Red,
+                                    tint = Color.DarkGray,
                                     modifier = Modifier
                                         .size(30.dp)
                                         .clickable(onClick = {

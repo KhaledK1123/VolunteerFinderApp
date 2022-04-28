@@ -417,7 +417,8 @@ fun belowProfile()
         0 -> PostSection(
             posts = listOf(
                 painterResource(id = R.drawable.trophy),
-                painterResource(id = R.drawable.trophy2)
+                painterResource(id = R.drawable.trophy2),
+                painterResource(id = R.drawable.profilevolunteer3)
             ),
             modifier = Modifier.fillMaxWidth()
         )
@@ -445,8 +446,7 @@ fun belowProfile()
         3 -> ProfileSection(posts =listOf(
             painterResource(id = R.drawable.profilevolunteer),
             painterResource(id = R.drawable.profilevolunteer1),
-            painterResource(id = R.drawable.profilevolunteer2),
-            painterResource(id = R.drawable.profilevolunteer3)
+            painterResource(id = R.drawable.profilevolunteer2)
             ),
             modifier = Modifier.fillMaxWidth())
     }

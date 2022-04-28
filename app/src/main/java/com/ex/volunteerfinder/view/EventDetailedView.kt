@@ -163,27 +163,33 @@ fun EventDetailedViewScreen(id:Int, name:String?, sponsor:String?, leader:String
 //                        Text(text = "Time: $time")
 
                         //New Format--------------------------------------------
-                        Text(text = "Name: $name")
+                        Spacer(modifier = Modifier.height(10.dp))
+                        Text(text = "Name: $name", modifier = Modifier.fillMaxWidth(.95f).padding(start = 2.dp))
+                        Spacer(modifier = Modifier.height(10.dp))
                         when {
                             zip <10 -> {
-                                Text(text = "Address: " + "$address " +"$city, " +"$state "+"0000${zip}")
+                                Text(text = "Address: " + "$address " +"$city, " +"$state "+"0000${zip}", modifier = Modifier.fillMaxWidth(.95f).padding(start = 2.dp))
                             }
                             zip<100 -> {
-                                Text(text = "Address: " + "$address " +"$city, " +"$state "+"000${zip}")
+                                Text(text = "Address: " + "$address " +"$city, " +"$state "+"000${zip}", modifier = Modifier.fillMaxWidth(.95f).padding(start = 2.dp))
                             }
                             zip<1000 -> {
-                                Text(text = "Address: " + "$address " +"$city, " +"$state "+"00${zip}")
+                                Text(text = "Address: " + "$address " +"$city, " +"$state "+"00${zip}", modifier = Modifier.fillMaxWidth(.95f).padding(start = 2.dp))
                             }
                             zip<10000 -> {
-                                Text(text = "Address: " + "$address " +"$city, " +"$state "+"0${zip}")
+                                Text(text = "Address: " + "$address " +"$city, " +"$state "+"0${zip}", modifier = Modifier.fillMaxWidth(.95f).padding(start = 2.dp))
                             }
                             else -> {
-                                Text(text = "Address: $address, $city, $state $zip")
+                                Text(text = "Address: $address, $city, $state $zip", modifier = Modifier.fillMaxWidth(.95f).padding(start = 2.dp))
                             }
                         }
-                        Text(text = "Leader: $leader")
-                        Text(text = "Sponsor: $sponsor")
-                        Text(text = "Date: $date Time: $time")
+                        Spacer(modifier = Modifier.height(10.dp))
+                        Text(text = "Leader: $leader", modifier = Modifier.fillMaxWidth(.95f).padding(start = 2.dp))
+                        Spacer(modifier = Modifier.height(10.dp))
+                        Text(text = "Sponsor: $sponsor", modifier = Modifier.fillMaxWidth(.95f).padding(start = 2.dp))
+                        Spacer(modifier = Modifier.height(10.dp))
+                        Text(text = "Date: $date Time: $time", modifier = Modifier.fillMaxWidth(.95f).padding(start = 2.dp))
+                        Spacer(modifier = Modifier.height(10.dp))
 
                     }
 

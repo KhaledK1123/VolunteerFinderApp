@@ -14,36 +14,40 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.ex.volunteerfinder.R
 import com.ex.volunteerfinder.model.data.*
 import com.ex.volunteerfinder.model.data.model.Conversation
 import com.ex.volunteerfinder.model.data.model.Message
 import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
+import com.ex.volunteerfinder.viewmodel.ConversationViewModel
+import com.ex.volunteerfinder.viewmodel.factories.ConversationViewModelFactory
 
 @Composable
-fun ChatCollectionComposable(passedList: List<Conversation>) {
-
+fun ChatCollectionComposable() {
+    val conversationViewModel: ConversationViewModel = viewModel(factory = ConversationViewModelFactory())
     val pencilDrawable = R.drawable.ic_pencil_plus_outline_black_18dp
+    val passedList = conversationViewModel.conversations
+
     VolunteerFinderAppTheme() {
 
+        Scaffold(
 
-    Scaffold(
-
-        topBar = { SearchBar() },
-        bottomBar = { //TODO insert navigator here
-        },
-        floatingActionButton = { NewCircleButton(pencilDrawable) }
-    ) {
-        Inbox(list = passedList)
+            topBar = { SearchBar() },
+            bottomBar = { //TODO insert navigator here
+            },
+            floatingActionButton = { NewCircleButton(pencilDrawable) }
+        ) {
+            Inbox(list = passedList)
+        }
     }
-}
 }
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun MessageSummary (conversation: Conversation) {
+fun MessageSummary(conversation: Conversation) {
 
-    val mostRecent = conversation.messages.size -1
+    val mostRecent = conversation.messages.size - 1
     val message = conversation.messages[mostRecent]
     val contact = message.user
     val receiveDate = message.sendTime
@@ -53,8 +57,9 @@ fun MessageSummary (conversation: Conversation) {
 
     Card(modifier = Modifier.padding(4.dp),
         elevation = 0.dp,
-        onClick = {/*TODO Probably should be passed from parameters*/}) {
-        Row(modifier = Modifier.fillMaxWidth(),
+        onClick = {/*TODO Probably should be passed from parameters*/ }) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
         ) {
             ProfileImage() //TODO add padding to ProfileImage
@@ -81,7 +86,7 @@ fun MessageSummary (conversation: Conversation) {
 }
 
 @Composable
-fun Inbox (/*Message List, perhaps from data class*/ list: List<Conversation>) {
+fun Inbox(/*Message List, perhaps from data class*/ list: List<Conversation>) {
 //TODO there should be a different printout if there are no messages.
     //TODO CHECK HERE FOR NPE!
     /*currently repeats the first card; necessary but unfortunate,
@@ -89,13 +94,13 @@ fun Inbox (/*Message List, perhaps from data class*/ list: List<Conversation>) {
     */
 
     val length = list.size
-    list.subList(1,length)
+    list.subList(1, length)
 
     LazyColumn() {
         item {
             MessageSummary(list[0])
         }
-        items(list.size){ index ->
+        items(list.size) { index ->
             Divider()
             MessageSummary(list[index])
         }
@@ -131,6 +136,6 @@ fun InboxPreview() {
         sendTime = 1649939435935,
         user = "JohnMan"
     )
-    val previewList = listOf(MessageDummy.obj,obj,MessageDummy.obj)
+    val previewList = listOf(MessageDummy.obj, obj, MessageDummy.obj)
 //    Inbox(list = previewList)
 }

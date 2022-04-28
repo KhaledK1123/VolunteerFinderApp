@@ -22,6 +22,7 @@ import com.ex.volunteerfinder.*
 import com.ex.volunteerfinder.R
 import com.ex.volunteerfinder.view.ui.ProfileScreen
 import com.ex.volunteerfinder.view.ui.composables.ChatCollectionComposable
+import com.ex.volunteerfinder.view.ui.composables.Inbox
 import com.ex.volunteerfinder.viewmodel.ConversationViewModel
 
 @Composable
@@ -42,10 +43,24 @@ fun Navigation(navController: NavHostController) {
         composable(NavigationItem.Messages.route) {
             val conversationViewModel = viewModel<ConversationViewModel>()
             val conversations = conversationViewModel.conversations
-            ChatCollectionComposable(conversations = conversations)
+            ChatCollectionComposable(conversations = conversations,
+                navController = navController)
         }
     }
 }
+
+@Composable
+fun InboxNavigation(navController: NavHostController) {
+//    NavHost(navController = navController, startDestination = InboxScreen.Inbox.route)
+    NavHost(navController = navController,
+        startDestination = InboxScreen.Inbox.route) {
+        composable(InboxScreen.Inbox.route) {
+
+        }
+    }
+
+}
+
 @Preview(showBackground = true)
 @Composable
 fun BottomNavigationBarPreview() {

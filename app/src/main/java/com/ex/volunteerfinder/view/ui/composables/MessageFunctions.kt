@@ -14,6 +14,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.ex.volunteerfinder.R
 import com.ex.volunteerfinder.model.data.*
 import com.ex.volunteerfinder.model.data.model.Conversation
@@ -21,18 +22,14 @@ import com.ex.volunteerfinder.model.data.model.Message
 import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
 
 @Composable
-fun ChatCollectionComposable(conversations: List<Conversation>) {
+fun ChatCollectionComposable(conversations: List<Conversation>, navController: NavHostController) {
 
     val pencilDrawable = R.drawable.ic_pencil_plus_outline_black_18dp
 
     VolunteerFinderAppTheme() {
 
         Scaffold(
-
-            topBar = { SearchBar() },
-            bottomBar = { //TODO insert navigator here
-            },
-            floatingActionButton = { NewCircleButton(pencilDrawable) }
+//            floatingActionButton = { NewCircleButton(pencilDrawable) }
         ) {
             Inbox(conversationList = conversations)
         }

@@ -18,6 +18,8 @@ class ConversationViewModel(): ViewModel() {
 
     var conversations:List<Conversation> by mutableStateOf(listOf())
 
+    lateinit var clickedItem: Conversation
+
     init {
         fetchConversations()
     }
@@ -38,5 +40,10 @@ class ConversationViewModel(): ViewModel() {
         }
 
 
+    }
+
+    fun itemClicked(item:Conversation)
+    {
+        clickedItem=item
     }
 }

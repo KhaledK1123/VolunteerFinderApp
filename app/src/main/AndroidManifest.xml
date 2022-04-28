@@ -57,7 +57,8 @@
             android:name=".view.ui.VolunteerProfile"
             android:exported="false"
             android:label="@string/title_activity_chat_log"
-            android:theme="@style/Theme.VolunteerFinderApp" />
+            android:theme="@style/Theme.VolunteerFinderApp"
+            android:noHistory="true"/>
         <activity
             android:name=".view.ui.ProfileDetails"
             android:exported="false"

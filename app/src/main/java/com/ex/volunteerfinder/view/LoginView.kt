@@ -46,6 +46,7 @@ class LoginView : ComponentActivity() {
         super.onCreate(savedInstanceState)
         val userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         setContent {
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
             VolunteerFinderAppTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(

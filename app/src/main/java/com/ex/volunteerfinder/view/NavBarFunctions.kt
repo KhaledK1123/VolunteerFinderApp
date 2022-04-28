@@ -12,6 +12,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -19,12 +20,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.ex.volunteerfinder.*
 import com.ex.volunteerfinder.R
-import com.ex.volunteerfinder.model.data.model.Conversation
-import com.ex.volunteerfinder.model.data.MessageDummy
-import com.ex.volunteerfinder.model.data.UserDummy
-import com.ex.volunteerfinder.model.data.model.Message
 import com.ex.volunteerfinder.view.ui.ProfileScreen
 import com.ex.volunteerfinder.view.ui.composables.ChatCollectionComposable
+import com.ex.volunteerfinder.view.ui.composables.Inbox
+import com.ex.volunteerfinder.viewmodel.ConversationViewModel
 
 @Composable
 fun Navigation(navController: NavHostController) {
@@ -42,17 +41,26 @@ fun Navigation(navController: NavHostController) {
             EventMap()
         }
         composable(NavigationItem.Messages.route) {
-//            val previewList = listOf(MessageDummy.obj, MessageDummy.obj)
-            val conversation = Conversation(users = listOf(MessageDummy.obj.user, MessageDummy.obj.user),
-                messages = listOf(MessageDummy.obj, Message(
-                    body = "Message me back! The folks at the firehouse need help",
-                    sendTime = 1649939435935,
-                    user = "ListCraig"))
-            )
-            ChatCollectionComposable(listOf(conversation))
+            val conversationViewModel = viewModel<ConversationViewModel>()
+            val conversations = conversationViewModel.conversations
+            ChatCollectionComposable(conversations = conversations,
+                navController = navController)
         }
     }
 }
+
+@Composable
+fun InboxNavigation(navController: NavHostController) {
+//    NavHost(navController = navController, startDestination = InboxScreen.Inbox.route)
+    NavHost(navController = navController,
+        startDestination = InboxScreen.Inbox.route) {
+        composable(InboxScreen.Inbox.route) {
+
+        }
+    }
+
+}
+
 @Preview(showBackground = true)
 @Composable
 fun BottomNavigationBarPreview() {

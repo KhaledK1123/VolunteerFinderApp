@@ -3,6 +3,7 @@ package com.ex.volunteerfinder
 import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -16,6 +17,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.ex.volunteerfinder.util.rememberMapViewWithLifecycle
+import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
@@ -30,11 +32,14 @@ import java.util.*
 //For any reference watch https://www.youtube.com/watch?v=qDSLJ0ZNRkE
 @Composable
 fun EventMap(){
-    Box(modifier = Modifier.fillMaxWidth(),contentAlignment = Alignment.Center) {
-        GoogleMap()
-        ListEvents()
-    }
+    VolunteerFinderAppTheme() {
 
+
+        Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+            GoogleMap()
+            ListEvents()
+        }
+    }
 
 
 
@@ -192,7 +197,7 @@ fun ListEvents(){
         drawerContent = {
 
             Button(onClick = { scope.launch { drawerState.close() } }) {
-                Text("CloseX")
+                Text("Close")
             }
 
 //            Spacer(modifier = Modifier.height(16.dp)) // some padding
@@ -243,11 +248,12 @@ fun BottomDrawerSurface() {
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(20.dp),
+                            .padding(20.dp)
+                            .clickable(onClick = {}),
                         verticalAlignment = Alignment.Bottom,
                         horizontalArrangement = Arrangement.spacedBy(12.dp)
                     ) {
-                        Text(text = "event $i")
+                        Text(text = "Event $i")
 
                     }
 

@@ -103,31 +103,31 @@ fun EventList(eventViewModel: EventViewModel) {
                                         Spacer(modifier = Modifier.size(8.dp))
                                        Card(Modifier.height(160.dp),elevation = 10.dp) {
                                            Column(Modifier.width(300.dp)) {
-                                               Text(text = "Event: " + event.name?:"",fontSize = 14.sp,color = MaterialTheme.colors.onSecondary)
+                                               Text(text = "Event: " + event.name?:"",fontSize = 14.sp)
                                                Spacer(modifier = Modifier.height(10.dp))
                                                when {
                                                    event.zipCode!! <10 -> {
-                                                       Text(text = "Address: " + "${event.address}, " +"${event.city}, " +"${event.state} "+"0000${event.zipCode}",fontSize = 14.sp,color = MaterialTheme.colors.onSecondary)
+                                                       Text(text = "Address: " + "${event.address}, " +"${event.city}, " +"${event.state} "+"0000${event.zipCode}",fontSize = 14.sp)
                                                    }
                                                    event.zipCode!!<100 -> {
-                                                       Text(text = "Address: " + "${event.address}, " +"${event.city}, " +"${event.state} "+"000${event.zipCode}",fontSize = 14.sp,color = MaterialTheme.colors.onSecondary)
+                                                       Text(text = "Address: " + "${event.address}, " +"${event.city}, " +"${event.state} "+"000${event.zipCode}",fontSize = 14.sp)
                                                    }
                                                    event.zipCode!!<1000 -> {
-                                                       Text(text = "Address: " + "${event.address}, " +"${event.city}, " +"${event.state} "+"00${event.zipCode}",fontSize = 14.sp,color = MaterialTheme.colors.onSecondary)
+                                                       Text(text = "Address: " + "${event.address}, " +"${event.city}, " +"${event.state} "+"00${event.zipCode}",fontSize = 14.sp)
                                                    }
                                                    event.zipCode!!<10000 -> {
-                                                       Text(text = "Address: " + "${event.address}, " +"${event.city}, " +"${event.state} "+"0${event.zipCode}",fontSize = 14.sp,color = MaterialTheme.colors.onSecondary)
+                                                       Text(text = "Address: " + "${event.address}, " +"${event.city}, " +"${event.state} "+"0${event.zipCode}",fontSize = 14.sp)
                                                    }
                                                    else -> {
-                                                       Text(text = "Address: " + "${event.address}, " +"${event.city}, " +"${event.state} "+"${event.zipCode}",fontSize = 14.sp,color = MaterialTheme.colors.onSecondary)
+                                                       Text(text = "Address: " + "${event.address}, " +"${event.city}, " +"${event.state} "+"${event.zipCode}",fontSize = 14.sp)
                                                    }
                                                }
                                                Spacer(modifier = Modifier.height(10.dp))
-                                               Text(text = "Leader: " + "${event.leadership}",fontSize = 14.sp,color = MaterialTheme.colors.onSecondary)
+                                               Text(text = "Leader: " + "${event.leadership}",fontSize = 14.sp)
                                                Spacer(modifier = Modifier.height(10.dp))
-                                               Text(text = "Sponsor: " + "${event.sponsor}",fontSize = 14.sp,color = MaterialTheme.colors.onSecondary)
+                                               Text(text = "Sponsor: " + "${event.sponsor}",fontSize = 14.sp)
                                                Spacer(modifier = Modifier.height(10.dp))
-                                               Text(text = "Date: " + "${event.date} " + "Time: " + "${event.time}",fontSize = 14.sp,color = MaterialTheme.colors.onSecondary)
+                                               Text(text = "Date: " + "${event.date} " + "Time: " + "${event.time}",fontSize = 14.sp)
                                            }
 
                                        }

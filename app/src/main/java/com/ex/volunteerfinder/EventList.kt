@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -19,8 +20,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.compose.rememberNavController
 import com.ex.volunteerfinder.model.data.MyEvent
@@ -102,21 +106,57 @@ fun PreEventListScreen()
 
 
         val context = LocalContext.current
-        Column(
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.End
-        ) {
-            //TODO put Column of Api events here!
 
-            Button(onClick = { context.startActivity(Intent(context, ApiEvents::class.java)) },
-                modifier = Modifier.fillMaxWidth()) {
-                Text(text = "Go to previously posted Events")
+        Scaffold (
+            topBar = {
+                TopAppBar(backgroundColor = MaterialTheme.colors.primary,
+                    title = { Text(text = "Event Options")}
+                )
             }
+        ) {
+            Column(Modifier.fillMaxWidth()) {
+                Row (
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Center
+                ){
+                    Column(
+                        modifier = Modifier.fillMaxSize(),
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        //TODO put Column of Api events here!
 
-            Button(onClick = { context.startActivity(Intent(context, EventList::class.java)) },
-                modifier = Modifier.fillMaxWidth()) {
-                Text(text = "Go to My Events!")
+                        Spacer(modifier = Modifier.height(50.dp))
+                        Text(text = "Go to previously posted Events",
+                            style = MaterialTheme.typography.h2,
+                            color = MaterialTheme.colors.primaryVariant,
+                            fontSize = 20.sp,
+                            textAlign = TextAlign.Center)
+                        Spacer(modifier = Modifier.height(20.dp))
+                        IconButton(onClick = { context.startActivity(Intent(context, ApiEvents::class.java)) },
+                            modifier = Modifier.size(150.dp)) {
+//                            Text(text = "Go to previously posted Events")
+//                            Icon(painter = painterResource(id = R.drawable.volunteer), contentDescription = "")
+                            Image(modifier = Modifier.size(150.dp),painter = painterResource(id = R.drawable.volunteer), contentDescription = "Standard Events")
+                        }
+                        Spacer(modifier = Modifier.height(100.dp))
+                        Text(text = "Go to My Events!",
+                            style = MaterialTheme.typography.h2,
+                            color = MaterialTheme.colors.primaryVariant,
+                            fontSize = 20.sp,
+                            textAlign = TextAlign.Center)
+                        Spacer(modifier = Modifier.height(10.dp))
+                        IconButton(onClick = { context.startActivity(Intent(context, EventList::class.java)) },
+                            modifier = Modifier.size(200.dp)) {
+//                            Text(text = "Go to My Events!")
+//                            Icon(painter = painterResource(id = R.drawable.transparentlogowithname ), contentDescription = "")
+                            Image(modifier = Modifier.size(200.dp),painter = painterResource(id = R.drawable.letsgologo), contentDescription = "Personal Events")
+                        }
+                    }
+                }
             }
         }
+
+
     }
 }

@@ -9,7 +9,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -19,7 +23,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -40,6 +46,7 @@ class LoginView : ComponentActivity() {
         super.onCreate(savedInstanceState)
         val userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         setContent {
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
             VolunteerFinderAppTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
@@ -152,27 +159,56 @@ fun LoginViewer(userViewModel: UserViewModel) {
         var username by rememberSaveable { mutableStateOf("") }
         var password by rememberSaveable { mutableStateOf("") }
         var isError by rememberSaveable { mutableStateOf(false) }
-        TextField(
+        var wordVisibility by remember { mutableStateOf(false)}
+
+        val display = if (wordVisibility)
+            painterResource(id = R.drawable.visibility_fill0_wght400_grad0_opsz48)
+        else
+            painterResource(id = R.drawable.visibility_off_fill0_wght400_grad0_opsz48)
+
+
+        OutlinedTextField(
             value = username,
-            isError = false,
             onValueChange = { username = it },
-            label = { Text(if(isError)"User Name*" else("User Name"),
-                style = MaterialTheme.typography.subtitle1) },
-            modifier = Modifier
-                .padding(top = 35.dp, bottom = 25.dp, start = 15.dp, end = 15.dp)
-                .fillMaxWidth()
-                .clip(Shapes.medium)
+            label = { Text(text = "Username") },
+            placeholder = { Text(text = "Username") },
+            singleLine = true,
+            leadingIcon = {
+                IconButton(onClick = { /*TODO*/ }) {
+                    Icon(imageVector = Icons.Filled.Person, contentDescription = "Username")
+
+                }
+            }
         )
-        TextField(
+        Spacer(modifier = Modifier.height(12.dp))
+        OutlinedTextField(
             value = password,
             onValueChange = { password = it },
-            label = { Text(if(isError)"Password*" else("Password"),
-                style = MaterialTheme.typography.subtitle1) },
-            visualTransformation = PasswordVisualTransformation(),
-            modifier = Modifier
-                .padding(bottom = 10.dp, start = 15.dp, end = 15.dp)
-                .fillMaxWidth()
-                .clip(Shapes.medium)
+            label = { Text(text = "Password") },
+            placeholder = { Text(text = "Password") },
+            singleLine = true,
+            leadingIcon = {
+                IconButton(onClick = { /*TODO*/ }) {
+                    Icon(imageVector = Icons.Filled.Lock, contentDescription = "Lock")
+
+                }
+            },
+            trailingIcon = {
+                IconButton(onClick = {
+                    wordVisibility=!wordVisibility
+
+                }) {
+                    Icon(painter = display, contentDescription = "visibility icon")
+
+                }
+
+
+            },
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Password
+            ),
+            visualTransformation = if (wordVisibility) VisualTransformation.None
+            else PasswordVisualTransformation()
         )
 
         //Calling ForgotPasswordButton function that displays 'Forgot Password'
@@ -186,7 +222,7 @@ fun LoginViewer(userViewModel: UserViewModel) {
             //colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.primary),
             modifier = Modifier
                 .padding(15.dp)
-                .fillMaxWidth(),
+                .width(280.dp),
 
             onClick = {
                 //This allows the login button to traverse to Home page

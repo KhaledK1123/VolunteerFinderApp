@@ -13,6 +13,8 @@ import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -34,6 +36,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ex.volunteerfinder.ImageWithText
 import com.ex.volunteerfinder.R
+import com.ex.volunteerfinder.view.LoginView
 import com.ex.volunteerfinder.view.MainScreen
 import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
 
@@ -101,7 +104,17 @@ fun ProfileScreen(username:String?, name:String?, email:String?, state:String?, 
 
                     TopAppBar(
                         backgroundColor = MaterialTheme.colors.primary,
-                        title = { Text("Profile") })
+                        title = { Text("Profil") },
+                        navigationIcon =
+                        {
+                            val context = LocalContext.current
+                            IconButton(onClick = { context.startActivity(Intent(context, LoginView::class.java)) }) {
+                                Icon(
+                                    imageVector = Icons.Filled.ArrowBack,
+                                    contentDescription = "Back"
+                                )
+                            }
+                        })
                 }
             )
             {
@@ -180,10 +193,19 @@ fun ProfileScreen() {
         ) {
             Scaffold(
                 topBar = {
-
+                    val context = LocalContext.current
                     TopAppBar(
                         backgroundColor = MaterialTheme.colors.primary,
-                        title = { Text("Profile") })
+                        title = { Text("Profile") },
+                        actions = {
+                            IconButton(onClick = { context.startActivity(Intent(context, LoginView::class.java))
+                                
+                            }) {
+                                Text(text = "Log Out", color = Color.White, fontSize = 16.sp, fontWeight = FontWeight.Bold)
+                        }
+
+                        }
+                    )
                 }
             )
             {

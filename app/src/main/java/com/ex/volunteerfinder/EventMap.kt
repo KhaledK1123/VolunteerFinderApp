@@ -483,7 +483,7 @@ VolunteerFinderAppTheme() {
     val drawerState = rememberBottomDrawerState(initialValue = BottomDrawerValue.Closed)
 
     BottomDrawer(
-        gesturesEnabled = true, // making scrollable to fit screen
+        gesturesEnabled = false, // making scrollable to fit screen
         drawerState = drawerState,
         drawerBackgroundColor = Color.Transparent, // transparent background
         drawerContent = {
@@ -498,10 +498,10 @@ VolunteerFinderAppTheme() {
 
         },
         content = {
-            // outside content
-//            Button(onClick = { scope.launch { drawerState.open() } }) {
-//                Text("Open BottomDrawer")
-//            }
+             //outside content
+            Button(onClick = { scope.launch { drawerState.open() } }) {
+                Text("See Events")
+            }
         }
     )
 }
@@ -545,7 +545,7 @@ fun BottomDrawerSurface() {
                         verticalAlignment = Alignment.Bottom,
                         horizontalArrangement = Arrangement.spacedBy(12.dp)
                     ) {
-                        Text(text = "Event $i")
+                        Text(text = "Events $i")
 
                     }
 

@@ -101,9 +101,19 @@ Scaffold() {
         var password = remember { mutableStateOf("") }
         var passwordConfirm = remember { mutableStateOf("") }
 
-        val passwordVisibility = remember { mutableStateOf(false) }
-        val confirmPasswordVisibility = remember { mutableStateOf(false) }
 
+        var passwordVisibility by remember { mutableStateOf(false) }
+        var confirmPasswordVisibility by remember { mutableStateOf(false) }
+
+        val icon = if(passwordVisibility)
+            painterResource(id = R.drawable.visibility_fill0_wght400_grad0_opsz48)
+        else
+            painterResource(id = R.drawable.visibility_off_fill0_wght400_grad0_opsz48)
+
+        val icon1 = if (confirmPasswordVisibility)
+            painterResource(id = R.drawable.visibility_fill0_wght400_grad0_opsz48)
+        else
+            painterResource(id = R.drawable.visibility_off_fill0_wght400_grad0_opsz48)
 
         OutlinedTextField(
             value = username.value,
@@ -206,17 +216,19 @@ Scaffold() {
             },
             trailingIcon = {
                 IconButton(onClick = {
-                    passwordVisibility.value = !passwordVisibility.value
+                    passwordVisibility=!passwordVisibility
+
                 }) {
-                    Icon(
-                        imageVector = vectorResource(id = R.drawable.password),//password drawable
-                        tint = if (passwordVisibility.value) primaryColor else Color.Gray
-                    )
+                    Icon(painter = icon, contentDescription = "visibility icon")
+
                 }
 
 
             },
-            visualTransformation = if (passwordVisibility.value) VisualTransformation.None
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Password
+            ),
+            visualTransformation = if (passwordVisibility) VisualTransformation.None
             else PasswordVisualTransformation()
         )
 
@@ -236,18 +248,17 @@ Scaffold() {
             },
             trailingIcon = {
                 IconButton(onClick = {
-                    confirmPasswordVisibility.value = !confirmPasswordVisibility.value
+                    confirmPasswordVisibility=!confirmPasswordVisibility
+
                 }) {
-                    val primaryColor = Color.Gray
-                    Icon(
-                        imageVector = vectorResource(id = R.drawable.password), //password drawable
-                        tint = if (confirmPasswordVisibility.value) primaryColor else Color.Gray
-                    )
+                    Icon(painter = icon1, contentDescription = "visibility icon")
+
                 }
-
-
             },
-            visualTransformation = if (confirmPasswordVisibility.value) VisualTransformation.None
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Password
+            ),
+            visualTransformation = if (confirmPasswordVisibility) VisualTransformation.None
             else PasswordVisualTransformation()
         )
 

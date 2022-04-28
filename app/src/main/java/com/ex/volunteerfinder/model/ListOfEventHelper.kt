@@ -33,7 +33,11 @@ import androidx.compose.ui.unit.sp
 import com.ex.volunteerfinder.R
 import com.ex.volunteerfinder.model.data.DummyDonation
 import com.ex.volunteerfinder.model.data.EventImg
+import com.ex.volunteerfinder.model.data.MessageDummy
+import com.ex.volunteerfinder.model.data.model.Conversation
+import com.ex.volunteerfinder.model.data.model.Message
 import com.ex.volunteerfinder.view.CardMessage
+import com.ex.volunteerfinder.view.ui.composables.ChatCollectionComposable
 import com.ex.volunteerfinder.view.ui.theme.Shapes
 import com.ex.volunteerfinder.view.ui.theme.VolunteerFinderAppTheme
 import com.ex.volunteerfinder.view.ui.theme.background
@@ -123,27 +127,28 @@ fun MessageButton() {
                 .fillMaxWidth(), Arrangement.Center
         ) {
             val context = LocalContext.current
-            TextButton( modifier = Modifier.padding(horizontal = 40.dp),
-                onClick = {
-                    //context.startActivity(Intent(context, ::class.java))
-                    Toast.makeText(context, "Join!", Toast.LENGTH_SHORT).show()
-                },
-
-                ) {
-                Text("Join!",
-                    style = MaterialTheme.typography.h6,
-                    color = MaterialTheme.colors.primary)
-            }
+//            TextButton( modifier = Modifier.padding(horizontal = 40.dp),
+//                onClick = {
+//                    //context.startActivity(Intent(context, ::class.java))
+//                    Toast.makeText(context, "Join!", Toast.LENGTH_SHORT).show()
+//                },
+//
+//                ) {
+//                Text("Join!",
+//                    style = MaterialTheme.typography.h6,
+//                    color = MaterialTheme.colors.primary)
+//            }
             //val context = LocalContext.current
             TextButton(
-                modifier = Modifier.padding(horizontal = 40.dp),
+                //modifier = Modifier.padding(horizontal = 40.dp),
                 onClick = {
+
                     //context.startActivity(Intent(context, ::class.java))
                     Toast.makeText(context, "Message!", Toast.LENGTH_SHORT).show()
                 },
 
                 ) {
-                Text("Message!",
+                Text("Message Event Members!",
                     style = MaterialTheme.typography.h6,
                     color = MaterialTheme.colors.primary)
             }

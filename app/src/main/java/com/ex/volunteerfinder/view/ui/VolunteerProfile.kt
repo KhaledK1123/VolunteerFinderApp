@@ -226,12 +226,13 @@ fun ProfileScreen() {
                         StatSection(modifier = Modifier.weight(7f))
                     }
                     val context = LocalContext.current
-                    Spacer(modifier = Modifier.height(14.dp))
+                    Spacer(modifier = Modifier.height(4.dp))
                     TextButton(onClick = {
                         context.startActivity(Intent(context, ProfileDetails::class.java))
                     }) {
                         Text(text = "View Profile Details")
                     }
+                    Spacer(modifier = Modifier.height(4.dp))
                     Column(
 
                         modifier = Modifier
@@ -303,7 +304,7 @@ fun StatSection(modifier: Modifier = Modifier){
     ) {
         ProfileStat(numberText = "18", text = "Friends")
         ProfileStat(numberText = "16", text = "Jobs")
-        ProfileStat(numberText = "523", text = "Hours Worked")
+        ProfileStat(numberText = "523", text = "Total Hours")
     }
 }
 @Composable
@@ -415,14 +416,39 @@ fun belowProfile()
     when(selectedTabIntex){
         0 -> PostSection(
             posts = listOf(
-                painterResource(id = R.drawable.iphone),
-                painterResource(id = R.drawable.mercedes)
-
+                painterResource(id = R.drawable.trophy),
+                painterResource(id = R.drawable.trophy2)
             ),
-
-
             modifier = Modifier.fillMaxWidth()
         )
+        1 -> ReelSection(posts =listOf(
+            painterResource(id = R.drawable.volunteer8),
+            painterResource(id = R.drawable.volunteer1),
+            painterResource(id = R.drawable.volunteer2),
+            painterResource(id = R.drawable.volunteer3),
+            painterResource(id = R.drawable.volunteer4),
+            painterResource(id = R.drawable.volunteer5),
+            painterResource(id = R.drawable.volunteer6),
+            painterResource(id = R.drawable.volunteer7),
+
+        ),
+            modifier = Modifier.fillMaxWidth())
+        2 -> IGTVSection(posts =listOf(
+            painterResource(id = R.drawable.volunteerpic),
+            painterResource(id = R.drawable.volunteerpic1),
+            painterResource(id = R.drawable.volunteerpic2),
+            painterResource(id = R.drawable.volunteerpic3),
+            painterResource(id = R.drawable.volunteerpic4),
+            painterResource(id = R.drawable.volunteerpic5)
+            ),
+            modifier = Modifier.fillMaxWidth())
+        3 -> ProfileSection(posts =listOf(
+            painterResource(id = R.drawable.profilevolunteer),
+            painterResource(id = R.drawable.profilevolunteer1),
+            painterResource(id = R.drawable.profilevolunteer2),
+            painterResource(id = R.drawable.profilevolunteer3)
+            ),
+            modifier = Modifier.fillMaxWidth())
     }
 }
 
@@ -490,7 +516,85 @@ fun PostSection(
         }
     }
 }
+@ExperimentalFoundationApi
+@Composable
+fun IGTVSection(
+    posts: List<Painter>,
+    modifier: Modifier = Modifier
+) {
+    LazyVerticalGrid(
+        cells = GridCells.Fixed(3),
+        modifier = modifier
+            .scale(1.01f)
+    ) {
+        items(posts.size) {
+            Image(
+                painter = posts[it],
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .aspectRatio(1f)
+                    .border(
+                        width = 1.dp,
+                        color = Color.White
+                    )
+            )
+        }
+    }
+}
 
+@ExperimentalFoundationApi
+@Composable
+fun ProfileSection(
+    posts: List<Painter>,
+    modifier: Modifier = Modifier
+) {
+    LazyVerticalGrid(
+        cells = GridCells.Fixed(3),
+        modifier = modifier
+            .scale(1.01f)
+    ) {
+        items(posts.size) {
+            Image(
+                painter = posts[it],
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .aspectRatio(1f)
+                    .border(
+                        width = 1.dp,
+                        color = Color.White
+                    )
+            )
+        }
+    }
+}
+@ExperimentalFoundationApi
+@Composable
+fun ReelSection(
+    posts: List<Painter>,
+    modifier: Modifier = Modifier
+) {
+    LazyVerticalGrid(
+        cells = GridCells.Fixed(3),
+        modifier = modifier
+            .scale(1.01f)
+    ) {
+        items(posts.size) {
+            Image(
+                painter = posts[it],
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .aspectRatio(1f)
+                    .border(
+                        width = 1.dp,
+                        color = Color.White
+                    )
+            )
+        }
+    }
+}
 @Composable
 fun ProfileDescription(
     displayName: String,

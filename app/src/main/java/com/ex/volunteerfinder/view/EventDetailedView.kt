@@ -90,7 +90,9 @@ fun EventDetailedViewScreen(id:Int, name:String?, sponsor:String?, leader:String
             ) {
                 //val event = eventViewModel.fetchOneEvent().observeAsState(arrayListOf())
                 val imgList =
-                    listOf<Int>(R.drawable.mercedes, R.drawable.iphone, R.drawable.soccerevent)
+                    listOf<Int>(R.drawable.biking1, R.drawable.biking2, R.drawable.biking3, R.drawable.biking4)
+                val imgList1 =
+                    listOf<Int>(R.drawable.soccerimg, R.drawable.soccerimg1, R.drawable.soccerimg2, R.drawable.soccerimg3)
                 Column(
                     modifier = Modifier.fillMaxSize(),
                     horizontalAlignment = Alignment.CenterHorizontally
@@ -99,15 +101,29 @@ fun EventDetailedViewScreen(id:Int, name:String?, sponsor:String?, leader:String
                         verticalArrangement = Arrangement.Top,
                         modifier = Modifier
                             .height(175.dp)
-                            .border(2.dp, MaterialTheme.colors.primary)
+                            .border(1.dp, MaterialTheme.colors.primary)
 
 
                     ) {
                         LazyRow {
-                            items(imgList.size) { index ->
+                            var imgListRandom: List<Int>? = null
+                            val random:Int = (0..1).random()
+                            if(random == 0)
+                            {
+                                imgListRandom = imgList
+                            }
+                            else if(random == 1)
+                            {
+                                imgListRandom = imgList1
+                            }
+                            else
+                            {
+                                imgListRandom = imgList1
+                            }
+                            items(imgListRandom.size) { index ->
                                 //Text(text = donation.images[index])
                                 Image(
-                                    painter = painterResource(id = imgList[index]),
+                                    painter = painterResource(id = imgListRandom[index]),
                                     contentDescription = null,
                                     modifier = Modifier
                                         .size(250.dp)
@@ -121,8 +137,8 @@ fun EventDetailedViewScreen(id:Int, name:String?, sponsor:String?, leader:String
                         //Image(painterResource(R.drawable.soccerevent), "content description")
                     }
                     Column(
-                        modifier = Modifier.border(border = BorderStroke(2.dp,MaterialTheme.colors.primary))
-                            .fillMaxWidth(3f)
+                        modifier = Modifier.border(border = BorderStroke(1.dp,MaterialTheme.colors.primary))
+                            .fillMaxWidth(.95f)
                     ) {
                         //val intent: Intent = getIntentOld("EventList")
                         //val message: String = intent.getStringExtra(MainActivity().EXTRA_MESSAGE)
@@ -178,7 +194,7 @@ fun EventDetailedViewScreen(id:Int, name:String?, sponsor:String?, leader:String
                         horizontalArrangement = Arrangement.SpaceEvenly
                     ) {
                         //JoinButton()
-                        //MessageButton()
+                        MessageButton()
                     }
                 }
             }

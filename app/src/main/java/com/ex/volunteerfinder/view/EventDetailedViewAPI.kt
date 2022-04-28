@@ -115,8 +115,9 @@ fun EventDetailedViewAPIScreen(apiEventViewModel:ApiEventViewModel)
                             Spacer(modifier = Modifier.height(10.dp))
                             var i = 0
                             Spacer(modifier = Modifier.height(10.dp))
+                            Text(text = "Members List: ")
                             while( i < events[index].members.size) {
-                                Text(text = "Members List: " +events[index].members[i], modifier = Modifier
+                                Text(text = events[index].members[i], modifier = Modifier
                                     .fillMaxWidth(.95f)
                                     .padding(start = 2.dp))
                                 i += 1

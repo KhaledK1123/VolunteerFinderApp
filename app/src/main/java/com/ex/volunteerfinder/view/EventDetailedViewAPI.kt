@@ -98,17 +98,57 @@ fun EventDetailedViewAPIScreen(apiEventViewModel:ApiEventViewModel)
 
                     LazyColumn {
                         items(listLength) {
-
                                 index ->
                             //ApiEvent(events[index])
                             Spacer(modifier = Modifier.height(10.dp))
-                            Text(text = "Name: " + events[index].name, modifier = Modifier.fillMaxWidth(.95f).padding(start = 2.dp))
+                            Text(text = "Name: " + events[index].name, modifier = Modifier
+                                .fillMaxWidth(.95f)
+                                .padding(start = 2.dp))
                             Spacer(modifier = Modifier.height(10.dp))
-                            Text(text = "Sponsor: " + events[index].sponsor, modifier = Modifier.fillMaxWidth(.95f).padding(start = 2.dp))
+                            Text(text = "Sponsor: " + events[index].sponsor, modifier = Modifier
+                                .fillMaxWidth(.95f)
+                                .padding(start = 2.dp))
                             Spacer(modifier = Modifier.height(10.dp))
-                            Text(text = "Address: " + events[index].address + ", " + events[index].city, modifier = Modifier.fillMaxWidth(.95f).padding(start = 2.dp))
+                            Text(text = "Address: " + events[index].address + ", " + events[index].city + ", " + events[index].zipCode, modifier = Modifier
+                                .fillMaxWidth(.95f)
+                                .padding(start = 2.dp))
                             Spacer(modifier = Modifier.height(10.dp))
+                            var i = 0
+                            Spacer(modifier = Modifier.height(10.dp))
+                            while( i < events[index].members.size) {
+                                Text(text = "Members List: " +events[index].members[i], modifier = Modifier
+                                    .fillMaxWidth(.95f)
+                                    .padding(start = 2.dp))
+                                i += 1
+                            }
+                            i=0
+                            Spacer(modifier = Modifier.height(10.dp))
+                            Text(text = "Leaders: ", modifier = Modifier
+                                .fillMaxWidth(.95f)
+                                .padding(start = 2.dp))
+                            while( i < events[index].leadership.size) {
+                                Text(text = events[index].leadership[i], modifier = Modifier
+                                    .fillMaxWidth(.95f)
+                                    .padding(start = 2.dp))
+                                i += 1
+                            }
+                            i=0
 
+                            Spacer(modifier = Modifier.height(10.dp))
+                            Text(text = "Posts: ", modifier = Modifier
+                                .fillMaxWidth(.95f)
+                                .padding(start = 2.dp))
+                            while( i < events[index].posts.size) {
+                                Text(text = events[index].posts[i].body , modifier = Modifier
+                                    .fillMaxWidth(.95f)
+                                    .padding(start = 2.dp))
+                                Text(text = "From: " + events[index].posts[i].user, modifier = Modifier
+                                    .fillMaxWidth(.95f)
+                                    .padding(start = 2.dp))
+                                Spacer(modifier = Modifier.height(10.dp))
+                                i += 1
+                            }
+                            Spacer(modifier = Modifier.height(10.dp))
 
                         }
                     }

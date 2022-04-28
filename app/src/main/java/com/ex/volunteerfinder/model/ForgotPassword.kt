@@ -11,6 +11,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
@@ -27,6 +28,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
@@ -120,9 +122,13 @@ fun CancelButton() {
             var email = remember { mutableStateOf("")}
             var passwordConfirm = remember { mutableStateOf("") }
 
-            val passwordVisibility = remember { mutableStateOf(false) }
+            var passwordVisibility by remember { mutableStateOf(false) }
             val confirmPasswordVisibility = remember { mutableStateOf(false) }
-
+            
+            val icon = if(passwordVisibility)
+                painterResource(id = R.drawable.visibility_fill0_wght400_grad0_opsz48)
+            else
+                painterResource(id = R.drawable.visibility_off_fill0_wght400_grad0_opsz48)
 
             OutlinedTextField(
                 value = username.value,
@@ -148,7 +154,7 @@ fun CancelButton() {
                 singleLine = true,
                 leadingIcon = {
                     //Checking for it to work
-                    IconButton(onClick = { passwordVisibility.value=!passwordVisibility.value }) {
+                    IconButton(onClick = { passwordVisibility=!passwordVisibility }) {
                         Icon(imageVector = Icons.Filled.Lock, contentDescription = "Lock")
 
 
@@ -156,16 +162,19 @@ fun CancelButton() {
                 },
                 trailingIcon = {
                     IconButton(onClick = {
-                        passwordVisibility.value=!passwordVisibility.value
+                        passwordVisibility=!passwordVisibility
 
                     }) {
-                        Icon(painter = painterResource(id = R.drawable.visibility_fill0_wght400_grad0_opsz48), contentDescription = "visibility icon")
+                        Icon(painter = icon, contentDescription = "visibility icon")
 
                     }
 
 
                 },
-                visualTransformation = if (passwordVisibility.value) VisualTransformation.None
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Password
+                ),
+                visualTransformation = if (passwordVisibility) VisualTransformation.None
                 else PasswordVisualTransformation()
             )
 
@@ -191,7 +200,7 @@ fun CancelButton() {
 
                         com.ex.volunteerfinder.Icon(
                             imageVector = vectorResource(id = R.drawable.password),//password drawable
-                            tint = if (passwordVisibility.value) primaryColor else Color.Gray
+                            tint = if (passwordVisibility) primaryColor else Color.Gray
                         )
                     }
 

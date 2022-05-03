@@ -125,6 +125,7 @@ fun PreEventListScreen()
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         //TODO put Column of Api events here!
+                        //Got it
 
                         Spacer(modifier = Modifier.height(50.dp))
                         Text(text = "Go to Previously Posted Events",

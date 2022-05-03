@@ -135,8 +135,6 @@ fun PreEventListScreen()
                         Spacer(modifier = Modifier.height(20.dp))
                         IconButton(onClick = { context.startActivity(Intent(context, ApiEvents::class.java)) },
                             modifier = Modifier.size(150.dp)) {
-//                            Text(text = "Go to previously posted Events")
-//                            Icon(painter = painterResource(id = R.drawable.volunteer), contentDescription = "")
                             Image(modifier = Modifier.size(150.dp),painter = painterResource(id = R.drawable.volunteer), contentDescription = "Standard Events")
                         }
                         Spacer(modifier = Modifier.height(100.dp))
@@ -148,8 +146,6 @@ fun PreEventListScreen()
                         Spacer(modifier = Modifier.height(10.dp))
                         IconButton(onClick = { context.startActivity(Intent(context, EventList::class.java)) },
                             modifier = Modifier.size(200.dp)) {
-//                            Text(text = "Go to My Events!")
-//                            Icon(painter = painterResource(id = R.drawable.transparentlogowithname ), contentDescription = "")
                             Image(modifier = Modifier.size(200.dp),painter = painterResource(id = R.drawable.letsgologo), contentDescription = "Personal Events")
                         }
                     }

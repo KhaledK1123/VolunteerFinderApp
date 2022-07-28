@@ -32,6 +32,7 @@ fun EventList(eventViewModel: EventViewModel) {
 
 //    val eventViewModel = EventViewModel(Application())
     val eventList = eventViewModel.fetchAllEvents().observeAsState(arrayListOf())
+    //could also use mutableListOf() or ArrayList() in observeAsState
     //val eventList = arrayListOf<MyEvent>()
 
 

@@ -104,7 +104,6 @@ fun PreEventListScreen()
 {
     VolunteerFinderAppTheme {
 
-
         val context = LocalContext.current
 
         Scaffold (
@@ -126,7 +125,6 @@ fun PreEventListScreen()
                     ) {
                         //TODO put Column of Api events here!
                         //Got the Api of Event here
-
                         Spacer(modifier = Modifier.height(50.dp))
                         Text(text = "Go to Previously Posted Events",
                             style = MaterialTheme.typography.h2,

@@ -16,6 +16,7 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -92,14 +93,15 @@ Scaffold() {
 
         Spacer(modifier = Modifier.height(5.dp))
 
-        var username = remember { mutableStateOf("") }
-        var email = remember { mutableStateOf("") }
-        var name = remember { mutableStateOf("") }
-        var city = remember { mutableStateOf("") }
-        var state = remember { mutableStateOf("") }
-        var zip = remember { mutableStateOf("00000") }
-        var password = remember { mutableStateOf("") }
-        var passwordConfirm = remember { mutableStateOf("") }
+        //It is not remember saves through composition but rememberSaveable saves through configuration
+        var username = rememberSaveable { mutableStateOf("") }
+        var email = rememberSaveable{ mutableStateOf("") }
+        var name = rememberSaveable { mutableStateOf("") }
+        var city = rememberSaveable { mutableStateOf("") }
+        var state = rememberSaveable { mutableStateOf("") }
+        var zip = rememberSaveable { mutableStateOf("00000") }
+        var password = rememberSaveable { mutableStateOf("") }
+        var passwordConfirm = rememberSaveable { mutableStateOf("") }
 
 
         var passwordVisibility by remember { mutableStateOf(false) }
@@ -264,15 +266,27 @@ Scaffold() {
 
         Spacer(modifier = Modifier.height(10.dp))
         val context = LocalContext.current
+
+//        for (number in 1..27)
+
+
         Button(onClick =
         {
 
             if (username.value.isEmpty()) {
                 Toast.makeText(context, "Please fill all inputs ", Toast.LENGTH_SHORT).show()
+            } else if (username.value.length < 7){
+                Toast.makeText(context, "Please have more than seven characters",Toast.LENGTH_SHORT).show()
+            } else if (username.value.length > 27){
+                Toast.makeText(context, "Username is too long. Username has a 27 character limit.",Toast.LENGTH_SHORT).show()
+            } else if (username.value.contains(' ')){
+                Toast.makeText(context, "There should be no spaces within the Username",Toast.LENGTH_SHORT).show()
             } else if (email.value.isEmpty()) {
                 Toast.makeText(context, "Please fill all inputs ", Toast.LENGTH_SHORT).show()
             } else if (name.value.isEmpty()) {
                 Toast.makeText(context, "Please fill all inputs ", Toast.LENGTH_SHORT).show()
+            } else if(!name.value[0].isUpperCase()){
+                Toast.makeText(context, "Please Capitalize the Name", Toast.LENGTH_SHORT).show()
             } else if (city.value.isEmpty()) {
                 Toast.makeText(context, "Please fill all inputs ", Toast.LENGTH_SHORT).show()
             } else if (state.value.isEmpty()) {
@@ -281,17 +295,15 @@ Scaffold() {
                 Toast.makeText(context, "Please fill all inputs ", Toast.LENGTH_SHORT).show()
             } else if (password.value.isEmpty()) {
                 Toast.makeText(context, "Please fill all inputs ", Toast.LENGTH_SHORT).show()
+            }  else if (password.value.length < 5){
+                Toast.makeText(context, "Please have more than five characters",Toast.LENGTH_SHORT).show()
             } else if (passwordConfirm.value.isEmpty()) {
                 Toast.makeText(context, "Please fill all inputs ", Toast.LENGTH_SHORT).show()
             } else if (passwordConfirm.value != password.value ) {
                 Toast.makeText(context, "Passwords must match ", Toast.LENGTH_SHORT).show()
             } else if (username.value == password.value) {
                 Toast.makeText(context, "Username and password can not match", Toast.LENGTH_SHORT).show()
-            }
-//            else if (zip.value < 0) {
-//                Toast.makeText(context, "Passwords must match ", Toast.LENGTH_SHORT).show()
-//            }
-            else {
+            } else {
                 userViewModel.insertUser(
                     User(
                         userName = username.value,
@@ -324,6 +336,16 @@ Scaffold() {
 
     }
 }
+}
+
+fun checkForBlank(name:String):Boolean{
+     var state = true
+
+    name.forEach {
+
+        if(!it.isWhitespace()) state = false
+    }
+  return state
 }
 
 fun Icon(imageVector: Any, tint: Color) {
